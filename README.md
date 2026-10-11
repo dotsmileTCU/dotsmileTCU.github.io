@@ -1,14 +1,11 @@
-  /* dotsmileTCU.github.io  */
-# 组织简介
 
-多彩梦交通文化综合体旗下目前有交通夏日展和新春交通团拜会两个子品牌。致力于交通爱好者共建共享的文化分享平台。
 
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>往期活动 - 岭南道</title>
+<title>往期活动</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -243,6 +240,13 @@
   </a>
 </div>
 
+<!-- ============================================================
+      /* dotsmileTCU.github.io  */
+     ============================================================ -->
+ 
+<h2 class="section-title">组织简介</h2>
+
+<p class="section-text">多彩梦交通文化综合体旗下目前有交通夏日展和新春交通团拜会两个子品牌。致力于交通爱好者共建共享的文化分享平台。</p>
 
 <!-- ============================================================
      第二部分：往期活动
@@ -282,18 +286,7 @@
    优先级规则：
    标题：customText  →  B站标题  →  "未命名活动"
    简介：customDesc  →  B站简介  →  不显示
-
-   复制复用：
-    {
-      bvid: "BV1xx411c7mD",
-      year: "2025",
-      tags: ["年会", "线下"]
-      label: "工作坊"
-    },
-   ============================================================ */
-const ACTIVITIES = [
-  {
-   /* ============================================================
+   
    实例：
     bvid: "BV1xx411c7mD",
     year: "2025",
@@ -318,14 +311,34 @@ const ACTIVITIES = [
     customDesc: "回顾过去一年的成长",  // 填了就用你写的，不填自动用 B站简介
     label: "年度活动"
   }
+  
+   复制复用：
+    {
+      bvid: "BV1xx411c7mD",
+      year: "2025",
+      tags: ["年会", "线下"]
+      label: "工作坊"
+    },
    ============================================================ */
+const ACTIVITIES = [
+  {
     {
       bvid: "https://www.bilibili.com/video/BV1558B6GEun/",
       year: "2026",
       tags: ["交通夏日展", "网络展播", "青年创作者", "创作激励"]
+      customText: "2026第二届全都暑于你（下半场）",
       label: "夏日展"
     },
+    {
+      bvid: "https://www.bilibili.com/video/BV1N6bi6XE5Q/",
+      year: "2026",
+      tags: ["交通夏日展", "网络展播", "青年创作者", "创作激励"]
+      customText: "2026第二届全都暑于你（上半场）",
+      label: "夏日展"
+    },
+      
   // ★ 继续在这里添加更多活动，注意每条对象之间用逗号分隔
+  }
 ];
 
 
