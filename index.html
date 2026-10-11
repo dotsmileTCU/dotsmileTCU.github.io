@@ -21,6 +21,7 @@
     --card-bg: #fff;
     --border: #e5e7eb;
     --darkgb: #0c5452;
+    --accent-red: #9f2824;
     --darkgb-light: #268987;
   }
 
@@ -140,7 +141,7 @@
   }
   .hamburger-dropdown .nav-link { padding: 10px 14px; }
 
-  @media (max-width: 820px) {
+  @media (max-width: 768px) {
     .navbar { padding: 0 16px; }
     .nav-link.primary-link { display: none; }
     .nav-logo { font-size: 15px; }
@@ -151,7 +152,7 @@
 
 
   /* 桌面端（≥769px）：外部显示三个主链接，下拉菜单里隐藏这三个的重复项 */
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .hamburger-dropdown .primary-link.mobile-only {
     display: none !important;
   }
@@ -581,7 +582,7 @@
     position: absolute;
     left: 24px; top: 40px; bottom: 40px;
     width: 2px;
-    background: linear-gradient(to bottom, var(--primary), var(--accent));
+    background: linear-gradient(to bottom, var(--accent), var(--primary));
     border-radius: 1px;
   }
 
@@ -622,6 +623,16 @@
     font-weight: 700;
     color: var(--accent-dark);
     background: #fff4dd;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+    .timeline-boom {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-red);
+    background: #e88d8a;
     padding: 2px 10px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -856,6 +867,7 @@
         <a class="nav-link primary-link mobile-only" data-page="contact" href="#contact">联系我们</a>
         <a class="nav-link primary-link mobile-only" data-page="coop" href="#coop">参与共创</a>
 
+        <a class="nav-link" data-page="history" href="#history">历史进程</a>
         <a class="nav-link" data-page="project" href="#project">近期项目</a>
         <a class="nav-link" data-page="activities" href="#activities">往期活动</a>
       </div>
@@ -991,7 +1003,13 @@
           <div class="contact-icon">📍</div>
           <h3>线下活动</h3>
           <p>详见活动公告，陆续开展敬请期待……</p>
+          <p>京郊娱乐活动Ep14全新发布👇</p>
+          <a class="sub-btn"
+           href="https://www.bilibili.com/video/BV1DCpx6EEZC/">
+          最新综艺
+          </a>
         </div>
+        
       </div>
 
       <div class="contact-cta">
@@ -1012,7 +1030,7 @@
     <div class="coop-hero">
       <div class="container">
         <h1>参与共创</h1>
-        <p>我们是一个开放的平台，这里没有观众席，每一位交通爱好者都可以是组织者、创作者和参与者。</p>
+        <p>我们是一个开放的平台，这里不只有观众席，每一位交通爱好者都可以是组织者、创作者和参与者。</p>
       </div>
     </div>
 
@@ -1021,35 +1039,35 @@
         <div class="coop-step">
           <div class="coop-step-num">1</div>
           <h3>提出你的想法</h3>
-          <p>无论是一场主题聚会、一个线上游戏、一次模型展示，还是一次线路体验，先告诉我们你想做什么。</p>
+          <p>无论是一场主题聚会、一个线上或是线下交通游戏、一次作品展会，还是一次线路体验，先告诉我们你想做什么。</p>
         </div>
         <div class="coop-step">
           <div class="coop-step-num">2</div>
           <h3>找到同好伙伴</h3>
-          <p>我们会帮你匹配有相似兴趣的伙伴，一起把想法打磨成可执行的方案，让活动更有趣、更完整。</p>
+          <p>来这里寻找有兴趣参与志同道合的伙伴，一起把想法打磨成可执行的方案，让活动更有趣、更完整。</p>
         </div>
         <div class="coop-step">
           <div class="coop-step-num">3</div>
           <h3>一起落地实现</h3>
-          <p>从策划、宣传到执行，我们提供力所能及的资源支持，把每一次共创真正做出来、办精彩。</p>
+          <p>从策划、宣传到执行，我们提供力所能及的资源支持，同时提供分享平台，把每一次共创真正做出来、办精彩。</p>
         </div>
       </div>
 
       <div class="coop-cta-wrap">
         <h2>准备好加入了吗？</h2>
-        <p>把你的想法通过邮箱或公众号发给我们，开启你的交通共创之旅。</p>
+        <p>把你的想法通过QQ群或B站私信发给我们，开启你的交通共创之旅。</p>
         <a class="coop-btn" href="#contact">立即联系</a>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       页面 4：近期项目
+       页面 4：历史进程
        ============================================================ -->
-  <section id="page-project" class="page">
+  <section id="page-history" class="page">
     <div class="project-hero container">
-      <h1>近期项目</h1>
-      <p>正在筹备或刚刚完成的交通主题活动与共创项目，欢迎关注与参与。</p>
+      <h1>历史进程</h1>
+      <p>多彩梦陪您走过的日夜春秋——交通于你，也许不是两人三餐四季，但注定是一生相伴相许。</p>
     </div>
 
     <div class="container">
@@ -1057,33 +1075,72 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">2026 · 暑期</span>
-            <h3>交通夏日展 · 2026</h3>
+            <span class="timeline-boom">即将推出</span><span class="timeline-date">2027 · 丁未羊年新春</span>
+            <h3>新春交通团拜会 · 2027</h3>
             <p>一年一度的暑期交通主题展，包含模型展示、互动游戏、线路分享与爱好者交流会，欢迎各位交通迷前来相聚。</p>
+            <a class="top-btn"
+           href="https://tp.wjx.com/vm/eGc4anH.aspx#">
+          点击以投稿
+            </a>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">2026 · 新春</span>
-            <h3>新春交通团拜会 · 2026</h3>
-            <p>新春佳节期间与交通爱好者朋友们相聚一堂，分享过去一年的精彩瞬间，共同展望新一年的活动计划。</p>
+            <span class="timeline-date">2026 · FUN肆暑期</span>
+            <h3>第二届“全都‘暑’于你”交通夏日展</h3>
+            <p>一年一度的暑期交通主题展再次巨献于世，包含创意展示、互动游戏、线路分享与爱好者交流汇演，是青春的声音，答时代之卷，全国各地交通迷前来相聚。</p>
+            <h5>人气作品投票正在进行中，点击链接即可参与——</h5>
+            <a class="top-btn"
+           href="https://tp.wjx.com/vm/eGc4anH.aspx#">
+          人气作品投票火热进行中🔥
+            </a>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">2025 · 暑期</span>
-            <h3>交通夏日展 · 2025</h3>
-            <p>盛夏时节的交通主题展览与互动活动，吸引了众多交通爱好者参与，留下了许多精彩瞬间。</p>
+            <span class="timeline-date">2026 · 丙午马年新春</span>
+            <h3>“聚‘交’生活 ‘马’上出发”新春交通团拜会</h3>
+            <p>新春佳节期间与交通爱好者朋友们相聚一堂，分享过去一年拍摄到的精彩瞬间，共同展望新年新气象。有趣的抽奖活动和共创团队的宣传推广新颖吸睛。活动收视取得历史新高的成绩！</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">2025 · 新春</span>
-            <h3>新春交通团拜会 · 2025</h3>
-            <p>春节期间举办的交通爱好者团拜活动，大家欢聚一堂，畅聊热爱，共贺新春。</p>
+            <span class="timeline-date">2025 · 欢度暑期</span>
+            <h3>“全都‘暑’于你”交通夏日展</h3>
+            <p>盛夏时节的交通主题展览与互动活动，吸引了众多交通爱好者参与，留下了许多精彩瞬间。首次合作活动取得圆满成功，通过吸纳社会多元创作团队力量，不断精进发展壮大节目组。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2025 · 春季</span>
+            <h3>世界交通拜年纪</h3>
+            <h4>与</h4>
+            <h3>交通爱好者拜年汇</h3>
+            <p>两大节目组一拍即合，商议决定合作主办日后寒暑两场的交通盛会，用共创的尝试见证热爱的力量。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2025 · 乙巳蛇年新春</span>
+            <h3>2025年世界交通拜年纪</h3>
+            <p>春节期间举办的交通爱好者作品联欢活动，大家欢聚一堂，讨论区畅聊热爱，共贺新春。</p>
+            <h3>2025交通运输爱好者拜年汇</h3>
+            <p>广大交通爱好者踊跃投稿，欢聚一堂共庆新春佳节，共享新春盛宴。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2023 —— 2024</span>
+            <h3>世界交通拜年纪</h3>
+            <h4>与</h4>
+            <h3>交通运输爱好者拜年汇</h3>
+            <p>两个团队，一种热爱，用各自的声音向世界传递交通爱好的力量与温度。在B站平台分别开设直播间，开展多场优质交通创作主题活动——</p>
           </div>
         </div>
       </div>
@@ -1091,7 +1148,17 @@
   </section>
 
   <!-- ============================================================
-       页面 5：往期活动
+       页面 5：近期项目
+       ============================================================ -->
+  <section id="page-project" class="page">
+    <div class="project-hero container">
+      <h1>近期项目</h1>
+      <p>正在筹备、开发中或新鲜出炉的交通主题活动与共创项目，欢迎关注与参与。</p>
+      <p>此页面暂未开发完全，请移步其他页面使用——</p>
+    </div>
+
+  <!-- ============================================================
+       页面 6：往期活动
        ============================================================ -->
   <section id="page-activities" class="page">
     <h2 class="section-title">往期活动</h2>
@@ -1164,7 +1231,7 @@ const ACTIVITIES = [
    一、路由 / 页面切换
    ============================================================ */
 (function setupRouter() {
-  const pages = ["home", "contact", "coop", "project", "activities"];
+  const pages = ["home", "contact", "coop", "project", "history", "activities"];
 
   function switchPage(name) {
     if (!pages.includes(name)) name = "home";
