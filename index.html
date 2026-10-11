@@ -20,6 +20,8 @@
     --bg: #f7f8fa;
     --card-bg: #fff;
     --border: #e5e7eb;
+    --darkgb: #0c5452;
+    --darkgb-light: #268987;
   }
 
   html { scroll-behavior: smooth; }
@@ -144,6 +146,27 @@
     .nav-logo { font-size: 15px; }
   }
 
+
+.primary-link.mobile-only { display: none; }
+
+
+  /* 桌面端（≥769px）：外部显示三个主链接，下拉菜单里隐藏这三个的重复项 */
+@media (min-width: 769px) {
+  .hamburger-dropdown .primary-link.mobile-only {
+    display: none !important;
+  }
+}
+
+/* 移动端（≤768px）：外部三个主链接收起，改在下拉菜单里显示 */
+@media (max-width: 768px) {
+  .nav-menu > .primary-link {
+    display: none !important;
+  }
+  .hamburger-dropdown .primary-link.mobile-only {
+    display: block;
+  }
+}
+  
   /* =========================================================
      页面容器
      ========================================================= */
@@ -409,6 +432,24 @@
     background: var(--primary-light);
     transform: translateY(-2px);
     box-shadow: 0 8px 22px rgba(30, 58, 95, 0.3);
+  }
+
+    .sub-btn {
+    display: inline-block;
+    padding: 7px 22px;
+    background: var(--darkgb);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+    box-shadow: 0 4px 14px rgba(103, 205, 203, 0.25);
+  }
+  .sub-btn:hover {
+    background: var(--darkgb-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(103, 205, 205, 0.3);
   }
 
   /* =========================================================
@@ -774,6 +815,7 @@
 <!-- ============================================================
      顶部导航
      ============================================================ -->
+<!-- ============================================================
 <nav class="navbar">
   <a href="#home" class="nav-logo">多彩梦交通文化综合体</a>
   <div class="nav-menu">
@@ -786,13 +828,41 @@
         <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
       <div class="hamburger-dropdown" id="hamburgerDropdown">
+        <a class="nav-link" data-page="home" href="#home">组织简介</a>
+        <a class="nav-link" data-page="contact" href="#contact">联系我们</a>
+        <a class="nav-link" data-page="coop" href="#coop">参与共创</a>
         <a class="nav-link" data-page="project" href="#project">近期项目</a>
         <a class="nav-link" data-page="activities" href="#activities">往期活动</a>
       </div>
     </div>
   </div>
 </nav>
+  ============================================================ -->
 
+<nav class="navbar">
+  <a href="#home" class="nav-logo">多彩梦交通文化综合体</a>
+  <div class="nav-menu">
+    <a class="nav-link primary-link" data-page="home" href="#home">组织简介</a>
+    <a class="nav-link primary-link" data-page="contact" href="#contact">联系我们</a>
+    <a class="nav-link primary-link" data-page="coop" href="#coop">参与共创</a>
+
+    <div class="hamburger-wrap" id="hamburgerWrap">
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="更多菜单">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="hamburger-dropdown" id="hamburgerDropdown">
+        <!-- 这三个是移动端才出现在下拉里的副本 -->
+        <a class="nav-link primary-link mobile-only" data-page="home" href="#home">组织简介</a>
+        <a class="nav-link primary-link mobile-only" data-page="contact" href="#contact">联系我们</a>
+        <a class="nav-link primary-link mobile-only" data-page="coop" href="#coop">参与共创</a>
+
+        <a class="nav-link" data-page="project" href="#project">近期项目</a>
+        <a class="nav-link" data-page="activities" href="#activities">往期活动</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  
 <main>
 
   <!-- ============================================================
@@ -833,6 +903,10 @@
               <div class="stat-num">全年<span></span></div>
               <div class="stat-label">持续开展活动</div>
             </div>
+            <div class="stat-item">
+              <div class="stat-num">10+<span></span></div>
+              <div class="stat-label">地区伙伴共创</div>
+            </div>
           </div>
         </div>
       </div>
@@ -840,7 +914,8 @@
       <!-- 两大常年活动 -->
       <div class="annual-section">
         <h2 class="annual-title">两大常年主题活动</h2>
-        <p class="annual-subtitle">多彩梦交通文化综合体旗下目前设有两大常年主题活动，期待您的参与</p>
+        <p class="annual-subtitle">多彩梦交通文化综合体旗下目前设有两大常年主题活动，期待您的踊跃参与</p>
+        <p class="annual-subtitle">——无论是投稿还是共建，无论是内容创作还是资源共享</p>
 
         <div class="annual-grid">
           <div class="annual-card">
@@ -866,7 +941,7 @@
   <section id="page-contact" class="page">
     <div class="contact-hero container">
       <h1>联系我们</h1>
-      <p>有任何想法、合作意向或问题，欢迎通过以下任一方式找到我们。我们通常会在 1–2 个工作日内回复。</p>
+      <p>有任何想法、合作意向或问题，欢迎通过以下任一方式找到我们。我们通常会在节假日内回复。</p>
     </div>
 
     <div class="container">
@@ -874,30 +949,58 @@
         <div class="contact-card">
           <div class="contact-icon">💬</div>
           <h3>微信公众号</h3>
-          <p>搜索「多彩梦交通文化综合体」</p>
+          <p>搜索「交建文宣」</p>
         </div>
         <div class="contact-card">
-          <div class="contact-icon">📧</div>
-          <h3>邮箱</h3>
-          <p>hello@duocaimeng.com</p>
+          <div class="contact-icon">🐧</div>
+          <h3>QQ群聊</h3>
+          <p>搜索群号「681027226」</p><p>或直接点下方</p>
+          <a class="sub-btn"
+           href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=M-OpajWd2zVPo4-aU7dND-ru3XZs9vd6&authKey=5jqa7%2BvxxSc8ADOQhq3iwZn7faoo1eT5ON7gy%2BOo89yQSkWCSu39cBG6Rscjo2ci&noverify=0&group_code=681027226">
+          跳转QQ群邀请
+          </a>
         </div>
         <div class="contact-card">
           <div class="contact-icon">📺</div>
           <h3>B 站</h3>
-          <p>@多彩梦交通文化综合体</p>
+          <div class="subtitle">
+            关注入股，保你不亏！
+          </div>
+          <p>华杭（浙江）视音讯工作室</p>
+          <a class="sub-btn"
+           href="https://space.bilibili.com/3493122325613305">
+          @杭临新铁HanglinRail
+          </a>
+          <p>交通爱好者拜年汇</p>
+          <a class="sub-btn"
+           href="https://space.bilibili.com/32799686">
+          @御坂75900号
+          </a>
+          <p>世界交通拜年纪</p>
+          <a class="sub-btn"
+           href="https://space.bilibili.com/3546601293351293">
+          @世界交通拜年纪
+          </a>
+          <p>京郊交通爱好者工作室</p>
+          <a class="sub-btn"
+           href="https://space.bilibili.com/1057056469">
+          @京郊交通爱好者
+          </a>
         </div>
         <div class="contact-card">
           <div class="contact-icon">📍</div>
           <h3>线下活动</h3>
-          <p>详见活动公告</p>
+          <p>详见活动公告，陆续开展敬请期待……</p>
         </div>
       </div>
 
       <div class="contact-cta">
+        <div class="contact-icon">👋</div>
         <a class="top-btn"
            href="https://metro-lingnandongdao.github.io/lingnan-portfolio/sites.html">
           找到我们
         </a>
+        <p>👆跳转嶺南東道‌“世界交通拜年纪”专题页🔗</p>
       </div>
     </div>
   </section>
