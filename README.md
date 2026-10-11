@@ -5,3 +5,15 @@
 <a class="link-btn" href="https://metro-lingnandongdao.github.io/lingnan-portfolio/sites.html" target="_blank" rel="noopener noreferrer">
   找到我们
 </a>
+
+.link-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #1e3a5f;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+.link-btn:hover {
+  background: #2c5282;
+}
