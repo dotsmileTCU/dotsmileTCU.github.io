@@ -1,4 +1,5 @@
-# dotsmileTCU.github.io
+  /* dotsmileTCU.github.io  */
+# 组织简介
 
 多彩梦交通文化综合体旗下目前有交通夏日展和新春交通团拜会两个子品牌。致力于交通爱好者共建共享的文化分享平台。
 
@@ -139,7 +140,7 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   }
 
-  /* 卡片上部：自定义文字 */
+  /* 卡片上部：自定义文字 / 标题 / 简介 */
   .card-header {
     padding: 16px 18px 10px;
   }
@@ -157,12 +158,20 @@
     font-weight: 600;
     color: #1a1a2e;
     line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .card-desc {
     font-size: 13px;
     color: #777;
     margin-top: 4px;
     line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   /* 卡片中部：封面 */
@@ -261,34 +270,44 @@
 <script>
 /* ============================================================
    ★★★ 活动数据配置区 ★★★
-   在这里添加你的活动卡片。每一条对应一张卡片。
 
    字段说明：
-   - bvid       : B站视频的 BV 号（必填），例如 "BV1xx411c7mD"
-                  也可以直接粘贴完整视频链接，程序会自动提取 BV 号
+   - bvid       : B站视频的 BV 号（必填），也可直接粘贴完整视频链接
    - year       : 年份（必填），例如 "2025"
    - tags       : 标签数组（必填），例如 ["年会", "线下"]
-   - customText : 卡片上部自定义展示的文字（必填）
-   - customDesc : 卡片上部自定义描述文字（选填）
+   - customText : 卡片标题文字（选填）。不填则自动读取 B站视频标题
+   - customDesc : 卡片简介文字（选填）。不填则自动读取 B站视频简介
    - label      : 卡片左上角小标签（选填）
 
-   添加方法：复制下面 { ... } 整块，改字段值即可。
+   优先级规则：
+   标题：customText  →  B站标题  →  "未命名活动"
+   简介：customDesc  →  B站简介  →  不显示
+
+   复制复用：
+    {
+      bvid: "BV1xx411c7mD",
+      year: "2025",
+      tags: ["年会", "线下"]
+      label: "工作坊"
+    },
    ============================================================ */
 const ACTIVITIES = [
   {
+   /* ============================================================
+   实例：
     bvid: "BV1xx411c7mD",
     year: "2025",
     tags: ["年会", "线下"],
-    customText: "2025 年度见面会",
-    customDesc: "岭南道年度线下聚会，精彩回顾",
+    // customText 不填 → 自动用 B站标题
+    // customDesc 不填 → 自动用 B站简介
     label: "年度活动"
   },
   {
     bvid: "BV1yy411c7mD",
     year: "2025",
     tags: ["工作坊", "线上"],
-    customText: "新媒体运营工作坊",
-    customDesc: "从 0 到 1 搭建个人品牌",
+    customText: "新媒体运营工作坊",   // 想自定义就填，会覆盖 B站标题
+    // customDesc 不填 → 自动用 B站简介
     label: "工作坊"
   },
   {
@@ -296,10 +315,17 @@ const ACTIVITIES = [
     year: "2024",
     tags: ["年会"],
     customText: "2024 年度总结大会",
-    customDesc: "回顾过去一年的成长",
+    customDesc: "回顾过去一年的成长",  // 填了就用你写的，不填自动用 B站简介
     label: "年度活动"
   }
-  // ★ 继续在这里添加更多活动……
+   ============================================================ */
+    {
+      bvid: "https://www.bilibili.com/video/BV1558B6GEun/",
+      year: "2026",
+      tags: ["交通夏日展", "网络展播", "青年创作者", "创作激励"]
+      label: "夏日展"
+    },
+  // ★ 继续在这里添加更多活动，注意每条对象之间用逗号分隔
 ];
 
 
@@ -333,6 +359,7 @@ async function fetchBiliInfo(bvid) {
       const d = json.data;
       return {
         title: d.title || "",
+        desc: d.desc || "",
         pic: d.pic || "",
         views: d.stat ? d.stat.view : null,
         likes: d.stat ? d.stat.like : null,
@@ -367,9 +394,16 @@ function renderCards() {
 
   grid.innerHTML = filtered.map(card => {
     const info = card.info || {};
+
+    // 标题：customText 优先 → B站标题 → 默认
+    const titleText = card.customText || info.title || "未命名活动";
+
+    // 简介：customDesc 优先 → B站简介 → 不显示
+    const descText = card.customDesc || info.desc || "";
+
     const coverHtml = info.pic
       ? `<a class="card-cover" href="${info.link}" target="_blank" rel="noopener noreferrer">
-           <img src="${info.pic}" alt="${info.title || '视频封面'}"
+           <img src="${info.pic}" alt="${titleText}"
                 referrerpolicy="no-referrer" loading="lazy">
          </a>`
       : `<div class="card-cover"><div class="cover-placeholder">封面加载中…</div></div>`;
@@ -378,8 +412,8 @@ function renderCards() {
       <div class="card">
         <div class="card-header">
           ${card.label ? `<span class="card-label">${card.label}</span>` : ""}
-          <div class="card-title-text">${card.customText || info.title || "未命名活动"}</div>
-          ${card.customDesc ? `<div class="card-desc">${card.customDesc}</div>` : ""}
+          <div class="card-title-text">${titleText}</div>
+          ${descText ? `<div class="card-desc">${descText}</div>` : ""}
         </div>
         ${coverHtml}
         <div class="card-footer">
