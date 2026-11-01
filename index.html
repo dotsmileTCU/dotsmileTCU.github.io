@@ -740,6 +740,7 @@
   }
 
   .card-header { padding: 16px 18px 10px; }
+  /* ===== 默认 label 样式（原有，保持不变） ===== */
   .card-label {
     display: inline-block;
     font-size: 12px;
@@ -749,6 +750,107 @@
     color: var(--primary);
     margin-bottom: 8px;
   }
+  
+  /* ===== 自定义 label 样式（按 labelStyle 值匹配） ===== */
+  
+  /* summer：暑期活动，橙黄渐变 */
+  .card-label.label-summer {
+    background: linear-gradient(135deg, #ffe7bd, #e8a838) !important;
+    color: #7a4e00 !important;
+    font-weight: 700;
+  }
+  
+  /* spring：新春活动，红色喜庆 */
+  .card-label.label-spring {
+    background: linear-gradient(135deg, #ffd6d3, #e8574f) !important;
+    color: #8b1a14 !important;
+    font-weight: 700;
+  }
+  
+  /* special：特别企划，紫色高亮 */
+  .card-label.label-special {
+    background: linear-gradient(135deg, #e8d5ff, #9b59b6) !important;
+    color: #4a1a6b !important;
+    font-weight: 700;
+  }
+  
+  /* online：线上活动，蓝色 */
+  .card-label.label-online {
+    background: linear-gradient(135deg, #d4f0ff, #3498db) !important;
+    color: #0b4a6f !important;
+    font-weight: 700;
+  }
+  
+  /* offline：线下活动，绿色 */
+  .card-label.label-offline {
+    background: linear-gradient(135deg, #d4f5e0, #27ae60) !important;
+    color: #0b5c33 !important;
+    font-weight: 700;
+  }
+  
+  /* annual：年度活动，深蓝金边 */
+  .card-label.label-annual {
+    background: linear-gradient(135deg, #1e3a5f, #2c5282) !important;
+    color: #ffe7bd !important;
+    font-weight: 700;
+    border: 1px solid #e8a838;
+  }
+  
+  /* hot：热门/推荐，红橙渐变 */
+  .card-label.label-hot {
+    background: linear-gradient(135deg, #ff9a3c, #e8574f) !important;
+    color: #fff !important;
+    font-weight: 700;
+  }
+  
+  /* new：新活动，青绿渐变 */
+  .card-label.label-new {
+    background: linear-gradient(135deg, #a8edea, #0c5452) !important;
+    color: #fff !important;
+    font-weight: 700;
+  }
+  
+  /*
+  .card-label {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 10px;
+    background: #eef3fa;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  */
+  /* ===== 自定义 label 样式 ===== */
+  
+  /* 暑期活动：橙黄渐变 */
+  /* .card-label.label-summer {
+    background: linear-gradient(135deg, #ffe7bd, #e8a838);
+    color: #7a4e00;
+    font-weight: 700;
+  } */
+  
+  /* 新春活动：红色喜庆 */
+  /* .card-label.label-spring {
+    background: linear-gradient(135deg, #ffd6d3, #e8574f);
+    color: #8b1a14;
+    font-weight: 700;
+  } */
+  
+  /* 特别企划：紫色高亮 */
+  /* .card-label.label-special {
+    background: linear-gradient(135deg, #e8d5ff, #9b59b6);
+    color: #4a1a6b;
+    font-weight: 700;
+  } */
+  
+  /* 如果以后想加更多，照这个格式继续写：*/
+  /* .card-label.label-你的样式名 { ... } */
+  /* .card-label.label-你的名字 {
+    background: linear-gradient(135deg, #起始色, #结束色) !important;
+    color: #文字色 !important;
+    font-weight: 700;
+  } */
   .card-title-text {
     font-size: 16px;
     font-weight: 600;
@@ -870,6 +972,7 @@
         <a class="nav-link" data-page="history" href="#history">历史进程</a>
         <a class="nav-link" data-page="project" href="#project">近期项目</a>
         <a class="nav-link" data-page="activities" href="#activities">往期活动</a>
+        <a class="nav-link" data-page="versions" href="#versions">版本日志</a>
       </div>
     </div>
   </div>
@@ -1156,13 +1259,14 @@
       <p>正在筹备、开发中或新鲜出炉的交通主题活动与共创项目，欢迎关注与参与。</p>
       <p>此页面暂未开发完全，请移步其他页面使用——</p>
     </div>
+  </section>
 
   <!-- ============================================================
        页面 6：往期活动
        ============================================================ -->
   <section id="page-activities" class="page">
     <h2 class="section-title">往期活动</h2>
-    <p class="section-subtitle">点击封面即可跳转观看</p>
+    <p class="section-subtitle">点击封面即可跳转观看精彩回放，点击分类标签或年份可按需筛选，我们一直在这里等你——</p>
 
     <div class="filter-bar">
       <div class="filter-group" id="tagFilterGroup">
@@ -1179,6 +1283,56 @@
     <div class="card-grid" id="cardGrid"></div>
   </section>
 
+  <!-- ============================================================
+       页面 7：版本日志
+       ============================================================ -->
+  <section id="page-versions" class="page">
+    <h2 class="section-title">版本日志</h2>
+    <p class="section-subtitle">走过的路，我们都在这里记着 >_< 更新是为了更好的出发……</p>
+    
+    <div class="container">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-boom">🎉重磅推出</span><span class="timeline-date">Nov 1 2026</span>
+            <h3>新春交通团拜会 · 2027</h3>
+            <p>修修补补，基本的功能终于成型啦！上次显示不出居然是因为Stupid少写了个结束符???害我找这么久。那么让我们恭喜多彩梦第一个网站成功上线运营！快来发现小彩蛋吧！*★,°*:.☆(￣▽￣)/$:*.°★* 。</p>
+            <h5> ……………………………………………… </h5>
+            <h5>访问有异常？功能有建议？（PS：🎁会随机掉落一些小礼物哟~~）</h5>
+            <a class="top-btn"
+             href="https://space.bilibili.com/3493122325613305">
+             📕反馈给我们AwA
+            </a>
+            <h4> **************限时福利************** </h4>
+            <a class="top-btn"
+             href="https://space.bilibili.com/3493122325613305">
+             集彩蛋 换惊喜🌟
+            </a>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">Oct 11 2026</span>
+            <h3>第二届“全都‘暑’于你”交通夏日展</h3>
+            <p>经过技术大佬指导，不断尝试过后……全新的综合体网站上线试运行，哈哈我成功了！O(∩_∩)O但是……往期活动怎么就是显示不出来呢？(・∀・(・∀・(・∀・*)……</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">Oct 10 2026</span>
+            <h3>Ver. 1.0.0 Beta</h3>
+            <p>好不容易写好的代码（PS：其实不是在问AI就是在问的路上，AI太好用了你知道吗！(●'◡'●)）终于同步到GitHub仓库，但不知为何就是不显示！（气得砸桌子）(╯▔皿▔)╯</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -1190,7 +1344,7 @@
 /* ============================================================
    ★★★ 活动数据配置区 ★★★
 
-   字段说明：
+   字段说明：#老的……不用
    - bvid       : B站视频 BV 号（必填），也支持粘贴完整视频链接
    - year       : 年份（必填），例如 "2025"
    - tags       : 标签数组（必填），例如 ["交通夏日展", "线下"]
@@ -1201,29 +1355,120 @@
    优先级：
    标题：customText → B站标题 → "未命名活动"
    简介：customDesc → B站简介 → 不显示
+
+  cover：封面图片路径，必须是你上传到仓库的图片。
+  link：点击封面跳转的 B站视频完整链接。
+  title：卡片标题，手动填。
+  desc：卡片简介，选填，不填就不显示。
+  views / likes / coins：直接填显示文字，可以写 "1.2万"、"856"，也可以写 "—" 表示暂无。
+  year：年份，用于筛选。
+  tags：标签数组，用于分类筛选。
+  label：卡片左上角小徽章，选填。
+  labelStyle: 徽章样式
+
    ============================================================ */
+  /* 样式一览
+    summer：暑期活动，橙黄渐变 
+    spring：新春活动，红色喜庆 
+    special：特别企划，紫色高亮
+    online：线上活动，蓝色
+    offline：线下活动，绿色
+    annual：年度活动，深蓝金边
+    hot：热门/推荐，红橙渐变
+    new：新活动，青绿渐变
+  */
 const ACTIVITIES = [
   {
-    bvid: "BV1xx411c7mD",
-    year: "2025",
-    tags: ["交通夏日展", "线下"],
-    label: "暑期活动"
+    cover: "images/BV1558B6GEun.jpg",
+    link: "https://www.bilibili.com/video/BV1558B6GEun",
+    title: "第二届「全都暑于你」交通夏日展（下半场）",
+    desc: "这是“全都暑于你”【2026年度第二届交通夏日展】的回放（下半部分），敬请观看……",
+    views: "1000+",
+    likes: "100+",
+    coins: "2",
+    year: "2026",
+    tags: ["交通夏日展","正片"],
+    label: "夏日展",
+    labelStyle: "new"          // ← 新增：使用Label样式
   },
   {
-    bvid: "BV1yy411c7mD",
-    year: "2025",
-    tags: ["新春团拜会", "线下"],
-    customText: "新春交通团拜会 · 2025",
-    label: "新春活动"
+    cover: "images/BV1N6bi6XE5Q.jpg",
+    link: "https://www.bilibili.com/video/BV1N6bi6XE5Q/",
+    title: "第二届「全都暑于你」交通夏日展（上半场）",
+    desc: "这是“全都暑于你”【2026年度第二届交通夏日展】的回放（上半部分），敬请观看……",
+    views: "1000+",
+    likes: "100+",
+    coins: "3",
+    year: "2026",
+    tags: ["交通夏日展","正片"],
+    label: "夏日展",
+    labelStyle: "summer"
   },
   {
-    bvid: "BV1zz411c7mD",
-    year: "2024",
-    tags: ["交通夏日展"],
-    customText: "交通夏日展 · 2024",
-    customDesc: "盛夏交通主题展览精彩回顾",
-    label: "暑期活动"
-  }
+    cover: "images/BV17NfGByEeY.jpg",
+    link: "https://www.bilibili.com/video/BV17NfGByEeY",
+    title: "「聚交生活 马上出发」新春交通团拜会（正片下半场）",
+    desc: "这是【2026“聚‘交’生活 马上出发”新春交通团拜会】活动的直播回放（下半部分），敬请观看……",
+    views: "1000+",
+    likes: "100+",
+    coins: "10+",
+    year: "2026",
+    tags: ["新春交通团拜会","正片"],
+    label: "新春会",
+    labelStyle: "spring"
+  },
+  {
+    cover: "images/BV1mqZ2BdEDM.jpg",
+    link: "https://www.bilibili.com/video/BV1mqZ2BdEDM",
+    title: "「聚交生活 马上出发」新春交通团拜会（正片上半场）",
+    desc: "这是【2026“聚‘交’生活 马上出发”新春交通团拜会】活动的直播回放（上半部分），敬请观看……",
+    views: "1000+",
+    likes: "200+",
+    coins: "30+",
+    year: "2026",
+    tags: ["新春交通团拜会","正片"],
+    label: "新春会",
+    labelStyle: "spring"
+  },
+  {
+    cover: "images/BV1ByAzziEXA.jpg",
+    link: "https://www.bilibili.com/video/BV1ByAzziEXA",
+    title: "「聚交生活 马上出发」新春交通团拜会（预热场）",
+    desc: "“2025次列车已经停运，请转乘2026次列车继续你的行程。祝您旅途愉快顺利！”……",
+    views: "1000+",
+    likes: "~100",
+    coins: "9",
+    year: "2026",
+    tags: ["新春交通团拜会"],
+    label: "新春会",
+    labelStyle: "special"
+  },
+  {
+    cover: "images/BV1N1YWz1E8u.jpg",
+    link: "https://www.bilibili.com/video/BV1N1YWz1E8u",
+    title: "「全都暑于你」交通夏日展（下半场）",
+    desc: "这是“全都暑于你”【2025年度暑期作品展播】的回放精彩回看（下半部分），敬请观看。",
+    views: "1000+",
+    likes: "~100",
+    coins: "5",
+    year: "2026",
+    tags: ["交通夏日展","正片"],
+    label: "夏日展",
+    labelStyle: "summer"
+  },
+  {
+    cover: "images/BV1FhYCzoEWp.jpg",
+    link: "https://www.bilibili.com/video/BV1FhYCzoEWp",
+    title: "「全都暑于你」交通夏日展（上半场）",
+    desc: "这是“全都暑于你”【2025年度暑期作品展播】的回放精彩回看（上半部分），敬请观看。",
+    views: "1000+",
+    likes: "90",
+    coins: "9",
+    year: "2026",
+    tags: ["交通夏日展","正片"],
+    label: "夏日展",
+    labelStyle: "summer"
+  },
 ];
 
 
@@ -1231,7 +1476,7 @@ const ACTIVITIES = [
    一、路由 / 页面切换
    ============================================================ */
 (function setupRouter() {
-  const pages = ["home", "contact", "coop", "project", "history", "activities"];
+  const pages = ["home", "contact", "coop", "project", "history", "activities", "versions"];
 
   function switchPage(name) {
     if (!pages.includes(name)) name = "home";
@@ -1333,6 +1578,7 @@ async function fetchBiliInfo(bvid) {
   return null;
 }
 
+  /*
 let allCards = [];
 let currentTag = "all";
 let currentYear = "all";
@@ -1478,6 +1724,148 @@ async function initActivities() {
 }
 
 initActivities();
+*/
+
+/* ============================================================
+   往期活动：纯手动数据，无需 API
+   ============================================================ */
+
+let allCards = [];
+let currentTag = "all";
+let currentYear = "all";
+
+function renderCards() {
+  const grid = document.getElementById("cardGrid");
+  if (!grid) return;
+
+  const filtered = allCards.filter(card => {
+    const tagOk = currentTag === "all" || (card.tags || []).includes(currentTag);
+    const yearOk = currentYear === "all" || card.year === currentYear;
+    return tagOk && yearOk;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="empty-tip">暂无符合条件的活动</div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(card => {
+    // const coverHtml = card.cover
+    //   ? `<a class="card-cover" href="${card.link}" target="_blank" rel="noopener noreferrer">
+    //        <img src="${card.cover}" alt="${card.title}" loading="lazy">
+    //      </a>`
+    //   : `<div class="card-cover"><div class="cover-placeholder">暂无封面</div></div>`;
+    const PLACEHOLDER = "images/placeholder.jpg";
+    
+    const fallbackHtml = `<div class="cover-placeholder">暂无封面</div>`;
+    
+    const coverHtml = card.cover
+      ? `<a class="card-cover" href="${card.link}" target="_blank" rel="noopener noreferrer">
+           <img src="${card.cover}"
+                alt="${card.title}"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='${PLACEHOLDER}';this.onerror=function(){this.parentNode.innerHTML='<div class=\\'cover-placeholder\\'>暂无封面</div>';};">
+         </a>`
+      : `<a class="card-cover" href="${card.link}" target="_blank" rel="noopener noreferrer">
+           <img src="${PLACEHOLDER}" alt="${card.title}" loading="lazy">
+         </a>`;
+
+    const statsHtml = [
+      card.views ? `<span>📺 ${card.views}</span>` : "",
+      card.likes ? `<span>👍 ${card.likes}</span>` : "",
+      card.coins ? `<span>🪙 ${card.coins}</span>` : ""
+    ].filter(Boolean).join("");
+
+    return `
+      <div class="card">
+        <div class="card-header">
+          ${card.label
+            ? `<span class="card-label${card.labelStyle ? " label-" + card.labelStyle : ""}">${card.label}</span>`
+            : ""}
+          <div class="card-title-text">${card.title || "未命名活动"}</div>
+          ${card.desc ? `<div class="card-desc">${card.desc}</div>` : ""}
+        </div>
+        ${coverHtml}
+        <div class="card-footer">${statsHtml}</div>
+      </div>
+    `;
+  }).join("");
+}
+// ${card.label ? `<span class="card-label">${card.label}</span>` : ""}
+function renderTagFilter() {
+  const group = document.getElementById("tagFilterGroup");
+  if (!group) return;
+
+  const allTags = new Set();
+  allCards.forEach(card => {
+    (card.tags || []).forEach(t => allTags.add(t));
+  });
+
+  group.innerHTML = '<span class="filter-label">分类：</span>';
+
+  const allBtn = document.createElement("button");
+  allBtn.className = "tag-btn" + (currentTag === "all" ? " active" : "");
+  allBtn.textContent = "全部";
+  allBtn.onclick = () => { currentTag = "all"; renderTagFilter(); renderCards(); };
+  group.appendChild(allBtn);
+
+  [...allTags].sort().forEach(tag => {
+    const btn = document.createElement("button");
+    btn.className = "tag-btn" + (currentTag === tag ? " active" : "");
+    btn.textContent = tag;
+    btn.onclick = () => { currentTag = tag; renderTagFilter(); renderCards(); };
+    group.appendChild(btn);
+  });
+}
+
+function renderYearFilter() {
+  const sel = document.getElementById("yearSelect");
+  if (!sel) return;
+
+  const years = [...new Set(allCards.map(c => c.year).filter(Boolean))].sort().reverse();
+  sel.innerHTML = '<option value="all">全部年份</option>';
+  years.forEach(y => {
+    const opt = document.createElement("option");
+    opt.value = y;
+    opt.textContent = y + " 年";
+    if (currentYear === y) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  sel.onchange = () => { currentYear = sel.value; renderCards(); };
+}
+
+function initActivities() {
+  const grid = document.getElementById("cardGrid");
+  if (!grid) return;
+
+  try {
+    allCards = (Array.isArray(ACTIVITIES) ? ACTIVITIES : []).filter(item => {
+      if (!item || typeof item !== "object") {
+        console.warn("[往期活动] 跳过非对象项:", item);
+        return false;
+      }
+      if (!item.title && !item.cover) {
+        console.warn("[往期活动] 缺少 title 和 cover，跳过:", item);
+        return false;
+      }
+      return true;
+    }).map(item => ({
+      ...item,
+      tags: Array.isArray(item.tags) ? item.tags : []
+    }));
+
+    renderTagFilter();
+    renderYearFilter();
+    renderCards();
+
+  } catch (err) {
+    console.error("[往期活动] 初始化失败:", err);
+    grid.innerHTML = `<div class="empty-tip">⚠️ 数据格式有误：${err.message}</div>`;
+  }
+}
+
+initActivities();
+  
 </script>
 
 </body>
