@@ -23,6 +23,8 @@
     --darkgb: #0c5452;
     --accent-red: #9f2824;
     --darkgb-light: #268987;
+    --A2785D: #A2785D;
+    --614C41: #614C41;
   }
 
   html { scroll-behavior: smooth; }
@@ -453,6 +455,25 @@
     box-shadow: 0 8px 22px rgba(103, 205, 205, 0.3);
   }
 
+  .ext-btn {
+    display: inline-block;
+    padding: 10px 30px;
+    background: var(--A2785D);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+    box-shadow: 0 4px 14px rgba(30, 58, 95, 0.25);
+  }
+  .ext-btn:hover {
+    background: var(--614C41);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(30, 58, 95, 0.3);
+  }
+
+  
   /* =========================================================
      页面 3：参与共创
      ========================================================= */
@@ -750,7 +771,7 @@
     color: var(--primary);
     margin-bottom: 8px;
   }
-  
+
   /* ===== 自定义 label 样式（按 labelStyle 值匹配） ===== */
   
   /* summer：暑期活动，橙黄渐变 */
@@ -913,14 +934,165 @@
   }
 
   /* 全局页脚 */
-  .site-footer {
+  /* .site-footer {
     text-align: center;
     padding: 30px 20px;
     color: #999;
     font-size: 13px;
     border-top: 1px solid var(--border);
     background: #fff;
+  } */
+
+  /* =========================================================
+   页脚：三列 + 底部两行文字
+   ========================================================= */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    background: #fff;
+    color: #666;
+    font-size: 14px;
   }
+  
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .footer-col-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 16px;
+    position: relative;
+    padding-left: 12px;
+  }
+  .footer-col-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 3px;
+    height: 16px;
+    background: var(--accent);
+    border-radius: 2px;
+    transform: translateY(-50%);
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-links li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #666;
+  }
+  /* .footer-links a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+  } */
+  .footer-links a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s, font-weight 0.2s;
+  }
+  
+  .footer-links a:hover {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 20px 24px 24px;
+  }
+  .footer-bottom p {
+    font-size: 13px;
+    color: #999;
+    line-height: 1.8;
+    margin: 4px 0;
+  }
+  
+  /* 移动端：三列堆叠 */
+  @media (max-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding: 36px 20px 24px;
+    }
+  }
+
+  /* =========================================================
+     Icon 系统：矢量固定尺寸，三档
+     ========================================================= */
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  
+  /* 小：页脚、行内文字旁，14px */
+  .icon-sm {
+    width: 14px;
+    height: 14px;
+  }
+  
+  /* 中：卡片标题旁、按钮内，20px */
+  .icon-md {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* 大：区块标题、独立展示，32px */
+  .icon-lg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* =========================================================
+     Logo 系统：两类，分别控制固定高 / 固定宽
+     ========================================================= */
+  .logo {
+    display: block;
+    object-fit: contain;
+  }
+  
+  /* 横向 logo：固定高度，宽度自动 */
+  .logo-fixed-h {
+    height: 40px;
+    width: auto;
+    max-width: 100%;
+  }
+  
+  /* 方形 / 竖版 logo：固定宽度，高度自动 */
+  .logo-fixed-w {
+    width: 120px;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  /* 常用尺寸变体，按需组合 */
+  .logo-h-sm { height: 28px; }   /* 导航栏小 logo */
+  .logo-h-md { height: 40px; }   /* 默认 */
+  .logo-h-lg { height: 64px; }   /* 页脚或大区块 */
+  
+  .logo-w-sm { width: 80px; }
+  .logo-w-md { width: 120px; }
+  .logo-w-lg { width: 180px; }
+    
 </style>
 </head>
 <body>
@@ -1062,9 +1234,12 @@
     <div class="container">
       <div class="contact-grid">
         <div class="contact-card">
-          <div class="contact-icon">💬</div>
+          <img class="logo logo-fixed-w logo-w-md"
+             src="assets/logo/WeChat.png" alt="">
           <h3>微信公众号</h3>
           <p>搜索「交建文宣」</p>
+          <h3>微信视频号</h3>
+          <p>搜索「交建视宣」</p>
         </div>
         <div class="contact-card">
           <div class="contact-icon">🐧</div>
@@ -1300,12 +1475,12 @@
             <p>修修补补，基本的功能终于成型啦！上次显示不出居然是因为Stupid少写了个结束符???害我找这么久。那么让我们恭喜多彩梦第一个网站成功上线运营！快来发现小彩蛋吧！*★,°*:.☆(￣▽￣)/$:*.°★* 。</p>
             <h5> ……………………………………………… </h5>
             <h5>访问有异常？功能有建议？（PS：🎁会随机掉落一些小礼物哟~~）</h5>
-            <a class="top-btn"
+            <a class="ext-btn"
              href="https://space.bilibili.com/3493122325613305">
              📕反馈给我们AwA
             </a>
             <h4> **************限时福利************** </h4>
-            <a class="top-btn"
+            <a class="ext-btn"
              href="https://space.bilibili.com/3493122325613305">
              集彩蛋 换惊喜🌟
             </a>
@@ -1335,10 +1510,81 @@
 
 </main>
 
-<footer class="site-footer">
+<!-- <footer class="site-footer">
   © 2026 多彩梦交通文化综合体 · 打造交通爱好者共建共享的开放平台
-</footer>
+</footer> -->
 
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-col">
+      <h4 class="footer-col-title">本站导航</h4>
+      <ul class="footer-links">
+        <li><a href="#home">组织简介</a></li>
+        <li><a href="#contact">联系我们</a></li>
+        <li><a href="#coop">参与共创</a></li>
+        <li><a href="#history">历史进程</a></li>
+        <li><a href="#project">近期项目</a></li>
+        <li><a href="#activities">往期活动</a></li>
+        <!-- <li><a href="#versions">版本日志</a></li> -->
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4 class="footer-col-title">友情链接</h4>
+      <ul class="footer-links">
+        <li><a href="https://space.bilibili.com/3493122325613305" target="_blank" rel="noopener noreferrer">华杭（浙江）视音讯工作室</a></li>
+        <li><a href="https://space.bilibili.com/32799686" target="_blank" rel="noopener noreferrer">交通爱好者拜年汇</a></li>
+        <li><a href="https://space.bilibili.com/3546601293351293" target="_blank" rel="noopener noreferrer">世界交通拜年纪</a></li>
+        <li><a href="https://space.bilibili.com/1057056469" target="_blank" rel="noopener noreferrer">京郊交通爱好者工作室</a></li>
+        <li><a href="https://metro-lingnandongdao.github.io/lingnan-portfolio/sites.html" target="_blank" rel="noopener noreferrer">嶺南東道 · 世界交通拜年纪专题</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4 class="footer-col-title">找到我们</h4>
+      <ul class="footer-links">
+        <li>
+          <img class="icon icon-sm" src="assets/icons/gongZhongHao.svg" alt="">
+          微信公众号【交建文宣】
+        </li>
+        <li>
+          <img class="icon icon-sm" src="assets/icons/shiPingHao.svg" alt="">
+          微信视频号【交建视宣】
+        </li>
+        <li>
+          <img class="icon icon-sm" src="assets/icons/QQ.svg" alt="">
+          QQ 群【681027226】
+        </li>
+        <li>
+          <a href="https://qm.qq.com/cgi-bin/qm/qr?...">
+            <img class="icon icon-sm" src="assets/icons/brand-qq.svg" alt="">
+            → 跳转加入 QQ 群
+          </a>
+        </li>
+        <li>
+          <a href="https://space.bilibili.com/3493122325613305">
+            <img class="icon icon-sm" src="assets/icons/brand-bilibili.svg" alt="">
+            → 跳转B站主页 @杭临新铁HanglinRail
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <h5><i> Copyright 2025-2026 © Dotsmile TCU. All Rights Reserved</i></h5>
+    <h4>合作单位：交通爱好者协会、世界交通拜年纪、交通爱好者拜年汇</h4>
+    <p>荣誉出品单位：华杭（浙江）视音讯工作室</p>
+    <p>节目独家播送单位：无限广播电视总台（IMG）</p>
+    <h4><em>特别鸣谢</em></h4>
+    <p>网站开发协助：嶺南東道</p>
+    <h4>多彩梦交通文化综合体 · 致力于打造交通爱好者共建共享的开放平台</h4>
+    <p style="font-size: calc(1em - 3px);">声明：本网站部分内容来源于网络与社会各界人士投稿, 如有侵权请联系删除. 外部链接内容不代表本站立场. </p>
+  </div>
+</footer>
 
 <script>
 /* ============================================================
