@@ -5,6 +5,226 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>多彩梦交通文化综合体</title>
 <style>
+
+@font-face {
+  font-family: "WeiruanJZY"; 
+  src: url("fonts/微软简综艺.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+  
+  .news-detail-body a {
+    color: var(--primary);
+     /* text-decoration: underline; */
+    text-decoration: none;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+  .news-detail-body a:hover {
+    color: var(--accent-dark);
+  }
+
+  
+  /* =========================================================
+     公告弹窗
+     ========================================================= */
+  .news-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(30, 58, 95, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: popupFadeIn 0.25s ease;
+  }
+  @keyframes popupFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .news-popup {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(30, 58, 95, 0.35);
+    padding: 32px 28px 24px;
+    animation: popupSlideUp 0.3s ease;
+  }
+  @keyframes popupSlideUp {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  
+  .news-popup-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(30, 58, 95, 0.1);
+    color: var(--primary);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .news-popup-close:hover {
+    background: rgba(30, 58, 95, 0.2);
+  }
+  
+  .news-popup-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .news-popup-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 12px;
+    background: var(--accent);
+    color: #fff;
+  }
+  .news-popup-badge.medium {
+    background: var(--darkgb);
+  }
+  .news-popup-badge.low {
+    background: #999;
+  }
+  .news-popup-date {
+    font-size: 13px;
+    color: #888;
+  }
+  
+  .news-popup-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+  
+  .news-popup-summary {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  
+  .news-popup-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  .news-popup-btn {
+    padding: 10px 32px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .news-popup-btn:hover {
+    background: var(--primary-light);
+    transform: translateY(-1px);
+  }
+  
+  .news-popup-progress {
+    margin-top: 18px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(30, 58, 95, 0.12);
+    overflow: hidden;
+  }
+  .news-popup-progress-bar {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    transform-origin: left center;
+  }
+
+  /* =========================================================
+     弹窗图片区
+     ========================================================= */
+  .news-popup-media,
+  .news-popup-media-top {
+    margin: 16px 0;
+  }
+  
+  /* 多图网格：正方形固定框 */
+  .news-popup-media-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .news-popup-media-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #eef1f5;
+  }
+  .news-popup-media-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .news-popup-media-more {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(30, 58, 95, 0.55);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 8px;
+  }
+  
+  /* 单图：固定高度 */
+  .news-popup-media-single {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #eef1f5;
+  }
+  .news-popup-media-single img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* 了解详情按钮（描边） */
+  .news-popup-btn.ghost {
+    background: transparent;
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+  }
+  .news-popup-btn.ghost:hover {
+    background: #eef3fa;
+  }
+  
   /* =========================================================
      全局
      ========================================================= */
@@ -587,6 +807,471 @@
     transform: translateY(-2px);
   }
 
+  .news-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 80px;
+  }
+  .news-item {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .news-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(30, 58, 95, 0.08);
+    border-color: #cfd9e6;
+  }
+  .news-item-date {
+    font-size: 13px;
+    color: var(--accent-dark);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .news-item-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .news-item-summary {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  .news-item-tags {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .news-item-tag {
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 10px;
+    background: #eef3fa;
+    color: var(--primary);
+  }
+  
+  .news-detail-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 0 100px;
+  }
+  /* .news-back {
+    display: inline-block;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .news-back:hover { text-decoration: underline; } */
+
+  /* .news-back {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 24px;
+    padding: 4px 10px;
+    font-size: 14px;
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: color 0.2s;
+  } */
+  
+  /* 玻璃阴影层 */
+  /* .news-back::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 100%;
+    border-radius: 6px;
+    background: rgba(30, 58, 95, 0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .news-back:hover {
+    color: var(--primary-light);
+    text-decoration: none;
+  }
+  
+  .news-back:hover::after {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }  */
+
+  /* .news-back {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 999px;
+    overflow: hidden;
+    isolation: isolate;
+    transition: color 0.3s ease;
+  } */
+  
+  /* 玻璃液态层：从右侧滑入 */
+  /* .news-back::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.15) 45%, rgba(30,58,95,0.08));
+    backdrop-filter: blur(10px) saturate(160%);
+    -webkit-backdrop-filter: blur(10px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+      0 4px 16px rgba(30, 58, 95, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    transform: translateX(110%);
+    transition:
+      transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.3s ease;
+    z-index: -1;
+    pointer-events: none;
+  } */
+  
+  /* 高光扫光：叠在玻璃层上 */
+  /* .news-back::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      100deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.65) 45%,
+      rgba(255, 255, 255, 0.25) 55%,
+      transparent 80%
+    );
+    opacity: 0;
+    transform: translateX(120%);
+    transition:
+      transform 0.6s ease,
+      opacity 0.35s ease;
+    z-index: -1;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+  
+  .news-back:hover {
+    color: var(--primary-light);
+    text-decoration: none;
+  }
+  
+  .news-back:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .news-back:hover::after {
+    opacity: 1;
+    transform: translateX(-120%);
+  } */
+
+  .news-back {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+    padding: 7px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 999px;
+    overflow: hidden;
+    isolation: isolate;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* 玻璃液态层：从右侧滑入，带颜色和清晰边界 */
+  .news-back::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      linear-gradient(135deg,
+        rgba(200, 220, 245, 0.85) 0%,
+        rgba(160, 195, 235, 0.7) 50%,
+        rgba(120, 165, 220, 0.75) 100%);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow:
+      0 6px 20px rgba(30, 58, 95, 0.25),
+      0 2px 6px rgba(30, 58, 95, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 2px rgba(30, 58, 95, 0.12);
+    opacity: 0;
+    transform: translateX(110%);
+    transition:
+      transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.3s ease;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* 高光扫光：斜向亮带从右向左扫过 */
+  .news-back::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    bottom: -50%;
+    left: -20%;
+    right: -20%;
+    border-radius: inherit;
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.9) 48%,
+      rgba(255, 255, 255, 0.4) 52%,
+      transparent 70%
+    );
+    opacity: 0;
+    transform: translateX(60%);
+    transition:
+      transform 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease;
+    z-index: -1;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+  
+  .news-back:hover {
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+  
+  .news-back:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .news-back:hover::after {
+    opacity: 1;
+    transform: translateX(-80%);
+  }
+  
+  .news-detail-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+  .news-detail-meta {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .news-detail-body {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.9;
+  }
+  .news-detail-body p { margin-bottom: 16px; }
+  .news-detail-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 16px 0;
+  }
+
+  /* =========================================================
+     公告来源标识
+     ========================================================= */
+  .news-source-badge {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    padding: 2px 9px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    user-select: none;
+    position: relative;
+    top: -1px;
+  }
+  
+  /* 原创：深蓝 + 金边 */
+  .news-source-badge.original {
+    background: linear-gradient(180deg, #2c5282, #1e3a5f);
+    box-shadow:
+      0 2px 0 #14273f,
+      0 3px 6px rgba(30, 58, 95, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    border: 1px solid #e8a838;
+    color: #ffe7bd;
+  }
+  
+  /* 同源转载：青绿 + 白边 */
+  .news-source-badge.repost-same {
+    background: linear-gradient(180deg, #2a9d8f, #0c5452);
+    box-shadow:
+      0 2px 0 #073634,
+      0 3px 6px rgba(12, 84, 82, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #e6fffb;
+  }
+  
+  /* 外源转载：紫色 + 浅紫边 */
+  .news-source-badge.repost-other {
+    background: linear-gradient(180deg, #7b5ea7, #5a3d85);
+    box-shadow:
+      0 2px 0 #3d2a5c,
+      0 3px 6px rgba(90, 61, 133, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(220, 200, 255, 0.5);
+    color: #f0e8ff;
+  }
+  
+  /* 未分类：灰色 + 浅灰边 */
+  .news-source-badge.uncategorized {
+    background: linear-gradient(180deg, #9aa3ad, #6b7480);
+    box-shadow:
+      0 2px 0 #4a525c,
+      0 3px 6px rgba(107, 116, 128, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #f2f4f7;
+  }
+
+  /* =========================================================
+     新闻公告筛选区
+     ========================================================= */
+  .news-filter-bar {
+    max-width: 1050px;
+    margin: 0 auto 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px 20px;
+    padding: 18px 20px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  }
+  
+  .news-filter-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .news-filter-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  .news-filter-icon img,
+  .news-filter-icon svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+  
+  .news-filter-select,
+  .news-filter-input {
+    padding: 8px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .news-filter-select:focus,
+  .news-filter-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.08);
+  }
+  .news-filter-input {
+    min-width: 220px;
+  }
+  
+  .news-filter-cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .news-filter-cat {
+    padding: 6px 14px;
+    border: 1.5px solid var(--border);
+    background: #fff;
+    border-radius: 999px;
+    font-size: 13px;
+    font-family: inherit;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .news-filter-cat:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+  .news-filter-cat.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+  
+  @media (max-width: 720px) {
+    .news-filter-bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .news-filter-item {
+      justify-content: flex-start;
+    }
+    .news-filter-input {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+  
   /* =========================================================
      页面 4：近期项目（时间线）
      ========================================================= */
@@ -1157,6 +1842,7 @@
         <a class="nav-link primary-link mobile-only" data-page="coop" href="#coop">参与共创</a>
 
         <a class="nav-link" data-page="history" href="#history">历史进程</a>
+        <a class="nav-link" data-page="news" href="#news">新闻公告</a>
         <a class="nav-link" data-page="project" href="#project">近期项目</a>
         <a class="nav-link" data-page="activities" href="#activities">往期活动</a>
         <a class="nav-link" data-page="versions" href="#versions">版本日志</a>
@@ -1215,7 +1901,7 @@
 
       <!-- 两大常年活动 -->
       <div class="annual-section">
-        <h2 class="annual-title">两大常年主题活动</h2>
+        <h2 class="annual-title" ><span style="font-family: 'WeiruanJZY', sans-serif;">两大常年主题活动</span></h2>
         <p class="annual-subtitle">多彩梦交通文化综合体旗下目前设有两大常年主题活动，期待您的踊跃参与</p>
         <p class="annual-subtitle">——无论是投稿还是共建，无论是内容创作还是资源共享</p>
 
@@ -1450,7 +2136,66 @@
       </div>
     </div>
   </section>
+  
+  <!-- ============================================================
+       页面 ：新闻公告
+       ============================================================ -->
+  <section id="page-news" class="page">
+    <div class="project-hero container">
+      <h1>新闻公告</h1>
+      <p>最新动态、活动通知与重要公告都在这里汇集。一定有你想要找的东西……<P> <span style="font-size: 13px;"><b>同源转载</b>：指转载来源为本综合体或直联合作单位的文章内容；</span><p><span style="font-size: 13px;"><b>外源转载</b>：指转载来源为其他任一单位且经原创作者授权的文章内容。</span></p>
+    </div>
+      <div class="container">
+        <div class="news-filter-bar">
+          <div class="news-filter-item">
+            <span class="news-filter-icon" data-icon="date"><!-- 日期图标放这里 --></span>
+            <select id="newsFilterYear" class="news-filter-select">
+              <option value="all">全部日期</option>
+            </select>
+          </div>
+    
+          <div class="news-filter-item">
+            <span class="news-filter-icon" data-icon="category"><!-- 分类图标放这里 --></span>
+            <div id="newsFilterCategory" class="news-filter-cats">
+              <button class="news-filter-cat active" data-cat="all">全部</button>
+              <button class="news-filter-cat" data-cat="original">原创</button>
+              <button class="news-filter-cat" data-cat="repost-same">同源转载</button>
+              <button class="news-filter-cat" data-cat="repost-other">外源转载</button>
+              <button class="news-filter-cat" data-cat="uncategorized">未分类</button>
+            </div>
+          </div>
+    
+          <div class="news-filter-item">
+            <span class="news-filter-icon" data-icon="search"><!-- 搜索图标放这里 --></span>
+            <input id="newsFilterSearch" class="news-filter-input" type="text" placeholder="搜索标题、摘要或标签…">
+          </div>
 
+          <div class="news-filter-item">
+            <span class="news-filter-icon" data-icon="sort"><!-- 排序图标放这里 --></span>
+            <select id="newsSortSelect" class="news-filter-select">
+              <option value="date">按日期排</option>
+              <option value="category">按分类排</option>
+              <option value="heat">按热度排</option>
+            </select>
+          </div>
+        </div>
+
+
+        
+        <div id="newsList" class="news-list"></div>
+        <div id="newsEmpty" class="empty-tip" style="display:none;">暂无符合条件的公告</div>
+      </div>
+  </section>
+  
+  <section id="page-news-detail" class="page">
+    <div class="container">
+      <div class="news-detail-wrap">
+        <a class="news-back" href="#news">← 返回公告列表</a>
+        <div id="newsDetailContent"></div>
+      </div>
+    </div>
+  </section>
+  
   <!-- ============================================================
        页面 5：近期项目
        ============================================================ -->
@@ -1541,7 +2286,7 @@
 </footer> -->
 
 
-<footer class="site-footer">
+<footer class="site-footer" id="siteFooter">
   <div class="footer-inner">
 
     <div class="footer-col">
@@ -1562,6 +2307,8 @@
       <ul class="footer-links">
         <li><a href="https://railmapgen.org/" target="_blank" rel="noopener noreferrer" >地铁线路图工具包<i>(Rail Map Gen)</i></a><p class="inline-p">（2026新春会赞助单位）</p></li>
         <li><a href="https://metro-lingnandongdao.github.io/lingnan-portfolio/" target="_blank" rel="noopener noreferrer">嶺南東道</a><p class="inline-p">（世界交通拜年纪海外区总负责）</p></li>
+        <li><a href="imgnews.cn" target="_blank" rel="noopener noreferrer">无限广播电视总台<i>(IMG)</i></a><p class="inline-p">（2025-2026节目独家播送单位）</p></li>
+        
       </ul>
     </div>
 
@@ -1583,7 +2330,7 @@
         <li>
           <a href="https://qm.qq.com/q/oQ98zsteNO">
             <img class="icon icon-sm" src="" alt="">
-            → 跳转加入 QQ 群 2027年新春交通团拜会意向投稿
+            → 加入2027年新春交通团拜会意向投稿QQ群 
           </a>
         </li>
         <li>
@@ -1593,7 +2340,15 @@
         <li>
           <a href="https://space.bilibili.com/3493122325613305">
             <img class="icon icon-sm" src="" alt="">
-            → 跳转B站主页 @杭临新铁HanglinRail
+            → B站主页 @杭临新铁HanglinRail
+          </a><br />
+          <a href="https://space.bilibili.com/3546601293351293">
+            <img class="icon icon-sm" src="" alt="">
+            → B站主页 @世界交通拜年纪
+          </a><br />
+          <a href="https://space.bilibili.com/32799686">
+            <img class="icon icon-sm" src="" alt="">
+            → B站主页 @御坂75900号
           </a>
         </li>
       </ul>
@@ -1749,9 +2504,26 @@ const ACTIVITIES = [
    一、路由 / 页面切换
    ============================================================ */
 (function setupRouter() {
-  const pages = ["home", "contact", "coop", "project", "history", "activities", "versions"];
+  const pages = ["home", "contact", "coop", "project", "news", "history", "activities", "versions"];
 
   function switchPage(name) {
+
+    if (name.startsWith("news/")) {
+      const id = name.slice(5);
+      document.querySelectorAll(".page").forEach(el => el.classList.remove("active"));
+      document.getElementById("page-news-detail").classList.add("active");
+      renderNewsDetail(id);
+      document.querySelectorAll(".nav-link").forEach(el => {
+        el.classList.toggle("active", el.dataset.page === "news");
+      });
+      const dd = document.getElementById("hamburgerDropdown");
+      if (dd) dd.classList.remove("show");
+      const footer = document.getElementById("siteFooter");
+      if (footer) footer.style.display = "";
+      window.scrollTo({ top: 0, behavior: "instant" });
+      return;
+    }
+    
     if (!pages.includes(name)) name = "home";
     document.querySelectorAll(".page").forEach(el => el.classList.remove("active"));
     const target = document.getElementById("page-" + name);
@@ -1763,6 +2535,13 @@ const ACTIVITIES = [
 
     const dd = document.getElementById("hamburgerDropdown");
     if (dd) dd.classList.remove("show");
+
+    // 页脚显示 / 隐藏
+    const footer = document.getElementById("siteFooter");
+    if (footer) {
+      const hideOnPages = ["activities"];
+      footer.style.display = hideOnPages.includes(name) ? "none" : "";
+    }
 
     window.scrollTo({ top: 0, behavior: "instant" });
   }
@@ -2138,8 +2917,838 @@ function initActivities() {
 }
 
 initActivities();
+
+//   新闻公告模板
+// {
+//   id: "唯一编号",  // ID默认格式可自定义，若留空则为Date八位数字+两位代号
+//   date: "2026-11-07",
+//   title: "公告标题",
+//   summary: "列表页摘要",
+//   tags: ["标签1", "标签2"],
+//   priority: "medium",   //默认low；分为high medium low三档(priority 不写或写错时，默认按 "low" 处理，不弹窗。)
+  /* high：弹窗，必须点“×”或“确认”才关闭。
+  medium：弹窗，带 5 秒进度条，5 秒后自动关闭，也可以提前点“×”或“确认”。
+  low：不弹窗，但要把本地记录更新为当前 id，这样下次也不会弹。*/
+//   imagePosition: "top",   // "top" 或 "bottom"，不写默认 bottom
+//   source: "original"        // 原创
+  // source: "repost-same"     // 同源转载
+  // source: "repost-other"    // 外源转载
+  // source: "uncategorized"   // 未分类
+// 不写 = 不显示任何标识
+//   heat: 95,          // 自定义热度，数字越大越靠前，不写按 0 处理
+//   content: `
+//     <p>正文第一段。</p>
+//     <p>正文第二段。</p>
+//   `
+// },
+
+  
+const NEWS = [
+  {
+    id: "",
+    date: "2026-11-7",
+    title: "2026交通夏日展人气作品投票评选活动结果公示",
+    summary: "第二届「全都暑于你」交通夏日展人气作品票选活动结果新鲜出炉，2026交通夏日展圆满落幕。",
+    tags: ["交通夏日展", "人气作品", "网络投票"],
+    priority: "medium", 
+    imagePosition: "top",   // "top" 或 "bottom"，不写默认 bottom
+    source: "repost-same",     // 同源转载
+    content: `
+      <p>日前，2026交通夏日展组委会、节目组面向广大交通爱好者发起《你最喜欢的<2026夏日展>作品人气投票》活动，持续一个月有余。</p>
+      <p>人气投票活动已于昨日（2026年11月6日）晚23时截止。活动结果如下：</p>
+      <img src="newsPic/202611070101.png" alt="">
+      <p>恭喜以上中奖的创作者，接下来是兑换方式介绍：<p>您可以在【2026年12月5日0时前】通过任一联系组委会的渠道，发送您的中奖情况与我们取得联系并确认。（请联系<a href="https://space.bilibili.com/3493122325613305" target="_blank" rel="noopener noreferrer">B站</a>或QQ或微信@杭临新铁，或见文后微信公众号后台回复也可，周中回复不及时请谅解。如果您在截止日期前发送但未 能及时收到回复，也将在期后为您补发。）<p>核查无误后工作人员会提示您需要提供的信息或选择事项，奖品一般确保在三十日内完成发放。<p>再次感谢各位创作者的参与！至此本次2026年夏日展的系列活动圆满结束了，我们2027年新春佳节再会！<p>另：2027新春会正在火热筹备中，敬请期待！</p>
+      <p><i><span style="font-size: 13px;">来源：微信公众号“交建文宣”2026年11月7日发布推文<a href="https://mp.weixin.qq.com/s/ipk6Hz2mbJqNvhYynQHwHA" target="_blank" rel="noopener noreferrer"><strong>《号外！2026夏日展人气作品投票结果出炉！》</strong></a>。</span></i></p>
+    `
+  },
+  {
+    id: "",
+    date: "2026-10-9",
+    title: "测试高优先级",
+    summary: "测试高优先级。",
+    tags: ["测试"],
+    priority: "high",
+    source: "", 
+    content: `
+      <p>测试公告。这条高优先级。</p>
+      `
+  },
+  {
+    id: "",
+    date: "2025-12-7",
+    title: "测试中优先级",
+    summary: "测试中优先级。",
+    tags: ["测试"],
+    priority: "medium",
+    imagePosition: "",   // "top" 或 "bottom"，不写默认 bottom
+    source: "", 
+    content: `
+      <p>测试公告。这条中优先级。</p>
+      `
+  },
+];
+
+/* ============================================================
+   自动补全 NEWS 中为空的 id
+   规则：日期八位数字 + 两位顺序号，如 2026071501
+   ============================================================ */
+function fillNewsIds() {
+  if (!Array.isArray(NEWS)) return;
+
+  // 先收集已存在的 id，避免生成时冲突
+  const used = new Set(
+    NEWS.map(n => n && n.id).filter(Boolean)
+  );
+
+  NEWS.forEach(item => {
+    if (!item || typeof item !== "object") return;
+    if (item.id && String(item.id).trim() !== "") return; // 已有 id，跳过
+
+    // 取日期八位数字
+    const dateStr = String(item.date || "").replace(/\D/g, "").slice(0, 8);
+    const base = dateStr || "00000000";
+
+    // 从 01 开始找第一个没被占用的编号
+    let seq = 1;
+    let candidate = "";
+    do {
+      candidate = base + String(seq).padStart(2, "0");
+      seq++;
+    } while (used.has(candidate));
+
+    item.id = candidate;
+    used.add(candidate);
+  });
+}
+
+function buildSourceBadge(source) {
+  if (source === "original")      return `<span class="news-source-badge original">原创</span>`;
+  if (source === "repost-same")   return `<span class="news-source-badge repost-same">同源转载</span>`;
+  if (source === "repost-other")  return `<span class="news-source-badge repost-other">外源转载</span>`;
+  // if (source === "uncategorized") return `<span class="news-source-badge uncategorized">未分类</span>`;
+  // 不写、写空、写其他值，一律按未分类处理
+  return `<span class="news-source-badge uncategorized">未分类</span>`;
+  return "";
+}
+
+/* ---------- 筛选状态 ---------- */
+let newsFilterYear = "all";
+let newsFilterCategory = "all";
+let newsFilterKeyword = "";
+let newsSortMode = "date";   // date | category | heat
+
+function getNewsYear(item) {
+  const d = new Date(item.date || "");
+  if (isNaN(d.getTime())) return "";
+  return String(d.getFullYear());
+}
+
+function buildYearOptions() {
+  const sel = document.getElementById("newsFilterYear");
+  if (!sel) return;
+
+  const years = [...new Set(NEWS.map(getNewsYear).filter(Boolean))].sort().reverse();
+  sel.innerHTML = '<option value="all">全部日期</option>';
+  years.forEach(y => {
+    const opt = document.createElement("option");
+    opt.value = y;
+    opt.textContent = y + " 年";
+    sel.appendChild(opt);
+  });
+  sel.value = newsFilterYear;
+}
+
+function filterNews() {
+  return NEWS.filter(item => {
+    if (newsFilterYear !== "all" && getNewsYear(item) !== newsFilterYear) return false;
+    // if (newsFilterCategory !== "all" && item.source !== newsFilterCategory) return false;
+    const itemCategory = item.source || "uncategorized";
+    if (newsFilterCategory !== "all" && itemCategory !== newsFilterCategory) return false;
+    if (newsFilterKeyword) {
+      const kw = newsFilterKeyword.toLowerCase();
+      const text = [item.title || "", item.summary || "", ...(item.tags || [])].join(" ").toLowerCase();
+      if (!text.includes(kw)) return false;
+    }
+    return true;
+  });
+}
+
+const NEWS_CATEGORY_ORDER = {
+  "original": 0,
+  "repost-same": 1,
+  "repost-other": 2,
+  "uncategorized": 3
+};
+
+function sortNewsList(arr) {
+  const copy = [...arr];
+
+  const dateValue = item => {
+    const t = new Date(item.date || "").getTime();
+    return isNaN(t) ? -Infinity : t;
+  };
+
+  if (newsSortMode === "date") {
+    copy.sort((a, b) => dateValue(b) - dateValue(a));
+  } else if (newsSortMode === "category") {
+    copy.sort((a, b) => {
+      const ca = NEWS_CATEGORY_ORDER[a.source || "uncategorized"] ?? 3;
+      const cb = NEWS_CATEGORY_ORDER[b.source || "uncategorized"] ?? 3;
+      if (ca !== cb) return ca - cb;
+      return dateValue(b) - dateValue(a);
+    });
+  } else if (newsSortMode === "heat") {
+    copy.sort((a, b) => {
+      const ha = Number(a.heat) || 0;
+      const hb = Number(b.heat) || 0;
+      if (hb !== ha) return hb - ha;
+      return dateValue(b) - dateValue(a);
+    });
+  }
+
+  return copy;
+}
+  
+function renderNewsList() {
+  const list = document.getElementById("newsList");
+  const empty = document.getElementById("newsEmpty");
+  if (!list) return;
+
+  // const filtered = filterNews();
+  const filtered = sortNewsList(filterNews());
+  
+  if (filtered.length === 0) {
+    list.innerHTML = "";
+    if (empty) empty.style.display = "block";
+    return;
+  }
+  if (empty) empty.style.display = "none";
+
+  list.innerHTML = filtered.map(item => `
+    <a class="news-item" href="#news/${item.id}">
+      <div class="news-item-date">${item.date || ""}</div>
+      <div class="news-item-title">${buildSourceBadge(item.source)}${item.title || "未命名公告"}</div>
+      <div class="news-item-summary">${item.summary || ""}</div>
+      ${item.tags && item.tags.length
+        ? `<div class="news-item-tags">${item.tags.map(t => `<span class="news-item-tag">${t}</span>`).join("")}</div>`
+        : ""}
+    </a>
+  `).join("");
+}
+
+function initNewsFilters() {
+  buildYearOptions();
+
+  const yearSel = document.getElementById("newsFilterYear");
+  if (yearSel) {
+    yearSel.onchange = () => {
+      newsFilterYear = yearSel.value;
+      renderNewsList();
+    };
+  }
+
+  const catWrap = document.getElementById("newsFilterCategory");
+  if (catWrap) {
+    catWrap.querySelectorAll(".news-filter-cat").forEach(btn => {
+      btn.onclick = () => {
+        newsFilterCategory = btn.dataset.cat;
+        catWrap.querySelectorAll(".news-filter-cat").forEach(b =>
+          b.classList.toggle("active", b === btn)
+        );
+        renderNewsList();
+      };
+    });
+  }
+
+  const searchInput = document.getElementById("newsFilterSearch");
+  if (searchInput) {
+    searchInput.oninput = () => {
+      newsFilterKeyword = searchInput.value.trim();
+      renderNewsList();
+    };
+  }
+
+    const sortSel = document.getElementById("newsSortSelect");
+    if (sortSel) {
+      sortSel.value = newsSortMode;
+      sortSel.onchange = () => {
+        newsSortMode = sortSel.value;
+        renderNewsList();
+      };
+    }
+}
+  
+// function renderNewsList() {
+//   const list = document.getElementById("newsList");
+//   const empty = document.getElementById("newsEmpty");
+//   if (!list) return;
+
+//   if (!NEWS.length) {
+//     list.innerHTML = "";
+//     if (empty) empty.style.display = "block";
+//     return;
+//   }
+//   if (empty) empty.style.display = "none";
+
+//   list.innerHTML = NEWS.map(item => `
+//     <a class="news-item" href="#news/${item.id}">
+//       <div class="news-item-date">${item.date || ""}</div>
+//       <div class="news-item-title">${item.title || "未命名公告"}</div>
+//       <div class="news-item-summary">${item.summary || ""}</div>
+//       ${item.tags && item.tags.length
+//         ? `<div class="news-item-tags">${item.tags.map(t => `<span class="news-item-tag">${t}</span>`).join("")}</div>`
+//         : ""}
+//     </a>
+//   `).join("");
+// }
+
+function renderNewsDetail(id) {
+  const wrap = document.getElementById("newsDetailContent");
+  if (!wrap) return;
+
+  const item = NEWS.find(n => n.id === id);
+  if (!item) {
+    wrap.innerHTML = `<div class="empty-tip">未找到该公告</div>`;
+    return;
+  }
+
+  wrap.innerHTML = `
+    <h1 class="news-detail-title">${item.title || "未命名公告"}</h1>
+    <div class="news-detail-meta">${item.date || ""}</div>
+    <div class="news-detail-body">${item.content || ""}</div>
+  `;
+}
+
+fillNewsIds();
+initNewsFilters();
+renderNewsList();
+
+// /* ============================================================
+//    公告弹窗逻辑
+//    ============================================================ */
+// const NEWS_POPUP_KEY = "duocaimeng_last_seen_news_id";
+// const NEWS_PRIORITY_RANK = { high: 3, medium: 2, low: 1 };
+
+// let popupAutoTimer = null;
+
+// /* function getHighestPriorityUnseenNews() {
+//   if (!Array.isArray(NEWS) || NEWS.length === 0) return null;
+
+//   const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
+
+//   // 从最新到最旧排序（按 date 降序）
+//   const sorted = [...NEWS].sort((a, b) =>
+//     String(b.date || "").localeCompare(String(a.date || ""))
+//   );
+
+//   // 找到最新的一条未读公告
+//   const unseen = sorted.find(n => n && n.id && n.id !== lastSeen);
+//   if (!unseen) return null;
+
+//   // 如果最新未读是 low，不弹窗，但要把已读记录推进到它，避免反复判断
+//   const priority = (unseen.priority || "low").toLowerCase();
+//   if (priority === "low") {
+//     localStorage.setItem(NEWS_POPUP_KEY, unseen.id);
+//     return null;
+//   }
+
+//   return unseen;
+// } */
+
+// const NEWS_PRIORITY_RANK = { high: 3, medium: 2, low: 1 };
+// const NEWS_PRIORITY_DOWNGRADE = { high: "medium", medium: "low", low: "low" };
+
+// function getEffectivePriority(item) {
+//   const base = String(item.priority || "low").toLowerCase();
+//   const valid = NEWS_PRIORITY_RANK[base] ? base : "low";
+
+//   // 距当前日期超过 30 天，降一级
+//   const d = new Date(item.date || "");
+//   if (!isNaN(d.getTime())) {
+//     const now = new Date();
+//     const diffDays = (now - d) / (1000 * 60 * 60 * 24);
+//     if (diffDays > 30) {
+//       return NEWS_PRIORITY_DOWNGRADE[valid] || "low";
+//     }
+//   }
+//   return valid;
+// }
+
+// /* function getPendingNewsQueue() {
+//   if (!Array.isArray(NEWS) || NEWS.length === 0) return [];
+
+//   const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
+
+//   return NEWS
+//     .filter(n => n && n.id)
+//     .map(n => ({
+//       ...n,
+//       _effPriority: getEffectivePriority(n)
+//     }))
+//     .filter(n => n._effPriority !== "low" && n.id !== lastSeen)
+//     .sort((a, b) => {
+//       const pa = NEWS_PRIORITY_RANK[a._effPriority] || 0;
+//       const pb = NEWS_PRIORITY_RANK[b._effPriority] || 0;
+//       if (pa !== pb) return pb - pa;                       // 优先级高的在前
+//       return String(a.date || "").localeCompare(String(b.date || "")); // 同优先级，老的在前
+//     });
+// } */
+
+// function getPendingNewsQueue() {
+//   if (!Array.isArray(NEWS) || NEWS.length === 0) return [];
+
+//   const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
+
+//   const mapped = NEWS
+//     .filter(n => n && n.id)
+//     .map(n => {
+//       const dateObj = new Date(n.date || "");
+//       const dateValid = !isNaN(dateObj.getTime());
+//       return {
+//         ...n,
+//         _dateValid: dateValid,
+//         _effPriority: getEffectivePriority(n)
+//       };
+//     })
+//     .filter(n => n._effPriority !== "low" && n.id !== lastSeen)
+//     .sort((a, b) => {
+//       const pa = NEWS_PRIORITY_RANK[a._effPriority] || 0;
+//       const pb = NEWS_PRIORITY_RANK[b._effPriority] || 0;
+//       if (pa !== pb) return pb - pa;
+//       return String(a.date || "").localeCompare(String(b.date || ""));
+//     });
+
+//   // 有任意一条日期无效 → 最多 3 条；否则最多 5 条
+//   const hasInvalidDate = mapped.some(n => !n._dateValid);
+//   const limit = hasInvalidDate ? 3 : 5;
+
+//   return mapped.slice(0, limit);
+// }
+
+// function closeNewsPopup() {
+//   const overlay = document.getElementById("newsPopupOverlay");
+//   if (overlay) overlay.style.display = "none";
+//   if (popupAutoTimer) {
+//     clearTimeout(popupAutoTimer);
+//     popupAutoTimer = null;
+//   }
+// }
+
+// function markNewsSeen(id) {
+//   if (id) localStorage.setItem(NEWS_POPUP_KEY, id);
+// }
+
+// function showNewsPopup(item) {
+//   const overlay = document.getElementById("newsPopupOverlay");
+//   const badge = document.getElementById("newsPopupBadge");
+//   const dateEl = document.getElementById("newsPopupDate");
+//   const titleEl = document.getElementById("newsPopupTitle");
+//   const summaryEl = document.getElementById("newsPopupSummary");
+//   const progressWrap = document.getElementById("newsPopupProgress");
+//   const progressBar = document.getElementById("newsPopupProgressBar");
+//   const closeBtn = document.getElementById("newsPopupClose");
+//   const confirmBtn = document.getElementById("newsPopupConfirm");
+//   if (!overlay) return;
+
+//   const priority = (item.priority || "low").toLowerCase();
+
+//   badge.textContent = priority === "high" ? "重要公告" : "公告";
+//   badge.className = "news-popup-badge " + priority;
+//   dateEl.textContent = item.date || "";
+//   titleEl.textContent = item.title || "";
+//   summaryEl.textContent = item.summary || "";
+
+//   overlay.style.display = "flex";
+//   progressWrap.style.display = "none";
+//   progressBar.style.transform = "scaleX(1)";
+
+//   function finish() {
+//     markNewsSeen(item.id);
+//     closeNewsPopup();
+//   }
+
+//   closeBtn.onclick = finish;
+//   confirmBtn.onclick = finish;
+
+//   // 点遮罩不关闭：只在 overlay 自身上判断，不阻止内部点击
+//   overlay.onclick = (e) => {
+//     if (e.target === overlay) {
+//       e.stopPropagation();
+//     }
+//   };
+
+//   if (priority === "medium") {
+//     progressWrap.style.display = "block";
+//     progressBar.style.transition = "none";
+//     progressBar.style.transform = "scaleX(1)";
+
+//     // 强制重排后再启动动画
+//     void progressBar.offsetWidth;
+
+//     progressBar.style.transition = "transform 5s linear";
+//     progressBar.style.transform = "scaleX(0)";
+
+//     popupAutoTimer = setTimeout(finish, 5000);
+//   }
+// }
+
+// function initNewsPopup() {
+//   const item = getHighestPriorityUnseenNews();
+//   if (item) {
+//     // 等页面渲染完成后再弹，避免和首屏渲染抢资源
+//     setTimeout(() => showNewsPopup(item), 400);
+//   }
+// }
+
+// initNewsPopup();
+
+/* ============================================================
+   公告弹窗逻辑（整合版）
+   ============================================================ */
+const NEWS_POPUP_KEY = "duocaimeng_last_seen_news_id";
+const NEWS_PRIORITY_RANK = { high: 3, medium: 2, low: 1 };
+const NEWS_PRIORITY_DOWNGRADE = { high: "medium", medium: "low", low: "low" };
+
+let newsPopupQueue = [];
+let popupAutoTimer = null;
+
+function isLocalDateAvailable() {
+  try {
+    const now = new Date();
+    const t = now.getTime();
+    return typeof t === "number" && !isNaN(t) && t > 0;
+  } catch (e) {
+    return false;
+  }
+}
+  
+/* 计算有效优先级：超过 30 天降一级；日期无效则保留原优先级 */
+function getEffectivePriority(item) {
+  const base = String(item.priority || "low").toLowerCase();
+  const valid = NEWS_PRIORITY_RANK[base] ? base : "low";
+
+  const d = new Date(item.date || "");
+  if (!isNaN(d.getTime())) {
+    const now = new Date();
+    const diffDays = (now - d) / (1000 * 60 * 60 * 24);
+    if (diffDays > 30) {
+      return NEWS_PRIORITY_DOWNGRADE[valid] || "low";
+    }
+  }
+  return valid;
+}
+
+/* 生成待弹队列：优先级高→低，同优先级日期老→新；
+   有日期无效时最多 3 条，否则最多 5 条 */
+function getPendingNewsQueue() {
+  if (!Array.isArray(NEWS) || NEWS.length === 0) return [];
+
+  const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
+
+  const mapped = NEWS
+    .filter(n => n && n.id)
+    .map(n => {
+      const dateObj = new Date(n.date || "");
+      const dateValid = !isNaN(dateObj.getTime());
+      return {
+        ...n,
+        _dateValid: dateValid,
+        _effPriority: getEffectivePriority(n)
+      };
+    })
+    .filter(n => n._effPriority !== "low" && n.id !== lastSeen)
+    .sort((a, b) => {
+      const pa = NEWS_PRIORITY_RANK[a._effPriority] || 0;
+      const pb = NEWS_PRIORITY_RANK[b._effPriority] || 0;
+      if (pa !== pb) return pb - pa;
+      return String(a.date || "").localeCompare(String(b.date || ""));
+    });
+
+  // const hasInvalidDate = mapped.some(n => !n._dateValid);
+  // const limit = hasInvalidDate ? 3 : 5;
+
+  // return mapped.slice(0, limit);
+  // 浏览器读不到本地日期 → 最多 3 条；能读到 → 最多 5 条
+  const localDateOk = isLocalDateAvailable();
+  const limit = localDateOk ? 5 : 3;
+
+  return mapped.slice(0, limit);
+}
+
+/* 角标：只要还有任何未读就显示 */
+function updateUnreadBadge() {
+  const badge = document.getElementById("newsUnreadBadge");
+  if (!badge) return;
+
+  const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
+  const hasUnread = NEWS.some(n => n && n.id && n.id !== lastSeen);
+
+  badge.style.display = hasUnread ? "inline-flex" : "none";
+}
+
+function closeNewsPopup() {
+  const overlay = document.getElementById("newsPopupOverlay");
+  if (overlay) overlay.style.display = "none";
+  if (popupAutoTimer) {
+    clearTimeout(popupAutoTimer);
+    popupAutoTimer = null;
+  }
+}
+
+function markNewsSeen(id) {
+  if (id) localStorage.setItem(NEWS_POPUP_KEY, id);
+}
+
+/* function showNewsPopup(item) {
+  const overlay = document.getElementById("newsPopupOverlay");
+  const badge = document.getElementById("newsPopupBadge");
+  const dateEl = document.getElementById("newsPopupDate");
+  const titleEl = document.getElementById("newsPopupTitle");
+  const summaryEl = document.getElementById("newsPopupSummary");
+  const progressWrap = document.getElementById("newsPopupProgress");
+  const progressBar = document.getElementById("newsPopupProgressBar");
+  const closeBtn = document.getElementById("newsPopupClose");
+  const confirmBtn = document.getElementById("newsPopupConfirm");
+  if (!overlay) return;
+
+  const priority = item._effPriority || item.priority || "low";
+
+  badge.textContent = priority === "high" ? "重要公告" : "公告";
+  badge.className = "news-popup-badge " + priority;
+  dateEl.textContent = item.date || "";
+  titleEl.textContent = item.title || "";
+  summaryEl.textContent = item.summary || "";
+
+  overlay.style.display = "flex";
+  progressWrap.style.display = "none";
+  progressBar.style.transform = "scaleX(1)";
+
+  function finish() {
+    markNewsSeen(item.id);
+    closeNewsPopup();
+    updateUnreadBadge();
+
+    if (newsPopupQueue.length > 0) {
+      const next = newsPopupQueue.shift();
+      setTimeout(() => showNewsPopup(next), 300);
+    }
+  }
+
+  closeBtn.onclick = finish;
+  confirmBtn.onclick = finish;
+
+  overlay.onclick = (e) => {
+    if (e.target === overlay) e.stopPropagation();
+  };
+
+  if (priority === "medium") {
+    progressWrap.style.display = "block";
+    progressBar.style.transition = "none";
+    progressBar.style.transform = "scaleX(1)";
+    void progressBar.offsetWidth;
+    progressBar.style.transition = "transform 5s linear";
+    progressBar.style.transform = "scaleX(0)";
+    popupAutoTimer = setTimeout(finish, 5000);
+  }
+} */
+
+function showNewsPopup(item) {
+  const overlay = document.getElementById("newsPopupOverlay");
+  const badge = document.getElementById("newsPopupBadge");
+  const dateEl = document.getElementById("newsPopupDate");
+  const titleEl = document.getElementById("newsPopupTitle");
+  const summaryEl = document.getElementById("newsPopupSummary");
+  const mediaTop = document.getElementById("newsPopupMediaTop");
+  const mediaBottom = document.getElementById("newsPopupMedia");
+  const detailBtn = document.getElementById("newsPopupDetail");
+  const progressWrap = document.getElementById("newsPopupProgress");
+  const progressBar = document.getElementById("newsPopupProgressBar");
+  const closeBtn = document.getElementById("newsPopupClose");
+  const confirmBtn = document.getElementById("newsPopupConfirm");
+  if (!overlay) return;
+
+  const priority = item._effPriority || item.priority || "low";
+
+  badge.textContent = priority === "high" ? "重要公告" : "公告";
+  badge.className = "news-popup-badge " + priority;
+  dateEl.textContent = item.date || "";
+  titleEl.textContent = item.title || "";
+
+  // // 摘要：优先 summary，没有就从 content 抽纯文本；超 500 字截断加 ···
+  // const rawText = (item.summary && item.summary.trim())
+  //   ? item.summary
+  //   : stripHtml(item.content || "");
+  // summaryEl.textContent = truncateText(rawText, 500);
+
+  // 摘要：有 summary 就按 500 字截断；没有 summary 就取正文前 100 字
+  if (item.summary && item.summary.trim()) {
+    summaryEl.textContent = truncateText(item.summary, 500);
+  } else {
+    const plain = stripHtml(item.content || "");
+    summaryEl.textContent = plain.slice(0, 100) + (plain.length > 100 ? "···" : "");
+  }
+
+  // 了解详情按钮
+  detailBtn.href = `#news/${item.id}`;
+  detailBtn.onclick = () => {
+    markNewsSeen(item.id);
+    closeNewsPopup();
+    updateUnreadBadge();
+    // 让 hash 变化触发路由，这里不需要再手动跳
+  };
+
+  // 图片区
+  const imgs = extractImages(item.content || "");
+  const position = (item.imagePosition || "bottom").toLowerCase();
+  const mediaHtml = buildMediaHtml(imgs);
+
+  if (mediaTop) {
+    mediaTop.innerHTML = position === "top" ? mediaHtml : "";
+    mediaTop.style.display = (position === "top" && mediaHtml) ? "block" : "none";
+  }
+  if (mediaBottom) {
+    mediaBottom.innerHTML = position === "bottom" ? mediaHtml : "";
+    mediaBottom.style.display = (position === "bottom" && mediaHtml) ? "block" : "none";
+  }
+
+  overlay.style.display = "flex";
+  progressWrap.style.display = "none";
+  progressBar.style.transform = "scaleX(1)";
+
+  function finish() {
+    markNewsSeen(item.id);
+    closeNewsPopup();
+    updateUnreadBadge();
+
+    if (newsPopupQueue.length > 0) {
+      const next = newsPopupQueue.shift();
+      setTimeout(() => showNewsPopup(next), 300);
+    }
+  }
+
+  closeBtn.onclick = finish;
+  confirmBtn.onclick = finish;
+
+  overlay.onclick = (e) => {
+    if (e.target === overlay) e.stopPropagation();
+  };
+
+  if (priority === "medium") {
+    progressWrap.style.display = "block";
+    progressBar.style.transition = "none";
+    progressBar.style.transform = "scaleX(1)";
+    void progressBar.offsetWidth;
+    progressBar.style.transition = "transform 5s linear";
+    progressBar.style.transform = "scaleX(0)";
+    popupAutoTimer = setTimeout(finish, 5000);
+  }
+}
+
+/* ---------- 辅助函数 ---------- */
+
+function stripHtml(html) {
+  const tmp = document.createElement("div");
+  tmp.innerHTML = html;
+  return (tmp.textContent || "").replace(/\s+/g, " ").trim();
+}
+
+function truncateText(text, max) {
+  if (!text) return "";
+  if (text.length <= max) return text;
+  return text.slice(0, max) + "···";
+}
+
+function extractImages(html) {
+  if (!html) return [];
+  const urls = [];
+  const regex = /<img[^>]+src\s*=\s*["']([^"']+)["']/gi;
+  let m;
+  while ((m = regex.exec(html)) !== null) {
+    if (m[1]) urls.push(m[1]);
+  }
+  return urls;
+}
+
+function buildMediaHtml(imgs) {
+  if (!imgs || imgs.length === 0) return "";
+
+  if (imgs.length === 1) {
+    return `<div class="news-popup-media-single"><img src="${imgs[0]}" alt=""></div>`;
+  }
+
+  const showCount = Math.min(3, imgs.length);
+  const remain = imgs.length - showCount;
+  const showMore = imgs.length > 3 && Number.isInteger(remain) && remain > 0;
+
+  const items = imgs.slice(0, showCount).map((src, i) => {
+    const isLastShown = i === showCount - 1;
+    return `<div class="news-popup-media-item">
+      <img src="${src}" alt="">
+      ${showMore && isLastShown ? `<div class="news-popup-media-more">+${remain}</div>` : ""}
+    </div>`;
+  }).join("");
+
+  return `<div class="news-popup-media-grid">${items}</div>`;
+}
+
+function initNewsPopup() {
+  updateUnreadBadge();
+
+  newsPopupQueue = getPendingNewsQueue();
+  if (newsPopupQueue.length === 0) return;
+
+  const first = newsPopupQueue.shift();
+  setTimeout(() => showNewsPopup(first), 400);
+}
+
+initNewsPopup();
   
 </script>
 
+<!-- 公告弹窗 -->
+<!-- <div id="newsPopupOverlay" class="news-popup-overlay" style="display:none;">
+  <div class="news-popup" role="dialog" aria-modal="true">
+    <button class="news-popup-close" id="newsPopupClose" aria-label="关闭">×</button>
+    <div class="news-popup-header">
+      <span class="news-popup-badge" id="newsPopupBadge">公告</span>
+      <span class="news-popup-date" id="newsPopupDate"></span>
+    </div>
+    <h2 class="news-popup-title" id="newsPopupTitle"></h2>
+    <div class="news-popup-summary" id="newsPopupSummary"></div>
+    <div class="news-popup-actions">
+      <button class="news-popup-btn" id="newsPopupConfirm">确认</button>
+    </div>
+    <div class="news-popup-progress" id="newsPopupProgress" style="display:none;">
+      <div class="news-popup-progress-bar" id="newsPopupProgressBar"></div>
+    </div>
+  </div>
+</div> -->
+
+<div id="newsPopupOverlay" class="news-popup-overlay" style="display:none;">
+  <div class="news-popup" role="dialog" aria-modal="true">
+    <button class="news-popup-close" id="newsPopupClose" aria-label="关闭">×</button>
+    <div class="news-popup-header">
+      <span class="news-popup-badge" id="newsPopupBadge">公告</span>
+      <span class="news-popup-date" id="newsPopupDate"></span>
+    </div>
+    <h2 class="news-popup-title" id="newsPopupTitle"></h2>
+
+    <div class="news-popup-media-top" id="newsPopupMediaTop" style="display:none;"></div>
+
+    <div class="news-popup-summary" id="newsPopupSummary"></div>
+
+    <div class="news-popup-media" id="newsPopupMedia" style="display:none;"></div>
+
+    <div class="news-popup-actions">
+      <a class="news-popup-btn ghost" id="newsPopupDetail" href="#news">了解详情</a>
+      <button class="news-popup-btn" id="newsPopupConfirm">确认</button>
+    </div>
+
+    <div class="news-popup-progress" id="newsPopupProgress" style="display:none;">
+      <div class="news-popup-progress-bar" id="newsPopupProgressBar"></div>
+    </div>
+  </div>
+</div>
+  
 </body>
 </html>
