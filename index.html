@@ -867,6 +867,84 @@
     margin: 0 auto;
     padding: 80px 0 100px;
   }
+
+  /* =========================================================
+     公告类型标识：新闻 / 公告
+     ========================================================= */
+  .news-type-badge {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.6;
+    border-radius: 4px;
+    user-select: none;
+    position: relative;
+    top: -1px;
+  }
+  .news-type-badge.news {
+    background: linear-gradient(180deg, #4a90d9, #2c6bb0);
+    box-shadow: 0 2px 0 #1d4a7a, 0 3px 6px rgba(44,107,176,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+  }
+  .news-type-badge.notice {
+    background: linear-gradient(180deg, #f0a53c, #d97f1a);
+    box-shadow: 0 2px 0 #9c5a0f, 0 3px 6px rgba(217,127,26,0.3), inset 0 1px 0 rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.45);
+    color: #fff;
+  }
+  
+  /* =========================================================
+     归属范围标识
+     ========================================================= */
+  .news-scope-badge {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.6;
+    border-radius: 4px;
+    user-select: none;
+    position: relative;
+    top: -1px;
+  }
+  .news-scope-badge.scope-system {
+    background: linear-gradient(180deg, #5a6b7d, #3d4a58);
+    box-shadow: 0 2px 0 #2a333d, 0 3px 6px rgba(61,74,88,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #f0f4f8;
+  }
+  .news-scope-badge.scope-platform {
+    background: linear-gradient(180deg, #3a9ea5, #237a80);
+    box-shadow: 0 2px 0 #165055, 0 3px 6px rgba(35,122,128,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #e6fffe;
+  }
+  .news-scope-badge.scope-other {
+    background: linear-gradient(180deg, #b0b7c0, #8a929c);
+    box-shadow: 0 2px 0 #666d75, 0 3px 6px rgba(138,146,156,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+  }
+  .news-scope-badge.scope-default {
+    background: linear-gradient(180deg, #c9ced4, #a0a6ae);
+    box-shadow: 0 2px 0 #7a8087, 0 3px 6px rgba(160,166,174,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+  }
+  .news-scope-badge.scope-sub {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.45);
+    color: #fff;
+    font-weight: 500;
+    margin-left: -2px;
+  }
+  
   /* .news-back {
     display: inline-block;
     margin-bottom: 24px;
@@ -1170,6 +1248,76 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
     color: #f2f4f7;
   }
+
+.news-popup-badge.type-news {
+  background: linear-gradient(180deg, #4a90d9, #2c6bb0);
+  color: #fff;
+}
+.news-popup-badge.type-notice {
+  background: linear-gradient(180deg, #f0a53c, #d97f1a);
+  color: #fff;
+}
+  
+  /* =========================================================
+     追加 Word 内容排版
+     ========================================================= */
+.news-detail-body h1,
+.news-detail-body h2,
+.news-detail-body h3,
+.news-detail-body h4 {
+  color: var(--primary);
+  margin: 24px 0 12px;
+  line-height: 1.4;
+}
+.news-detail-body h1 { font-size: 24px; }
+.news-detail-body h2 { font-size: 20px; }
+.news-detail-body h3 { font-size: 17px; }
+.news-detail-body h4 { font-size: 15px; }
+
+.news-detail-body p {
+  margin-bottom: 14px;
+  line-height: 1.9;
+  color: #444;
+}
+.news-detail-body ul,
+.news-detail-body ol {
+  margin: 12px 0 16px 24px;
+  line-height: 1.9;
+  color: #444;
+}
+.news-detail-body li { margin-bottom: 6px; }
+
+.news-detail-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+.news-detail-body th,
+.news-detail-body td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+}
+.news-detail-body th {
+  background: #f7f8fa;
+  font-weight: 600;
+}
+
+.news-detail-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.news-detail-body blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  color: #666;
+  margin: 16px 0;
+}
+  
 
   /* =========================================================
      新闻公告筛选区
@@ -2173,14 +2321,13 @@
           <div class="news-filter-item">
             <span class="news-filter-icon" data-icon="sort"><!-- 排序图标放这里 --></span>
             <select id="newsSortSelect" class="news-filter-select">
+              <option value="">默认</option>
               <option value="date">按日期排</option>
               <option value="category">按分类排</option>
               <option value="heat">按热度排</option>
             </select>
           </div>
         </div>
-
-
         
         <div id="newsList" class="news-list"></div>
         <div id="newsEmpty" class="empty-tip" style="display:none;">暂无符合条件的公告</div>
@@ -2937,6 +3084,8 @@ initActivities();
 // 不写 = 不显示任何标识
 //   heat: 95,          // 自定义热度，数字越大越靠前，不写按 0 处理
 //   hidden: true,      // true 隐藏，false 或不写则正常显示
+//   wordFile: "newsWord/2026-summer-expo.docx",   // ← 新增
+//   content: ""   // 可以留空，详情页会优先读 wordFile
 //   content: `
 //     <p>正文第一段。</p>
 //     <p>正文第二段。</p>
@@ -2954,6 +3103,8 @@ const NEWS = [
     priority: "medium", 
     imagePosition: "top",   // "top" 或 "bottom"，不写默认 bottom
     source: "repost-same",     // 同源转载
+    type: "notice",
+    scope: "platform",
     content: `
       <p>日前，2026交通夏日展组委会、节目组面向广大交通爱好者发起《你最喜欢的<2026夏日展>作品人气投票》活动，持续一个月有余。</p>
       <p>人气投票活动已于昨日（2026年11月6日）晚23时截止。活动结果如下：</p>
@@ -2964,25 +3115,55 @@ const NEWS = [
   },
   {
     id: "",
+    date: "2026-11-7",
+    title: "平台公示标识显示测试",
+    summary: "...",
+    tags: [],
+    priority: "medium",
+    imagePosition: "top",
+    source: "repost-same",
+    hidden: true,
+    type: "notice",              // ← 加这行
+    scope: "platform",           // ← 加这行
+    content: `...`
+  },
+  {
+    id: "",
+    date: "2026-10-9",
+    title: "测试详情页渲染word",
+    summary: "",
+    tags: ["测试"],
+    priority: "high",
+    source: "original",
+    hidden: true,
+    heat: 95,
+    wordFile: "newsWord/测试文档.docx",
+    content: ""
+  },
+  {
+    id: "",
     date: "2026-10-9",
     title: "测试高优先级",
     summary: "测试高优先级。",
     tags: ["测试"],
     priority: "high",
-    source: "", 
+    source: "original",
+    heat: 95,
+    hidden: true,
     content: `
       <p>测试公告。这条高优先级。</p>
       `
   },
   {
     id: "",
-    date: "2025-12-7",
+    date: "2026-12-7",
     title: "测试中优先级",
     summary: "测试中优先级。",
     tags: ["测试"],
     priority: "medium",
     imagePosition: "",   // "top" 或 "bottom"，不写默认 bottom
     source: "", 
+    hidden: true, 
     content: `
       <p>测试公告。这条中优先级。</p>
       `
@@ -2993,6 +3174,34 @@ const NEWS = [
    自动补全 NEWS 中为空的 id
    规则：日期八位数字 + 两位顺序号，如 2026071501
    ============================================================ */
+/* 把任意可解析的日期转成八位 YYYYMMDD；解析失败返回 00000000 */
+function toEightDigitDate(input) {
+  if (!input) return "00000000";
+
+  let d = new Date(input);
+
+  // 兼容 "07-15"、"12-06" 这种缺年份的写法，补当前年
+  if (isNaN(d.getTime()) && /^\d{1,2}-\d{1,2}$/.test(String(input).trim())) {
+    const now = new Date();
+    d = new Date(`${now.getFullYear()}-${String(input).trim()}`);
+  }
+
+  if (isNaN(d.getTime())) return "00000000";
+
+  const y = String(d.getFullYear()).padStart(4, "0");
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return y + m + day;
+}
+
+/* 把日期统一显示为 YYYY-M-D（月、日不补零） */
+function formatDisplayDate(input) {
+  if (!input) return "";
+  const d = new Date(input);
+  if (isNaN(d.getTime())) return String(input);
+  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+}
+  
 function fillNewsIds() {
   if (!Array.isArray(NEWS)) return;
 
@@ -3006,8 +3215,11 @@ function fillNewsIds() {
     if (item.id && String(item.id).trim() !== "") return; // 已有 id，跳过
 
     // 取日期八位数字
-    const dateStr = String(item.date || "").replace(/\D/g, "").slice(0, 8);
-    const base = dateStr || "00000000";
+    // const dateStr = String(item.date || "").replace(/\D/g, "").slice(0, 8);
+    // const base = dateStr || "00000000";
+
+    // 取日期八位数字（YYYYMMDD），不依赖原始字符串格式
+    const base = toEightDigitDate(item.date);
 
     // 从 01 开始找第一个没被占用的编号
     let seq = 1;
@@ -3029,15 +3241,50 @@ function buildSourceBadge(source) {
   // if (source === "uncategorized") return `<span class="news-source-badge uncategorized">未分类</span>`;
   // 不写、写空、写其他值，一律按未分类处理
   return `<span class="news-source-badge uncategorized">未分类</span>`;
+  // return "";
+}
+
+/* ---------- 类型标识：新闻 / 公告 ---------- */
+function buildTypeBadge(type) {
+  if (type === "news")   return `<span class="news-type-badge news">新闻</span>`;
+  if (type === "notice") return `<span class="news-type-badge notice">公告</span>`;
   return "";
 }
 
+/* ---------- 归属范围标识：系统 / 平台 / 其他，支持 other:具体类别 ---------- */
+const NEWS_SCOPE_MAP = {
+  system:   { label: "系统", cls: "scope-system" },
+  platform: { label: "平台", cls: "scope-platform" },
+  other:    { label: "其他", cls: "scope-other" }
+};
+
+function buildScopeBadge(scope) {
+  if (!scope) return "";
+
+  const raw = String(scope);
+  const idx = raw.indexOf(":");
+  const mainKey = (idx >= 0 ? raw.slice(0, idx) : raw).trim().toLowerCase();
+  const subLabel = idx >= 0 ? raw.slice(idx + 1).trim() : "";
+
+  const info = NEWS_SCOPE_MAP[mainKey];
+  const mainHtml = info
+    ? `<span class="news-scope-badge ${info.cls}">${info.label}</span>`
+    : `<span class="news-scope-badge scope-default">${mainKey || raw}</span>`;
+
+  const subHtml = subLabel
+    ? `<span class="news-scope-badge scope-sub">${subLabel}</span>`
+    : "";
+
+  return mainHtml + subHtml;
+}
+  
 /* ---------- 筛选状态 ---------- */
 let newsFilterYear = "all";
 let newsFilterCategory = "all";
 let newsFilterKeyword = "";
-let newsSortMode = "date";   // date | category | heat
-
+let newsSortMode = "";   // date | category | heat
+renderNewsList(); 
+  
 function getNewsYear(item) {
   const d = new Date(item.date || "");
   if (isNaN(d.getTime())) return "";
@@ -3059,6 +3306,7 @@ function buildYearOptions() {
   sel.value = newsFilterYear;
 }
 
+/* ============================================================
 function filterNews() {
   return NEWS.filter(item => {
     if (newsFilterYear !== "all" && getNewsYear(item) !== newsFilterYear) return false;
@@ -3073,7 +3321,71 @@ function filterNews() {
     return true;
   });
 }
+   ============================================================ */
 
+/* function filterNews() {
+  const kw = newsFilterKeyword.toLowerCase();
+
+  return NEWS.filter(item => {
+    const isHidden = item.hidden === true;
+
+    // 隐藏文章：只有搜索词精确等于 id 或完整标题时才出现
+    if (isHidden) {
+      const exactId = item.id && kw === String(item.id).toLowerCase();
+      const exactTitle = item.title && kw === String(item.title).toLowerCase();
+      if (!exactId && !exactTitle) return false;
+      // 精确命中后，不再受其他筛选条件限制，直接展示
+      return true;
+    }
+
+    // 正常文章：走原有筛选逻辑
+    if (newsFilterYear !== "all" && getNewsYear(item) !== newsFilterYear) return false;
+    const itemCategory = item.source || "uncategorized";
+    if (newsFilterCategory !== "all" && itemCategory !== newsFilterCategory) return false;
+    if (kw) {
+      const text = [item.title || "", item.summary || "", ...(item.tags || [])].join(" ").toLowerCase();
+      if (!text.includes(kw)) return false;
+    }
+    return true;
+  });
+} */
+
+function filterNews() {
+  const kw = newsFilterKeyword.toLowerCase();
+
+  return NEWS.filter(item => {
+    const isHidden = item.hidden === true;
+    const idStr = String(item.id || "").toLowerCase();
+    const titleStr = String(item.title || "").toLowerCase();
+
+    // 隐藏文章：只有搜索词精确等于 id 或完整标题时才出现
+    if (isHidden) {
+      const exactId = idStr && kw === idStr;
+      const exactTitle = titleStr && kw === titleStr;
+      if (!exactId && !exactTitle) return false;
+      return true;
+    }
+
+    // 正常文章：先走日期、分类筛选
+    if (newsFilterYear !== "all" && getNewsYear(item) !== newsFilterYear) return false;
+    const itemCategory = item.source || "uncategorized";
+    if (newsFilterCategory !== "all" && itemCategory !== newsFilterCategory) return false;
+
+    // 正常文章关键词搜索：标题、摘要、标签、id 都参与模糊匹配
+    if (kw) {
+      const text = [
+        titleStr,
+        String(item.summary || "").toLowerCase(),
+        ...(item.tags || []).map(t => String(t).toLowerCase()),
+        idStr
+      ].join(" ");
+      if (!text.includes(kw)) return false;
+    }
+
+    return true;
+  });
+}
+  
 const NEWS_CATEGORY_ORDER = {
   "original": 0,
   "repost-same": 1,
@@ -3091,14 +3403,16 @@ function sortNewsList(arr) {
 
   if (newsSortMode === "date") {
     copy.sort((a, b) => dateValue(b) - dateValue(a));
-  } else if (newsSortMode === "category") {
+  } 
+  else if (newsSortMode === "category") {
     copy.sort((a, b) => {
       const ca = NEWS_CATEGORY_ORDER[a.source || "uncategorized"] ?? 3;
       const cb = NEWS_CATEGORY_ORDER[b.source || "uncategorized"] ?? 3;
       if (ca !== cb) return ca - cb;
       return dateValue(b) - dateValue(a);
     });
-  } else if (newsSortMode === "heat") {
+  } 
+  else if (newsSortMode === "heat") {
     copy.sort((a, b) => {
       const ha = Number(a.heat) || 0;
       const hb = Number(b.heat) || 0;
@@ -3127,7 +3441,7 @@ function renderNewsList() {
 
   list.innerHTML = filtered.map(item => `
     <a class="news-item" href="#news/${item.id}">
-      <div class="news-item-date">${item.date || ""}</div>
+      <div class="news-item-date">${formatDisplayDate(item.date)}</div>
       <div class="news-item-title">${buildSourceBadge(item.source)}${item.title || "未命名公告"}</div>
       <div class="news-item-summary">${item.summary || ""}</div>
       ${item.tags && item.tags.length
@@ -3136,6 +3450,8 @@ function renderNewsList() {
     </a>
   `).join("");
 }
+  
+// <div class="news-item-date">${item.date || ""}</div>
 
 function initNewsFilters() {
   buildYearOptions();
@@ -3169,41 +3485,115 @@ function initNewsFilters() {
     };
   }
 
-    const sortSel = document.getElementById("newsSortSelect");
-    if (sortSel) {
-      sortSel.value = newsSortMode;
-      sortSel.onchange = () => {
-        newsSortMode = sortSel.value;
-        renderNewsList();
-      };
+    // const sortSel = document.getElementById("newsSortSelect");
+    // if (sortSel) {
+    //   sortSel.value = newsSortMode;
+    //   sortSel.onchange = () => {
+    //     newsSortMode = sortSel.value;
+    //     renderNewsList();
+    //   };
+    // }
+
+  const sortSel = document.getElementById("newsSortSelect");
+  if (sortSel) {
+    sortSel.value = newsSortMode;
+    sortSel.onchange = () => {
+      newsSortMode = sortSel.value;
+      renderNewsList();
+    };
+  }
+}
+
+/* ===============================
+function renderNewsList() {
+  const list = document.getElementById("newsList");
+  const empty = document.getElementById("newsEmpty");
+  if (!list) return;
+
+  if (!NEWS.length) {
+    list.innerHTML = "";
+    if (empty) empty.style.display = "block";
+    return;
+  }
+  if (empty) empty.style.display = "none";
+
+  list.innerHTML = NEWS.map(item => `
+    <a class="news-item" href="#news/${item.id}">
+      <div class="news-item-date">${item.date || ""}</div>
+      <div class="news-item-title">${item.title || "未命名公告"}</div>
+      <div class="news-item-summary">${item.summary || ""}</div>
+      ${item.tags && item.tags.length
+        ? `<div class="news-item-tags">${item.tags.map(t => `<span class="news-item-tag">${t}</span>`).join("")}</div>`
+        : ""}
+    </a>
+  `).join("");
+}
+=============================== */
+
+/* ============================================================
+   Word 文档转换与缓存
+   ============================================================ */
+const wordCache = {};   // { 文件路径: { html, text, images } }
+
+async function loadWordDoc(path) {
+  if (!path) return null;
+  if (wordCache[path]) return wordCache[path];
+
+  const res = await fetch(path);
+  if (!res.ok) throw new Error("文件加载失败 " + res.status);
+  const arrayBuffer = await res.arrayBuffer();
+  const result = await mammoth.convertToHtml({ arrayBuffer });
+  const html = result.value || "";
+
+  const tmp = document.createElement("div");
+  tmp.innerHTML = html;
+  const text = (tmp.textContent || "").replace(/\s+/g, " ").trim();
+
+  const images = [];
+  tmp.querySelectorAll("img").forEach(img => {
+    if (img.src) images.push(img.src);
+  });
+
+  const data = { html, text, images };
+  wordCache[path] = data;
+  return data;
+}
+
+async function renderNewsDetail(id) {
+  const wrap = document.getElementById("newsDetailContent");
+  if (!wrap) return;
+
+  const item = NEWS.find(n => n.id === id);
+  if (!item) {
+    wrap.innerHTML = `<div class="empty-tip">未找到该公告</div>`;
+    return;
+  }
+
+  wrap.innerHTML = `
+    <h1 class="news-detail-title">${buildSourceBadge(item.source)}${buildTypeBadge(item.type)}${buildScopeBadge(item.scope)}${item.title || "未命名公告"}</h1>
+    <div class="news-detail-meta">${formatDisplayDate(item.date)}</div>
+    <div class="news-detail-body" id="newsDetailBody"></div>
+  `;
+//    <div class="news-detail-meta">${item.date || ""}</div>
+  const body = document.getElementById("newsDetailBody");
+  if (!body) return;
+
+  if (item.wordFile) {
+    body.innerHTML = `<p style="color:#999;">正在加载文档…</p>`;
+    try {
+      const data = await loadWordDoc(item.wordFile);
+      body.innerHTML = data.html || `<p style="color:#999;">文档内容为空</p>`;
+    } catch (e) {
+      console.error("[Word加载失败]", e);
+      body.innerHTML = `<p style="color:#c00;">文档加载失败，请稍后重试。</p>`;
     }
+    return;
+  }
+
+  body.innerHTML = item.content || "";
 }
   
-// function renderNewsList() {
-//   const list = document.getElementById("newsList");
-//   const empty = document.getElementById("newsEmpty");
-//   if (!list) return;
-
-//   if (!NEWS.length) {
-//     list.innerHTML = "";
-//     if (empty) empty.style.display = "block";
-//     return;
-//   }
-//   if (empty) empty.style.display = "none";
-
-//   list.innerHTML = NEWS.map(item => `
-//     <a class="news-item" href="#news/${item.id}">
-//       <div class="news-item-date">${item.date || ""}</div>
-//       <div class="news-item-title">${item.title || "未命名公告"}</div>
-//       <div class="news-item-summary">${item.summary || ""}</div>
-//       ${item.tags && item.tags.length
-//         ? `<div class="news-item-tags">${item.tags.map(t => `<span class="news-item-tag">${t}</span>`).join("")}</div>`
-//         : ""}
-//     </a>
-//   `).join("");
-// }
-
-function renderNewsDetail(id) {
+/* function renderNewsDetail(id) {
   const wrap = document.getElementById("newsDetailContent");
   if (!wrap) return;
 
@@ -3218,191 +3608,196 @@ function renderNewsDetail(id) {
     <div class="news-detail-meta">${item.date || ""}</div>
     <div class="news-detail-body">${item.content || ""}</div>
   `;
-}
+} */
 
 fillNewsIds();
 initNewsFilters();
 renderNewsList();
 
-// /* ============================================================
-//    公告弹窗逻辑
-//    ============================================================ */
-// const NEWS_POPUP_KEY = "duocaimeng_last_seen_news_id";
-// const NEWS_PRIORITY_RANK = { high: 3, medium: 2, low: 1 };
+/* ============================================================
+   公告弹窗逻辑
+   ============================================================ */
+/* ============================================================
+const NEWS_POPUP_KEY = "duocaimeng_last_seen_news_id";
+const NEWS_PRIORITY_RANK = { high: 3, medium: 2, low: 1 };
 
-// let popupAutoTimer = null;
+let popupAutoTimer = null;
+   ============================================================ */
+/* function getHighestPriorityUnseenNews() {
+  if (!Array.isArray(NEWS) || NEWS.length === 0) return null;
 
-// /* function getHighestPriorityUnseenNews() {
-//   if (!Array.isArray(NEWS) || NEWS.length === 0) return null;
+  const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
 
-//   const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
+  // 从最新到最旧排序（按 date 降序）
+  const sorted = [...NEWS].sort((a, b) =>
+    String(b.date || "").localeCompare(String(a.date || ""))
+  );
 
-//   // 从最新到最旧排序（按 date 降序）
-//   const sorted = [...NEWS].sort((a, b) =>
-//     String(b.date || "").localeCompare(String(a.date || ""))
-//   );
+  // 找到最新的一条未读公告
+  const unseen = sorted.find(n => n && n.id && n.id !== lastSeen);
+  if (!unseen) return null;
 
-//   // 找到最新的一条未读公告
-//   const unseen = sorted.find(n => n && n.id && n.id !== lastSeen);
-//   if (!unseen) return null;
+  // 如果最新未读是 low，不弹窗，但要把已读记录推进到它，避免反复判断
+  const priority = (unseen.priority || "low").toLowerCase();
+  if (priority === "low") {
+    localStorage.setItem(NEWS_POPUP_KEY, unseen.id);
+    return null;
+  }
 
-//   // 如果最新未读是 low，不弹窗，但要把已读记录推进到它，避免反复判断
-//   const priority = (unseen.priority || "low").toLowerCase();
-//   if (priority === "low") {
-//     localStorage.setItem(NEWS_POPUP_KEY, unseen.id);
-//     return null;
-//   }
+  return unseen;
+} */
+/* ============================================================
+const NEWS_PRIORITY_RANK = { high: 3, medium: 2, low: 1 };
+const NEWS_PRIORITY_DOWNGRADE = { high: "medium", medium: "low", low: "low" };
 
-//   return unseen;
-// } */
+function getEffectivePriority(item) {
+  const base = String(item.priority || "low").toLowerCase();
+  const valid = NEWS_PRIORITY_RANK[base] ? base : "low";
 
-// const NEWS_PRIORITY_RANK = { high: 3, medium: 2, low: 1 };
-// const NEWS_PRIORITY_DOWNGRADE = { high: "medium", medium: "low", low: "low" };
+  // 距当前日期超过 30 天，降一级
+  const d = new Date(item.date || "");
+  if (!isNaN(d.getTime())) {
+    const now = new Date();
+    const diffDays = (now - d) / (1000 * 60 * 60 * 24);
+    if (diffDays > 30) {
+      return NEWS_PRIORITY_DOWNGRADE[valid] || "low";
+    }
+  }
+  return valid;
+}
+============================================================ */
+  
+/* function getPendingNewsQueue() {
+  if (!Array.isArray(NEWS) || NEWS.length === 0) return [];
 
-// function getEffectivePriority(item) {
-//   const base = String(item.priority || "low").toLowerCase();
-//   const valid = NEWS_PRIORITY_RANK[base] ? base : "low";
+  const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
 
-//   // 距当前日期超过 30 天，降一级
-//   const d = new Date(item.date || "");
-//   if (!isNaN(d.getTime())) {
-//     const now = new Date();
-//     const diffDays = (now - d) / (1000 * 60 * 60 * 24);
-//     if (diffDays > 30) {
-//       return NEWS_PRIORITY_DOWNGRADE[valid] || "low";
-//     }
-//   }
-//   return valid;
-// }
+  return NEWS
+    .filter(n => n && n.id)
+    .map(n => ({
+      ...n,
+      _effPriority: getEffectivePriority(n)
+    }))
+    .filter(n => n._effPriority !== "low" && n.id !== lastSeen)
+    .sort((a, b) => {
+      const pa = NEWS_PRIORITY_RANK[a._effPriority] || 0;
+      const pb = NEWS_PRIORITY_RANK[b._effPriority] || 0;
+      if (pa !== pb) return pb - pa;                       // 优先级高的在前
+      return String(a.date || "").localeCompare(String(b.date || "")); // 同优先级，老的在前
+    });
+} */
+  
+/* ============================================================
+function getPendingNewsQueue() {
+  if (!Array.isArray(NEWS) || NEWS.length === 0) return [];
 
-// /* function getPendingNewsQueue() {
-//   if (!Array.isArray(NEWS) || NEWS.length === 0) return [];
+  const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
 
-//   const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
+  const mapped = NEWS
+    .filter(n => n && n.id)
+    .map(n => {
+      const dateObj = new Date(n.date || "");
+      const dateValid = !isNaN(dateObj.getTime());
+      return {
+        ...n,
+        _dateValid: dateValid,
+        _effPriority: getEffectivePriority(n)
+      };
+    })
+    .filter(n => n._effPriority !== "low" && n.id !== lastSeen)
+    .sort((a, b) => {
+      const pa = NEWS_PRIORITY_RANK[a._effPriority] || 0;
+      const pb = NEWS_PRIORITY_RANK[b._effPriority] || 0;
+      if (pa !== pb) return pb - pa;
+      return String(a.date || "").localeCompare(String(b.date || ""));
+    });
 
-//   return NEWS
-//     .filter(n => n && n.id)
-//     .map(n => ({
-//       ...n,
-//       _effPriority: getEffectivePriority(n)
-//     }))
-//     .filter(n => n._effPriority !== "low" && n.id !== lastSeen)
-//     .sort((a, b) => {
-//       const pa = NEWS_PRIORITY_RANK[a._effPriority] || 0;
-//       const pb = NEWS_PRIORITY_RANK[b._effPriority] || 0;
-//       if (pa !== pb) return pb - pa;                       // 优先级高的在前
-//       return String(a.date || "").localeCompare(String(b.date || "")); // 同优先级，老的在前
-//     });
-// } */
+  // 有任意一条日期无效 → 最多 3 条；否则最多 5 条
+  const hasInvalidDate = mapped.some(n => !n._dateValid);
+  const limit = hasInvalidDate ? 3 : 5;
 
-// function getPendingNewsQueue() {
-//   if (!Array.isArray(NEWS) || NEWS.length === 0) return [];
+  return mapped.slice(0, limit);
+}
 
-//   const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
+function closeNewsPopup() {
+  const overlay = document.getElementById("newsPopupOverlay");
+  if (overlay) overlay.style.display = "none";
+  if (popupAutoTimer) {
+    clearTimeout(popupAutoTimer);
+    popupAutoTimer = null;
+  }
+}
 
-//   const mapped = NEWS
-//     .filter(n => n && n.id)
-//     .map(n => {
-//       const dateObj = new Date(n.date || "");
-//       const dateValid = !isNaN(dateObj.getTime());
-//       return {
-//         ...n,
-//         _dateValid: dateValid,
-//         _effPriority: getEffectivePriority(n)
-//       };
-//     })
-//     .filter(n => n._effPriority !== "low" && n.id !== lastSeen)
-//     .sort((a, b) => {
-//       const pa = NEWS_PRIORITY_RANK[a._effPriority] || 0;
-//       const pb = NEWS_PRIORITY_RANK[b._effPriority] || 0;
-//       if (pa !== pb) return pb - pa;
-//       return String(a.date || "").localeCompare(String(b.date || ""));
-//     });
+function markNewsSeen(id) {
+  if (id) localStorage.setItem(NEWS_POPUP_KEY, id);
+}
 
-//   // 有任意一条日期无效 → 最多 3 条；否则最多 5 条
-//   const hasInvalidDate = mapped.some(n => !n._dateValid);
-//   const limit = hasInvalidDate ? 3 : 5;
+function showNewsPopup(item) {
+  const overlay = document.getElementById("newsPopupOverlay");
+  const badge = document.getElementById("newsPopupBadge");
+  const dateEl = document.getElementById("newsPopupDate");
+  const titleEl = document.getElementById("newsPopupTitle");
+  const summaryEl = document.getElementById("newsPopupSummary");
+  const progressWrap = document.getElementById("newsPopupProgress");
+  const progressBar = document.getElementById("newsPopupProgressBar");
+  const closeBtn = document.getElementById("newsPopupClose");
+  const confirmBtn = document.getElementById("newsPopupConfirm");
+  if (!overlay) return;
 
-//   return mapped.slice(0, limit);
-// }
+  const priority = (item.priority || "low").toLowerCase();
 
-// function closeNewsPopup() {
-//   const overlay = document.getElementById("newsPopupOverlay");
-//   if (overlay) overlay.style.display = "none";
-//   if (popupAutoTimer) {
-//     clearTimeout(popupAutoTimer);
-//     popupAutoTimer = null;
-//   }
-// }
+  badge.textContent = priority === "high" ? "重要公告" : "公告";
+  badge.className = "news-popup-badge " + priority;
+  dateEl.textContent = item.date || "";
+  titleEl.textContent = item.title || "";
+  summaryEl.textContent = item.summary || "";
 
-// function markNewsSeen(id) {
-//   if (id) localStorage.setItem(NEWS_POPUP_KEY, id);
-// }
+  overlay.style.display = "flex";
+  progressWrap.style.display = "none";
+  progressBar.style.transform = "scaleX(1)";
 
-// function showNewsPopup(item) {
-//   const overlay = document.getElementById("newsPopupOverlay");
-//   const badge = document.getElementById("newsPopupBadge");
-//   const dateEl = document.getElementById("newsPopupDate");
-//   const titleEl = document.getElementById("newsPopupTitle");
-//   const summaryEl = document.getElementById("newsPopupSummary");
-//   const progressWrap = document.getElementById("newsPopupProgress");
-//   const progressBar = document.getElementById("newsPopupProgressBar");
-//   const closeBtn = document.getElementById("newsPopupClose");
-//   const confirmBtn = document.getElementById("newsPopupConfirm");
-//   if (!overlay) return;
+  function finish() {
+    markNewsSeen(item.id);
+    closeNewsPopup();
+  }
 
-//   const priority = (item.priority || "low").toLowerCase();
+  closeBtn.onclick = finish;
+  confirmBtn.onclick = finish;
 
-//   badge.textContent = priority === "high" ? "重要公告" : "公告";
-//   badge.className = "news-popup-badge " + priority;
-//   dateEl.textContent = item.date || "";
-//   titleEl.textContent = item.title || "";
-//   summaryEl.textContent = item.summary || "";
+  // 点遮罩不关闭：只在 overlay 自身上判断，不阻止内部点击
+  overlay.onclick = (e) => {
+    if (e.target === overlay) {
+      e.stopPropagation();
+    }
+  };
 
-//   overlay.style.display = "flex";
-//   progressWrap.style.display = "none";
-//   progressBar.style.transform = "scaleX(1)";
+  if (priority === "medium") {
+    progressWrap.style.display = "block";
+    progressBar.style.transition = "none";
+    progressBar.style.transform = "scaleX(1)";
 
-//   function finish() {
-//     markNewsSeen(item.id);
-//     closeNewsPopup();
-//   }
+    // 强制重排后再启动动画
+    void progressBar.offsetWidth;
 
-//   closeBtn.onclick = finish;
-//   confirmBtn.onclick = finish;
+    progressBar.style.transition = "transform 5s linear";
+    progressBar.style.transform = "scaleX(0)";
 
-//   // 点遮罩不关闭：只在 overlay 自身上判断，不阻止内部点击
-//   overlay.onclick = (e) => {
-//     if (e.target === overlay) {
-//       e.stopPropagation();
-//     }
-//   };
+    popupAutoTimer = setTimeout(finish, 5000);
+  }
+}
 
-//   if (priority === "medium") {
-//     progressWrap.style.display = "block";
-//     progressBar.style.transition = "none";
-//     progressBar.style.transform = "scaleX(1)";
+function initNewsPopup() {
+  const item = getHighestPriorityUnseenNews();
+  if (item) {
+    // 等页面渲染完成后再弹，避免和首屏渲染抢资源
+    setTimeout(() => showNewsPopup(item), 400);
+  }
+}
 
-//     // 强制重排后再启动动画
-//     void progressBar.offsetWidth;
-
-//     progressBar.style.transition = "transform 5s linear";
-//     progressBar.style.transform = "scaleX(0)";
-
-//     popupAutoTimer = setTimeout(finish, 5000);
-//   }
-// }
-
-// function initNewsPopup() {
-//   const item = getHighestPriorityUnseenNews();
-//   if (item) {
-//     // 等页面渲染完成后再弹，避免和首屏渲染抢资源
-//     setTimeout(() => showNewsPopup(item), 400);
-//   }
-// }
-
-// initNewsPopup();
-
+initNewsPopup();
+============================================================ */
+  
+  
 /* ============================================================
    公告弹窗逻辑（整合版）
    ============================================================ */
@@ -3412,6 +3807,7 @@ const NEWS_PRIORITY_DOWNGRADE = { high: "medium", medium: "low", low: "low" };
 
 let newsPopupQueue = [];
 let popupAutoTimer = null;
+let currentPopupId = null;
 
 function isLocalDateAvailable() {
   try {
@@ -3447,7 +3843,8 @@ function getPendingNewsQueue() {
   const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
 
   const mapped = NEWS
-    .filter(n => n && n.id)
+    // .filter(n => n && n.id)
+    .filter(n => n && n.id && n.hidden !== true)
     .map(n => {
       const dateObj = new Date(n.date || "");
       const dateValid = !isNaN(dateObj.getTime());
@@ -3482,7 +3879,8 @@ function updateUnreadBadge() {
   if (!badge) return;
 
   const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
-  const hasUnread = NEWS.some(n => n && n.id && n.id !== lastSeen);
+  // const hasUnread = NEWS.some(n => n && n.id && n.id !== lastSeen);
+  const hasUnread = NEWS.some(n => n && n.id && n.hidden !== true && n.id !== lastSeen);
 
   badge.style.display = hasUnread ? "inline-flex" : "none";
 }
@@ -3567,12 +3965,14 @@ function showNewsPopup(item) {
   const closeBtn = document.getElementById("newsPopupClose");
   const confirmBtn = document.getElementById("newsPopupConfirm");
   if (!overlay) return;
+  currentPopupId = item.id;
 
   const priority = item._effPriority || item.priority || "low";
 
   badge.textContent = priority === "high" ? "重要公告" : "公告";
   badge.className = "news-popup-badge " + priority;
-  dateEl.textContent = item.date || "";
+  // dateEl.textContent = item.date || "";
+  dateEl.textContent = formatDisplayDate(item.date);
   titleEl.textContent = item.title || "";
 
   // // 摘要：优先 summary，没有就从 content 抽纯文本；超 500 字截断加 ···
@@ -3581,13 +3981,13 @@ function showNewsPopup(item) {
   //   : stripHtml(item.content || "");
   // summaryEl.textContent = truncateText(rawText, 500);
 
-  // 摘要：有 summary 就按 500 字截断；没有 summary 就取正文前 100 字
-  if (item.summary && item.summary.trim()) {
-    summaryEl.textContent = truncateText(item.summary, 500);
-  } else {
-    const plain = stripHtml(item.content || "");
-    summaryEl.textContent = plain.slice(0, 100) + (plain.length > 100 ? "···" : "");
-  }
+  // // 摘要：有 summary 就按 500 字截断；没有 summary 就取正文前 100 字
+  // if (item.summary && item.summary.trim()) {
+  //   summaryEl.textContent = truncateText(item.summary, 500);
+  // } else {
+  //   const plain = stripHtml(item.content || "");
+  //   summaryEl.textContent = plain.slice(0, 100) + (plain.length > 100 ? "···" : "");
+  // }
 
   // 了解详情按钮
   detailBtn.href = `#news/${item.id}`;
@@ -3598,19 +3998,66 @@ function showNewsPopup(item) {
     // 让 hash 变化触发路由，这里不需要再手动跳
   };
 
-  // 图片区
-  const imgs = extractImages(item.content || "");
-  const position = (item.imagePosition || "bottom").toLowerCase();
-  const mediaHtml = buildMediaHtml(imgs);
+    // ---------- 摘要 ----------
+    function applySummary(text) {
+      if (!text) {
+        summaryEl.textContent = "";
+        return;
+      }
+      if (item.summary && item.summary.trim()) {
+        summaryEl.textContent = truncateText(item.summary, 500);
+      } else {
+        summaryEl.textContent = text.slice(0, 100) + (text.length > 100 ? "···" : "");
+      }
+    }
+  
+    // ---------- 图片 ----------
+    const position = (item.imagePosition || "bottom").toLowerCase();
+  
+    function applyMedia(imgs) {
+      const mediaHtml = buildMediaHtml(imgs);
+      if (mediaTop) {
+        mediaTop.innerHTML = position === "top" ? mediaHtml : "";
+        mediaTop.style.display = (position === "top" && mediaHtml) ? "block" : "none";
+      }
+      if (mediaBottom) {
+        mediaBottom.innerHTML = position === "bottom" ? mediaHtml : "";
+        mediaBottom.style.display = (position === "bottom" && mediaHtml) ? "block" : "none";
+      }
+    }
+  
+    // 先用 content 或 summary 撑住
+    applySummary(item.summary ? "" : stripHtml(item.content || ""));
+    applyMedia(extractImages(item.content || ""));
+  
+    // 如果是 Word 公告，异步加载后刷新弹窗内容（不关闭弹窗）
+    if (item.wordFile) {
+      const currentId = item.id;
+      loadWordDoc(item.wordFile).then(data => {
+        // 弹窗已经切到别的公告或已关闭，就不更新
+        const overlayNow = document.getElementById("newsPopupOverlay");
+        if (!overlayNow || overlayNow.style.display === "none") return;
+        if (currentPopupId !== currentId) return;
+  
+        applySummary(data.text || "");
+        applyMedia(data.images || []);
+      }).catch(e => {
+        console.warn("[弹窗] Word 加载失败:", e);
+      });
+    }
+  // // 图片区
+  // const imgs = extractImages(item.content || "");
+  // const position = (item.imagePosition || "bottom").toLowerCase();
+  // const mediaHtml = buildMediaHtml(imgs);
 
-  if (mediaTop) {
-    mediaTop.innerHTML = position === "top" ? mediaHtml : "";
-    mediaTop.style.display = (position === "top" && mediaHtml) ? "block" : "none";
-  }
-  if (mediaBottom) {
-    mediaBottom.innerHTML = position === "bottom" ? mediaHtml : "";
-    mediaBottom.style.display = (position === "bottom" && mediaHtml) ? "block" : "none";
-  }
+  // if (mediaTop) {
+  //   mediaTop.innerHTML = position === "top" ? mediaHtml : "";
+  //   mediaTop.style.display = (position === "top" && mediaHtml) ? "block" : "none";
+  // }
+  // if (mediaBottom) {
+  //   mediaBottom.innerHTML = position === "bottom" ? mediaHtml : "";
+  //   mediaBottom.style.display = (position === "bottom" && mediaHtml) ? "block" : "none";
+  // }
 
   overlay.style.display = "flex";
   progressWrap.style.display = "none";
@@ -3750,6 +4197,8 @@ initNewsPopup();
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/mammoth@1.9.0/mammoth.browser.min.js"></script>
   
 </body>
 </html>
