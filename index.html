@@ -3,244 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>多彩梦交通文化综合体</title>
+<title>测试页面 · 多彩梦交通文化综合体</title>
 <style>
-
-@font-face {
-  font-family: "WeiruanJZY"; 
-  src: url("fonts/微软简综艺.ttf") format("ttf");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-  
-  .news-detail-body a {
-    color: var(--primary);
-     /* text-decoration: underline; */
-    text-decoration: none;
-    text-underline-offset: 3px;
-    transition: color 0.2s;
-  }
-  .news-detail-body a:hover {
-    color: var(--accent-dark);
-  }
-
-  
-  /* =========================================================
-     公告弹窗
-     ========================================================= */
-  .news-popup-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: rgba(30, 58, 95, 0.45);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    animation: popupFadeIn 0.25s ease;
-  }
-  @keyframes popupFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  .news-popup {
-    position: relative;
-    width: 100%;
-    max-width: 480px;
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(18px) saturate(180%);
-    -webkit-backdrop-filter: blur(18px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 18px;
-    box-shadow: 0 20px 60px rgba(30, 58, 95, 0.35);
-    padding: 32px 28px 24px;
-    animation: popupSlideUp 0.3s ease;
-  }
-  @keyframes popupSlideUp {
-    from { opacity: 0; transform: translateY(20px) scale(0.97); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  
-  .news-popup-close {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 32px;
-    height: 32px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(30, 58, 95, 0.1);
-    color: var(--primary);
-    font-size: 20px;
-    line-height: 1;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .news-popup-close:hover {
-    background: rgba(30, 58, 95, 0.2);
-  }
-  
-  .news-popup-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-  .news-popup-badge {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 3px 12px;
-    border-radius: 12px;
-    background: var(--accent);
-    color: #fff;
-  }
-  .news-popup-badge.medium {
-    background: var(--darkgb);
-  }
-  .news-popup-badge.low {
-    background: #999;
-  }
-  .news-popup-date {
-    font-size: 13px;
-    color: #888;
-  }
-  
-  .news-popup-title {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--primary);
-    line-height: 1.4;
-    margin-bottom: 12px;
-  }
-  
-  .news-popup-summary {
-    font-size: 15px;
-    color: #444;
-    line-height: 1.8;
-    margin-bottom: 24px;
-  }
-  
-  .news-popup-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-  }
-  .news-popup-btn {
-    padding: 10px 32px;
-    background: var(--primary);
-    color: #fff;
-    font-size: 15px;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .news-popup-btn:hover {
-    background: var(--primary-light);
-    transform: translateY(-1px);
-  }
-  
-  .news-popup-progress {
-    margin-top: 18px;
-    height: 4px;
-    border-radius: 2px;
-    background: rgba(30, 58, 95, 0.12);
-    overflow: hidden;
-  }
-  .news-popup-progress-bar {
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--primary));
-    transform-origin: left center;
-  }
-
-  /* =========================================================
-     弹窗图片区
-     ========================================================= */
-  .news-popup-media,
-  .news-popup-media-top {
-    margin: 16px 0;
-  }
-  
-  /* 多图网格：正方形固定框 */
-  .news-popup-media-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-  .news-popup-media-item {
-    position: relative;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    border-radius: 8px;
-    background: #eef1f5;
-  }
-  .news-popup-media-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .news-popup-media-more {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(30, 58, 95, 0.55);
-    color: #fff;
-    font-size: 20px;
-    font-weight: 700;
-    border-radius: 8px;
-  }
-  
-  /* 单图：固定高度 */
-  .news-popup-media-single {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 10px;
-    background: #eef1f5;
-  }
-  .news-popup-media-single img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  
-  /* 了解详情按钮（描边） */
-  .news-popup-btn.ghost {
-    background: transparent;
-    color: var(--primary);
-    border: 1.5px solid var(--primary);
-  }
-  .news-popup-btn.ghost:hover {
-    background: #eef3fa;
-  }
-  
-  /* =========================================================
-     全局
-     ========================================================= */
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  p.inline-p {
-    display: inline-block;
-    margin: 0 8px 0 0;
-  }
-
-  /* .inline-row {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-  } */
-  
   :root {
     --primary: #1e3a5f;
     --primary-light: #2c5282;
@@ -249,13 +15,11 @@
     --text: #1a1a2e;
     --text-light: #666;
     --bg: #f7f8fa;
-    --card-bg: #fff;
     --border: #e5e7eb;
     --darkgb: #0c5452;
-    --accent-red: #9f2824;
     --darkgb-light: #268987;
-    --A2785D: #A2785D;
-    --614C41: #614C41;
+    --warn-red: #c0392b;
+    --warn-yellow: #f1c40f;
   }
 
   html { scroll-behavior: smooth; }
@@ -278,13 +42,49 @@
   }
 
   /* =========================================================
+     顶部测试警示条
+     ========================================================= */
+  .test-banner {
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--warn-yellow),
+      var(--warn-yellow) 12px,
+      #f9e27a 12px,
+      #f9e27a 24px
+    );
+    border-bottom: 3px solid var(--warn-red);
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #7a1a0e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .test-banner .warn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--warn-red);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  /* =========================================================
      顶部导航
      ========================================================= */
   .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.94);
+    background: rgba(255, 255, 255, 0.96);
     backdrop-filter: saturate(180%) blur(12px);
     -webkit-backdrop-filter: saturate(180%) blur(12px);
     border-bottom: 1px solid var(--border);
@@ -329,78 +129,12 @@
   .nav-link:hover { background: #eef3fa; color: var(--primary); }
   .nav-link.active { color: var(--primary); font-weight: 700; }
 
-  /* 汉堡菜单 */
-  .hamburger-wrap { position: relative; }
-
-  .hamburger-btn {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    transition: background 0.2s;
-  }
-  .hamburger-btn:hover { background: #eef3fa; }
-  .hamburger-btn svg {
-    width: 22px; height: 22px;
-    stroke: var(--text); stroke-width: 2;
-    fill: none; stroke-linecap: round;
-  }
-
-  .hamburger-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: 6px;
-    min-width: 180px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
-    padding: 8px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-6px);
-    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-  }
-  .hamburger-wrap:hover .hamburger-dropdown,
-  .hamburger-dropdown.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-  .hamburger-dropdown .nav-link { padding: 10px 14px; }
-
   @media (max-width: 768px) {
     .navbar { padding: 0 16px; }
-    .nav-link.primary-link { display: none; }
     .nav-logo { font-size: 15px; }
+    .nav-link { padding: 8px 10px; font-size: 14px; }
   }
 
-
-.primary-link.mobile-only { display: none; }
-
-
-  /* 桌面端（≥769px）：外部显示三个主链接，下拉菜单里隐藏这三个的重复项 */
-@media (min-width: 768px) {
-  .hamburger-dropdown .primary-link.mobile-only {
-    display: none !important;
-  }
-}
-
-/* 移动端（≤768px）：外部三个主链接收起，改在下拉菜单里显示 */
-@media (max-width: 768px) {
-  .nav-menu > .primary-link {
-    display: none !important;
-  }
-  .hamburger-dropdown .primary-link.mobile-only {
-    display: block;
-  }
-}
-  
   /* =========================================================
      页面容器
      ========================================================= */
@@ -413,10 +147,66 @@
   }
 
   /* =========================================================
-     页面 1：组织简介
+     测试说明区
+     ========================================================= */
+  .test-notice {
+    background: #fff;
+    border: 1px solid #f0c9c4;
+    border-left: 5px solid var(--warn-red);
+    border-radius: 12px;
+    padding: 28px 30px;
+    margin: 32px auto 40px;
+    max-width: 900px;
+    box-shadow: 0 4px 18px rgba(192, 57, 43, 0.06);
+  }
+  .test-notice h2 {
+    font-size: 20px;
+    color: var(--warn-red);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .test-notice h2::before {
+    content: "!";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--warn-red);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 900;
+  }
+  .test-notice p {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.9;
+    margin-bottom: 12px;
+  }
+  .test-notice ul {
+    margin: 8px 0 16px 22px;
+    font-size: 15px;
+    color: #444;
+    line-height: 1.9;
+  }
+  .test-notice li { margin-bottom: 6px; }
+  .test-notice .notice-footer {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px dashed #f0c9c4;
+    font-size: 14px;
+    color: #7a5a55;
+    line-height: 1.8;
+  }
+
+  /* =========================================================
+     组织简介
      ========================================================= */
   .home-hero {
-    padding: 100px 0 70px;
+    padding: 90px 0 60px;
     background: linear-gradient(160deg, #f7f8fa 0%, #e9eef5 100%);
     border-bottom: 1px solid var(--border);
   }
@@ -431,7 +221,7 @@
     margin-bottom: 20px;
   }
   .home-hero h1 {
-    font-size: 44px;
+    font-size: 42px;
     line-height: 1.25;
     font-weight: 800;
     color: var(--primary);
@@ -449,12 +239,12 @@
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 60px;
-    padding: 70px 0;
+    padding: 60px 0 80px;
     align-items: start;
   }
   @media (max-width: 820px) {
     .home-split { grid-template-columns: 1fr; gap: 40px; }
-    .home-hero h1 { font-size: 32px; }
+    .home-hero h1 { font-size: 30px; }
   }
 
   .home-story h2 {
@@ -507,101 +297,18 @@
   .stat-num span { color: var(--accent); font-size: 20px; }
   .stat-label { font-size: 13px; color: var(--text-light); }
 
-  /* 两大常年活动 */
-  .annual-section {
-    padding: 60px 0 80px;
-  }
-  .annual-title {
-    text-align: center;
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--primary);
-    margin-bottom: 8px;
-  }
-  .annual-subtitle {
-    text-align: center;
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 40px;
-  }
-  .annual-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-  @media (max-width: 820px) {
-    .annual-grid { grid-template-columns: 1fr; }
-  }
-  .annual-card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 36px 30px;
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-  .annual-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 14px 36px rgba(30, 58, 95, 0.12);
-  }
-  .annual-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, var(--accent), var(--primary));
-  }
-  .annual-card.alt::before {
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-  }
-  .annual-tag {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 3px 12px;
-    border-radius: 12px;
-    background: #fff4dd;
-    color: var(--accent-dark);
-    margin-bottom: 16px;
-  }
-  .annual-card.alt .annual-tag {
-    background: #eef3fa;
-    color: var(--primary);
-  }
-  .annual-card h3 {
-    font-size: 22px;
-    color: var(--primary);
-    margin-bottom: 10px;
-  }
-  .annual-card .annual-time {
-    font-size: 14px;
-    color: var(--accent-dark);
-    font-weight: 600;
-    margin-bottom: 14px;
-  }
-  .annual-card.alt .annual-time {
-    color: var(--primary);
-  }
-  .annual-card p {
-    font-size: 14px;
-    color: var(--text-light);
-    line-height: 1.8;
-  }
-
   /* =========================================================
-     页面 2：联系我们
+     联系我们
      ========================================================= */
   .contact-hero {
-    padding: 80px 0 50px;
+    padding: 70px 0 40px;
     text-align: center;
   }
   .contact-hero h1 {
-    font-size: 40px;
+    font-size: 38px;
     font-weight: 800;
     color: var(--primary);
     margin-bottom: 14px;
-    letter-spacing: -0.5px;
   }
   .contact-hero p {
     font-size: 16px;
@@ -615,25 +322,19 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
-    padding: 30px 0 60px;
+    padding: 30px 0 70px;
   }
   .contact-card {
     background: #fff;
     border-radius: 14px;
-    padding: 32px 24px;
+    padding: 30px 24px;
     text-align: center;
     border: 1px solid var(--border);
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
   .contact-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 28px rgba(30, 58, 95, 0.1);
-    border-color: #cfd9e6;
-  }
-  .contact-icon {
-    font-size: 40px;
-    margin-bottom: 16px;
-    line-height: 1;
   }
   .contact-card h3 {
     font-size: 17px;
@@ -644,1172 +345,42 @@
     font-size: 14px;
     color: var(--text-light);
     word-break: break-all;
+    line-height: 1.7;
   }
-  .contact-card .logo {
-    display: block;
-    margin: 0 auto;
-  }
-
-  .contact-cta {
-    text-align: center;
-    padding: 20px 0 80px;
-  }
-  .top-btn {
-    display: inline-block;
-    padding: 14px 48px;
-    background: var(--primary);
-    color: #fff;
-    font-size: 17px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
-    box-shadow: 0 4px 14px rgba(30, 58, 95, 0.25);
-  }
-  .top-btn:hover {
-    background: var(--primary-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(30, 58, 95, 0.3);
-  }
-
-    .sub-btn {
+  .sub-btn {
     display: inline-block;
     padding: 7px 22px;
     background: var(--darkgb);
     color: #fff;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 500;
     text-decoration: none;
     border-radius: 999px;
-    transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
-    box-shadow: 0 4px 14px rgba(103, 205, 203, 0.25);
+    transition: background 0.25s, transform 0.15s;
+    margin-top: 8px;
   }
   .sub-btn:hover {
     background: var(--darkgb-light);
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(103, 205, 205, 0.3);
   }
 
-  .ext-btn {
-    display: inline-block;
-    padding: 10px 30px;
-    background: var(--A2785D);
-    color: #fff;
-    font-size: 17px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 12px;
-    transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
-    box-shadow: 0 4px 14px rgba(30, 58, 95, 0.25);
-  }
-  .ext-btn:hover {
-    background: var(--614C41);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(30, 58, 95, 0.3);
-  }
-
-  
   /* =========================================================
-     页面 3：参与共创
+     页脚
      ========================================================= */
-  .coop-hero {
-    padding: 90px 0 70px;
-    background: linear-gradient(150deg, #fff4dd 0%, #ffe7bd 100%);
-    text-align: center;
-    border-bottom: 1px solid #f0dfb8;
-  }
-  .coop-hero h1 {
-    font-size: 44px;
-    font-weight: 800;
-    color: #7a4e00;
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
-  }
-  .coop-hero p {
-    font-size: 17px;
-    color: #8b5e1a;
-    max-width: 680px;
-    margin: 0 auto;
-    line-height: 1.75;
-  }
-
-  .coop-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-    padding: 60px 0;
-  }
-  .coop-step {
-    background: #fff;
-    border-radius: 14px;
-    padding: 32px 26px;
-    border-top: 4px solid var(--accent);
-    box-shadow: 0 4px 18px rgba(232, 168, 56, 0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .coop-step:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(232, 168, 56, 0.18);
-  }
-  .coop-step-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px; height: 40px;
-    background: var(--accent);
-    color: #fff;
-    border-radius: 50%;
-    font-weight: 800;
-    font-size: 18px;
-    margin-bottom: 18px;
-  }
-  .coop-step h3 {
-    font-size: 18px;
-    color: #7a4e00;
-    margin-bottom: 10px;
-  }
-  .coop-step p {
-    font-size: 14px;
-    color: var(--text-light);
-    line-height: 1.75;
-  }
-
-  .coop-cta-wrap {
-    background: #fff;
-    border-radius: 16px;
-    padding: 48px 32px;
-    text-align: center;
-    margin: 20px 0 80px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
-  }
-  .coop-cta-wrap h2 {
-    font-size: 26px;
-    color: var(--primary);
-    margin-bottom: 12px;
-  }
-  .coop-cta-wrap p {
-    color: var(--text-light);
-    margin-bottom: 24px;
-  }
-  .coop-btn {
-    display: inline-block;
-    padding: 13px 40px;
-    background: var(--accent);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .coop-btn:hover {
-    background: var(--accent-dark);
-    transform: translateY(-2px);
-  }
-
-  .news-list {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-bottom: 80px;
-  }
-  .news-item {
-    display: block;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px 28px;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  }
-  .news-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(30, 58, 95, 0.08);
-    border-color: #cfd9e6;
-  }
-  .news-item-date {
-    font-size: 13px;
-    color: var(--accent-dark);
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-  .news-item-title {
-    font-size: 19px;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 8px;
-    line-height: 1.5;
-  }
-  .news-item-summary {
-    font-size: 14px;
-    color: var(--text-light);
-    line-height: 1.7;
-  }
-  .news-item-tags {
-    margin-top: 12px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .news-item-tag {
-    font-size: 12px;
-    padding: 2px 10px;
-    border-radius: 10px;
-    background: #eef3fa;
-    color: var(--primary);
-  }
-  
-  .news-detail-wrap {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 80px 0 100px;
-  }
-
-  /* =========================================================
-     公告类型标识：新闻 / 公告
-     ========================================================= */
-  .news-type-badge {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 6px;
-    padding: 2px 8px;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.6;
-    border-radius: 4px;
-    user-select: none;
-    position: relative;
-    top: -1px;
-  }
-  .news-type-badge.news {
-    background: linear-gradient(180deg, #4a90d9, #2c6bb0);
-    box-shadow: 0 2px 0 #1d4a7a, 0 3px 6px rgba(44,107,176,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
-    border: 1px solid rgba(255,255,255,0.4);
-    color: #fff;
-  }
-  .news-type-badge.notice {
-    background: linear-gradient(180deg, #f0a53c, #d97f1a);
-    box-shadow: 0 2px 0 #9c5a0f, 0 3px 6px rgba(217,127,26,0.3), inset 0 1px 0 rgba(255,255,255,0.4);
-    border: 1px solid rgba(255,255,255,0.45);
-    color: #fff;
-  }
-  
-  /* =========================================================
-     归属范围标识
-     ========================================================= */
-  .news-scope-badge {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 6px;
-    padding: 2px 8px;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.6;
-    border-radius: 4px;
-    user-select: none;
-    position: relative;
-    top: -1px;
-  }
-  .news-scope-badge.scope-system {
-    background: linear-gradient(180deg, #5a6b7d, #3d4a58);
-    box-shadow: 0 2px 0 #2a333d, 0 3px 6px rgba(61,74,88,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
-    border: 1px solid rgba(255,255,255,0.35);
-    color: #f0f4f8;
-  }
-  .news-scope-badge.scope-platform {
-    background: linear-gradient(180deg, #3a9ea5, #237a80);
-    box-shadow: 0 2px 0 #165055, 0 3px 6px rgba(35,122,128,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
-    border: 1px solid rgba(255,255,255,0.4);
-    color: #e6fffe;
-  }
-  .news-scope-badge.scope-other {
-    background: linear-gradient(180deg, #b0b7c0, #8a929c);
-    box-shadow: 0 2px 0 #666d75, 0 3px 6px rgba(138,146,156,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
-    border: 1px solid rgba(255,255,255,0.4);
-    color: #fff;
-  }
-  .news-scope-badge.scope-default {
-    background: linear-gradient(180deg, #c9ced4, #a0a6ae);
-    box-shadow: 0 2px 0 #7a8087, 0 3px 6px rgba(160,166,174,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
-    border: 1px solid rgba(255,255,255,0.4);
-    color: #fff;
-  }
-  .news-scope-badge.scope-sub {
-    background: rgba(255,255,255,0.18);
-    border: 1px solid rgba(255,255,255,0.45);
-    color: #fff;
-    font-weight: 500;
-    margin-left: -2px;
-  }
-  
-  /* .news-back {
-    display: inline-block;
-    margin-bottom: 24px;
-    font-size: 14px;
-    color: var(--primary);
-    text-decoration: none;
-  }
-  .news-back:hover { text-decoration: underline; } */
-
-  /* .news-back {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 24px;
-    padding: 4px 10px;
-    font-size: 14px;
-    color: var(--primary);
-    text-decoration: none;
-    border-radius: 6px;
-    transition: color 0.2s;
-  } */
-  
-  /* 玻璃阴影层 */
-  /* .news-back::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -6px;
-    height: 100%;
-    border-radius: 6px;
-    background: rgba(30, 58, 95, 0.08);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    opacity: 0;
-    transform: translateY(6px) scale(0.96);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
-    z-index: -1;
-  }
-  
-  .news-back:hover {
-    color: var(--primary-light);
-    text-decoration: none;
-  }
-  
-  .news-back:hover::after {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }  */
-
-  /* .news-back {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 24px;
-    padding: 6px 14px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--primary);
-    text-decoration: none;
-    border-radius: 999px;
-    overflow: hidden;
-    isolation: isolate;
-    transition: color 0.3s ease;
-  } */
-  
-  /* 玻璃液态层：从右侧滑入 */
-  /* .news-back::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background:
-      linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.15) 45%, rgba(30,58,95,0.08));
-    backdrop-filter: blur(10px) saturate(160%);
-    -webkit-backdrop-filter: blur(10px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow:
-      0 4px 16px rgba(30, 58, 95, 0.12),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7);
-    opacity: 0;
-    transform: translateX(110%);
-    transition:
-      transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-      opacity 0.3s ease;
-    z-index: -1;
-    pointer-events: none;
-  } */
-  
-  /* 高光扫光：叠在玻璃层上 */
-  /* .news-back::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      100deg,
-      transparent 20%,
-      rgba(255, 255, 255, 0.65) 45%,
-      rgba(255, 255, 255, 0.25) 55%,
-      transparent 80%
-    );
-    opacity: 0;
-    transform: translateX(120%);
-    transition:
-      transform 0.6s ease,
-      opacity 0.35s ease;
-    z-index: -1;
-    pointer-events: none;
-    mix-blend-mode: screen;
-  }
-  
-  .news-back:hover {
-    color: var(--primary-light);
-    text-decoration: none;
-  }
-  
-  .news-back:hover::before {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  
-  .news-back:hover::after {
-    opacity: 1;
-    transform: translateX(-120%);
-  } */
-
-  .news-back {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 24px;
-    padding: 7px 16px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--primary);
-    text-decoration: none;
-    border-radius: 999px;
-    overflow: hidden;
-    isolation: isolate;
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
-  
-  /* 玻璃液态层：从右侧滑入，带颜色和清晰边界 */
-  .news-back::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background:
-      linear-gradient(135deg,
-        rgba(200, 220, 245, 0.85) 0%,
-        rgba(160, 195, 235, 0.7) 50%,
-        rgba(120, 165, 220, 0.75) 100%);
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.85);
-    box-shadow:
-      0 6px 20px rgba(30, 58, 95, 0.25),
-      0 2px 6px rgba(30, 58, 95, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.95),
-      inset 0 -1px 2px rgba(30, 58, 95, 0.12);
-    opacity: 0;
-    transform: translateX(110%);
-    transition:
-      transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-      opacity 0.3s ease;
-    z-index: -1;
-    pointer-events: none;
-  }
-  
-  /* 高光扫光：斜向亮带从右向左扫过 */
-  .news-back::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    bottom: -50%;
-    left: -20%;
-    right: -20%;
-    border-radius: inherit;
-    background: linear-gradient(
-      105deg,
-      transparent 30%,
-      rgba(255, 255, 255, 0.9) 48%,
-      rgba(255, 255, 255, 0.4) 52%,
-      transparent 70%
-    );
-    opacity: 0;
-    transform: translateX(60%);
-    transition:
-      transform 0.65s cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 0.3s ease;
-    z-index: -1;
-    pointer-events: none;
-    mix-blend-mode: screen;
-  }
-  
-  .news-back:hover {
-    color: #fff;
-    text-decoration: none;
-    transform: translateY(-1px);
-  }
-  
-  .news-back:hover::before {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  
-  .news-back:hover::after {
-    opacity: 1;
-    transform: translateX(-80%);
-  }
-  
-  .news-detail-title {
-    font-size: 30px;
-    font-weight: 800;
-    color: var(--primary);
-    line-height: 1.4;
-    margin-bottom: 12px;
-  }
-  .news-detail-meta {
-    font-size: 14px;
-    color: #999;
-    margin-bottom: 28px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-  }
-  .news-detail-body {
-    font-size: 15px;
-    color: #444;
-    line-height: 1.9;
-  }
-  .news-detail-body p { margin-bottom: 16px; }
-  .news-detail-body img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin: 16px 0;
-  }
-
-  /* =========================================================
-     公告来源标识
-     ========================================================= */
-  .news-source-badge {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 8px;
-    padding: 2px 9px;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.6;
-    letter-spacing: 0.5px;
-    border-radius: 4px;
-    user-select: none;
-    position: relative;
-    top: -1px;
-  }
-  
-  /* 原创：深蓝 + 金边 */
-  .news-source-badge.original {
-    background: linear-gradient(180deg, #2c5282, #1e3a5f);
-    box-shadow:
-      0 2px 0 #14273f,
-      0 3px 6px rgba(30, 58, 95, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    border: 1px solid #e8a838;
-    color: #ffe7bd;
-  }
-  
-  /* 同源转载：青绿 + 白边 */
-  .news-source-badge.repost-same {
-    background: linear-gradient(180deg, #2a9d8f, #0c5452);
-    box-shadow:
-      0 2px 0 #073634,
-      0 3px 6px rgba(12, 84, 82, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: #e6fffb;
-  }
-  
-  /* 外源转载：紫色 + 浅紫边 */
-  .news-source-badge.repost-other {
-    background: linear-gradient(180deg, #7b5ea7, #5a3d85);
-    box-shadow:
-      0 2px 0 #3d2a5c,
-      0 3px 6px rgba(90, 61, 133, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    border: 1px solid rgba(220, 200, 255, 0.5);
-    color: #f0e8ff;
-  }
-  
-  /* 未分类：灰色 + 浅灰边 */
-  .news-source-badge.uncategorized {
-    background: linear-gradient(180deg, #9aa3ad, #6b7480);
-    box-shadow:
-      0 2px 0 #4a525c,
-      0 3px 6px rgba(107, 116, 128, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    color: #f2f4f7;
-  }
-
-.news-popup-badge.type-news {
-  background: linear-gradient(180deg, #4a90d9, #2c6bb0);
-  color: #fff;
-}
-.news-popup-badge.type-notice {
-  background: linear-gradient(180deg, #f0a53c, #d97f1a);
-  color: #fff;
-}
-  
-  /* =========================================================
-     追加 Word 内容排版
-     ========================================================= */
-.news-detail-body h1,
-.news-detail-body h2,
-.news-detail-body h3,
-.news-detail-body h4 {
-  color: var(--primary);
-  margin: 24px 0 12px;
-  line-height: 1.4;
-}
-.news-detail-body h1 { font-size: 24px; }
-.news-detail-body h2 { font-size: 20px; }
-.news-detail-body h3 { font-size: 17px; }
-.news-detail-body h4 { font-size: 15px; }
-
-.news-detail-body p {
-  margin-bottom: 14px;
-  line-height: 1.9;
-  color: #444;
-}
-.news-detail-body ul,
-.news-detail-body ol {
-  margin: 12px 0 16px 24px;
-  line-height: 1.9;
-  color: #444;
-}
-.news-detail-body li { margin-bottom: 6px; }
-
-.news-detail-body table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 16px 0;
-  font-size: 14px;
-}
-.news-detail-body th,
-.news-detail-body td {
-  border: 1px solid var(--border);
-  padding: 8px 12px;
-  text-align: left;
-}
-.news-detail-body th {
-  background: #f7f8fa;
-  font-weight: 600;
-}
-
-.news-detail-body img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin: 12px 0;
-}
-
-.news-detail-body blockquote {
-  border-left: 3px solid var(--accent);
-  padding-left: 16px;
-  color: #666;
-  margin: 16px 0;
-}
-  
-
-  /* =========================================================
-     新闻公告筛选区
-     ========================================================= */
-  .news-filter-bar {
-    max-width: 1050px;
-    margin: 0 auto 32px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 12px 20px;
-    padding: 18px 20px;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-  }
-  
-  .news-filter-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .news-filter-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 18px;
-    height: 18px;
-    color: var(--primary);
-    flex-shrink: 0;
-  }
-  .news-filter-icon img,
-  .news-filter-icon svg {
-    width: 18px;
-    height: 18px;
-    display: block;
-  }
-  
-  .news-filter-select,
-  .news-filter-input {
-    padding: 8px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 999px;
-    font-size: 14px;
-    font-family: inherit;
-    color: var(--text);
-    background: #fff;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .news-filter-select:focus,
-  .news-filter-input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.08);
-  }
-  .news-filter-input {
-    min-width: 220px;
-  }
-  
-  .news-filter-cats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .news-filter-cat {
-    padding: 6px 14px;
-    border: 1.5px solid var(--border);
-    background: #fff;
-    border-radius: 999px;
-    font-size: 13px;
-    font-family: inherit;
-    color: #555;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .news-filter-cat:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-  }
-  .news-filter-cat.active {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: #fff;
-  }
-  
-  @media (max-width: 720px) {
-    .news-filter-bar {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .news-filter-item {
-      justify-content: flex-start;
-    }
-    .news-filter-input {
-      flex: 1;
-      min-width: 0;
-    }
-  }
-  
-  /* =========================================================
-     页面 4：近期项目（时间线）
-     ========================================================= */
-  .project-hero {
-    padding: 80px 0 40px;
-    text-align: center;
-  }
-  .project-hero h1 {
-    font-size: 40px;
-    font-weight: 800;
-    color: var(--primary);
-    margin-bottom: 12px;
-  }
-  .project-hero p {
-    color: var(--text-light);
-    font-size: 16px;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-
-  .timeline {
-    position: relative;
-    padding: 40px 0 80px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .timeline::before {
-    content: "";
-    position: absolute;
-    left: 24px; top: 40px; bottom: 40px;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--accent), var(--primary));
-    border-radius: 1px;
-  }
-
-  .timeline-item {
-    position: relative;
-    padding-left: 72px;
-    margin-bottom: 32px;
-  }
-  .timeline-dot {
-    position: absolute;
-    left: 14px; top: 24px;
-    width: 22px; height: 22px;
-    background: #fff;
-    border: 3px solid var(--primary);
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(30, 58, 95, 0.08);
-  }
-  .timeline-item:first-child .timeline-dot {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px rgba(232, 168, 56, 0.15);
-  }
-
-  .timeline-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 24px 26px;
-    border: 1px solid var(--border);
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  }
-  .timeline-card:hover {
-    transform: translateX(4px);
-    box-shadow: 0 8px 24px rgba(30, 58, 95, 0.08);
-    border-color: #cfd9e6;
-  }
-  .timeline-date {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--accent-dark);
-    background: #fff4dd;
-    padding: 2px 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-    .timeline-boom {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--accent-red);
-    background: #e88d8a;
-    padding: 2px 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  .timeline-card h3 {
-    font-size: 18px;
-    color: var(--primary);
-    margin-bottom: 8px;
-  }
-  .timeline-card p {
-    font-size: 14px;
-    color: var(--text-light);
-    line-height: 1.7;
-  }
-
-  /* =========================================================
-     页面 5：往期活动
-     ========================================================= */
-  .section-title {
-    text-align: center;
-    font-size: 32px;
-    font-weight: 800;
-    color: var(--primary);
-    margin: 60px 0 8px;
-  }
-  .section-subtitle {
-    text-align: center;
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 32px;
-  }
-
-  .filter-bar {
-    max-width: 1100px;
-    margin: 0 auto 28px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 24px;
-    align-items: center;
-    justify-content: center;
-  }
-  .filter-group {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-  }
-  .filter-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #555;
-    margin-right: 4px;
-  }
-  .tag-btn {
-    padding: 6px 18px;
-    border: 1.5px solid #d0d5dd;
-    background: #fff;
-    border-radius: 20px;
-    font-size: 14px;
-    color: #444;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-family: inherit;
-  }
-  .tag-btn:hover { border-color: var(--primary); color: var(--primary); }
-  .tag-btn.active {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: #fff;
-  }
-  .year-select {
-    padding: 7px 16px;
-    border: 1.5px solid #d0d5dd;
-    border-radius: 20px;
-    font-size: 14px;
-    color: #444;
-    background: #fff;
-    cursor: pointer;
-    outline: none;
-    font-family: inherit;
-  }
-  .year-select:focus { border-color: var(--primary); }
-
-  .card-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-    padding-bottom: 80px;
-  }
-
-  .card {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
-  }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  }
-
-  .card-header { padding: 16px 18px 10px; }
-  /* ===== 默认 label 样式（原有，保持不变） ===== */
-  .card-label {
-    display: inline-block;
-    font-size: 12px;
-    padding: 2px 10px;
-    border-radius: 10px;
-    background: #eef3fa;
-    color: var(--primary);
-    margin-bottom: 8px;
-  }
-
-  /* ===== 自定义 label 样式（按 labelStyle 值匹配） ===== */
-  
-  /* summer：暑期活动，橙黄渐变 */
-  .card-label.label-summer {
-    background: linear-gradient(135deg, #ffe7bd, #e8a838) !important;
-    color: #7a4e00 !important;
-    font-weight: 700;
-  }
-  
-  /* spring：新春活动，红色喜庆 */
-  .card-label.label-spring {
-    background: linear-gradient(135deg, #ffd6d3, #e8574f) !important;
-    color: #8b1a14 !important;
-    font-weight: 700;
-  }
-  
-  /* special：特别企划，紫色高亮 */
-  .card-label.label-special {
-    background: linear-gradient(135deg, #e8d5ff, #9b59b6) !important;
-    color: #4a1a6b !important;
-    font-weight: 700;
-  }
-  
-  /* online：线上活动，蓝色 */
-  .card-label.label-online {
-    background: linear-gradient(135deg, #d4f0ff, #3498db) !important;
-    color: #0b4a6f !important;
-    font-weight: 700;
-  }
-  
-  /* offline：线下活动，绿色 */
-  .card-label.label-offline {
-    background: linear-gradient(135deg, #d4f5e0, #27ae60) !important;
-    color: #0b5c33 !important;
-    font-weight: 700;
-  }
-  
-  /* annual：年度活动，深蓝金边 */
-  .card-label.label-annual {
-    background: linear-gradient(135deg, #1e3a5f, #2c5282) !important;
-    color: #ffe7bd !important;
-    font-weight: 700;
-    border: 1px solid #e8a838;
-  }
-  
-  /* hot：热门/推荐，红橙渐变 */
-  .card-label.label-hot {
-    background: linear-gradient(135deg, #ff9a3c, #e8574f) !important;
-    color: #fff !important;
-    font-weight: 700;
-  }
-  
-  /* new：新活动，青绿渐变 */
-  .card-label.label-new {
-    background: linear-gradient(135deg, #a8edea, #0c5452) !important;
-    color: #fff !important;
-    font-weight: 700;
-  }
-  
-  /*
-  .card-label {
-    display: inline-block;
-    font-size: 12px;
-    padding: 2px 10px;
-    border-radius: 10px;
-    background: #eef3fa;
-    color: var(--primary);
-    margin-bottom: 8px;
-  }
-  */
-  /* ===== 自定义 label 样式 ===== */
-  
-  /* 暑期活动：橙黄渐变 */
-  /* .card-label.label-summer {
-    background: linear-gradient(135deg, #ffe7bd, #e8a838);
-    color: #7a4e00;
-    font-weight: 700;
-  } */
-  
-  /* 新春活动：红色喜庆 */
-  /* .card-label.label-spring {
-    background: linear-gradient(135deg, #ffd6d3, #e8574f);
-    color: #8b1a14;
-    font-weight: 700;
-  } */
-  
-  /* 特别企划：紫色高亮 */
-  /* .card-label.label-special {
-    background: linear-gradient(135deg, #e8d5ff, #9b59b6);
-    color: #4a1a6b;
-    font-weight: 700;
-  } */
-  
-  /* 如果以后想加更多，照这个格式继续写：*/
-  /* .card-label.label-你的样式名 { ... } */
-  /* .card-label.label-你的名字 {
-    background: linear-gradient(135deg, #起始色, #结束色) !important;
-    color: #文字色 !important;
-    font-weight: 700;
-  } */
-  .card-title-text {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .card-desc {
-    font-size: 13px;
-    color: #777;
-    margin-top: 4px;
-    line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .card-cover {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background: #f0f0f0;
-    position: relative;
-  }
-  .card-cover img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s;
-  }
-  .card-cover:hover img { transform: scale(1.04); }
-  .cover-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    color: #aaa; font-size: 14px;
-    background: #f5f5f5;
-  }
-
-  .card-footer {
-    padding: 12px 18px 16px;
-    display: flex;
-    gap: 20px;
-    font-size: 13px;
-    color: #888;
-    margin-top: auto;
-  }
-  .card-footer span { display: flex; align-items: center; gap: 4px; }
-
-  .empty-tip {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 60px 20px;
-    color: #aaa;
-    font-size: 15px;
-  }
-
-  /* 全局页脚 */
-  /* .site-footer {
-    text-align: center;
-    padding: 30px 20px;
-    color: #999;
-    font-size: 13px;
-    border-top: 1px solid var(--border);
-    background: #fff;
-  } */
-
-  /* =========================================================
-   页脚：三列 + 底部两行文字
-   ========================================================= */
   .site-footer {
     border-top: 1px solid var(--border);
     background: #fff;
     color: #666;
     font-size: 14px;
   }
-  
   .footer-inner {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 48px 24px 32px;
+    padding: 40px 24px 28px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
   }
-  
   .footer-col-title {
     font-size: 15px;
     font-weight: 700;
@@ -1829,7 +400,6 @@
     border-radius: 2px;
     transform: translateY(-50%);
   }
-  
   .footer-links {
     list-style: none;
     padding: 0;
@@ -1840,31 +410,19 @@
     line-height: 1.6;
     color: #666;
   }
-  /* .footer-links a {
-    color: #666;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-links a:hover {
-    color: var(--primary);
-    text-decoration: underline;
-  } */
   .footer-links a {
     color: #666;
     text-decoration: none;
     transition: color 0.2s, font-weight 0.2s;
   }
-  
   .footer-links a:hover {
     color: var(--primary);
     font-weight: 700;
-    text-decoration: none;
   }
-  
   .footer-bottom {
     border-top: 1px solid var(--border);
     text-align: center;
-    padding: 20px 24px 24px;
+    padding: 20px 24px;
   }
   .footer-bottom p {
     font-size: 13px;
@@ -1872,137 +430,40 @@
     line-height: 1.8;
     margin: 4px 0;
   }
-  
-  /* 移动端：三列堆叠 */
+  .center-text {
+    text-align: center;
+  }
   @media (max-width: 768px) {
     .footer-inner {
       grid-template-columns: 1fr;
       gap: 28px;
-      padding: 36px 20px 24px;
+      padding: 32px 20px 22px;
     }
   }
-
-  /* =========================================================
-     Icon 系统：矢量固定尺寸，三档
-     ========================================================= */
-  .icon {
-    display: inline-block;
-    vertical-align: middle;
-    object-fit: contain;
-    flex-shrink: 0;
-  }
-  
-  /* 小：页脚、行内文字旁，14px */
-  .icon-sm {
-    width: 14px;
-    height: 14px;
-  }
-  
-  /* 中：卡片标题旁、按钮内，20px */
-  .icon-md {
-    width: 20px;
-    height: 20px;
-  }
-  
-  /* 大：区块标题、独立展示，32px */
-  .icon-lg {
-    width: 32px;
-    height: 32px;
-  }
-  
-  /* =========================================================
-     Logo 系统：两类，分别控制固定高 / 固定宽
-     ========================================================= */
-  .logo {
-    display: block;
-    object-fit: contain;
-  }
-  
-  /* 横向 logo：固定高度，宽度自动 */
-  .logo-fixed-h {
-    height: 40px;
-    width: auto;
-    max-width: 100%;
-  }
-  
-  /* 方形 / 竖版 logo：固定宽度，高度自动 */
-  .logo-fixed-w {
-    width: 120px;
-    height: auto;
-    max-width: 100%;
-  }
-  
-  /* 常用尺寸变体，按需组合 */
-  .logo-h-sm { height: 28px; }   /* 导航栏小 logo */
-  .logo-h-md { height: 40px; }   /* 默认 */
-  .logo-h-lg { height: 64px; }   /* 页脚或大区块 */
-  
-  .logo-w-sm { width: 80px; }
-  .logo-w-md { width: 120px; }
-  .logo-w-lg { width: 180px; }
-    
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     顶部导航
-     ============================================================ -->
-<!-- ============================================================
+<!-- 顶部测试警示条 -->
+<div class="test-banner">
+  <span class="warn-icon">!</span>
+  <span>当前为测试页面，仅供效果参考，正式内容请稍后访问</span>
+  <span class="warn-icon">!</span>
+</div>
+
+<!-- 顶部导航 -->
 <nav class="navbar">
   <a href="#home" class="nav-logo">多彩梦交通文化综合体</a>
   <div class="nav-menu">
-    <a class="nav-link primary-link" data-page="home" href="#home">组织简介</a>
-    <a class="nav-link primary-link" data-page="contact" href="#contact">联系我们</a>
-    <a class="nav-link primary-link" data-page="coop" href="#coop">参与共创</a>
-
-    <div class="hamburger-wrap" id="hamburgerWrap">
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="更多菜单">
-        <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
-      <div class="hamburger-dropdown" id="hamburgerDropdown">
-        <a class="nav-link" data-page="home" href="#home">组织简介</a>
-        <a class="nav-link" data-page="contact" href="#contact">联系我们</a>
-        <a class="nav-link" data-page="coop" href="#coop">参与共创</a>
-        <a class="nav-link" data-page="project" href="#project">近期项目</a>
-        <a class="nav-link" data-page="activities" href="#activities">往期活动</a>
-      </div>
-    </div>
+    <a class="nav-link active" data-page="home" href="#home">组织简介</a>
+    <a class="nav-link" data-page="contact" href="#contact">联系我们</a>
   </div>
 </nav>
-  ============================================================ -->
 
-<nav class="navbar">
-  <a href="#home" class="nav-logo">多彩梦交通文化综合体</a>
-  <div class="nav-menu">
-    <a class="nav-link primary-link" data-page="home" href="#home">组织简介</a>
-    <a class="nav-link primary-link" data-page="contact" href="#contact">联系我们</a>
-    <a class="nav-link primary-link" data-page="coop" href="#coop">参与共创</a>
-
-    <div class="hamburger-wrap" id="hamburgerWrap">
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="更多菜单">
-        <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
-      <div class="hamburger-dropdown" id="hamburgerDropdown">
-        <!-- 这三个是移动端才出现在下拉里的副本 -->
-        <a class="nav-link primary-link mobile-only" data-page="home" href="#home">组织简介</a>
-        <a class="nav-link primary-link mobile-only" data-page="contact" href="#contact">联系我们</a>
-        <a class="nav-link primary-link mobile-only" data-page="coop" href="#coop">参与共创</a>
-
-        <a class="nav-link" data-page="history" href="#history">历史进程</a>
-        <a class="nav-link" data-page="news" href="#news">新闻公告</a>
-        <a class="nav-link" data-page="project" href="#project">近期项目</a>
-        <a class="nav-link" data-page="activities" href="#activities">往期活动</a>
-        <a class="nav-link" data-page="versions" href="#versions">版本日志</a>
-      </div>
-    </div>
-  </div>
-</nav>
-  
 <main>
 
   <!-- ============================================================
-       页面 1：组织简介
+       组织简介
        ============================================================ -->
   <section id="page-home" class="page active">
     <div class="home-hero">
@@ -2014,6 +475,23 @@
     </div>
 
     <div class="container">
+      <!-- 测试说明区 -->
+      <div class="test-notice">
+        <h2>你为什么会看到这个页面？</h2>
+        <h4 class="center-text">关于当前页面适用与触发情况的说明</h4>
+        <p>你当前访问的是本站的<strong>测试页面</strong>，仅用于展示页面布局与视觉效果，不代表网站的正式内容。以下情况可能会让你暂时看到这个页面：</p>
+        <ul>
+          <li><strong>网站维护时段</strong>：我们正在对正式站点进行例行维护或内容更新，期间部分页面暂时无法正常访问。</li>
+          <li><strong>功能紧急修复</strong>：正式站点出现影响访问或使用的异常，技术团队正在紧急排查与修复，为避免误导，暂时切换至测试页面。</li>
+          <li><strong>网页重定向错误</strong>：部分链接或域名跳转出现异常，系统自动将你引导至本页面，以免你看到错误或空白的内容。</li>
+          <li><strong>新功能上线前的预览测试</strong>：部分新页面或新功能在正式发布前，会先以测试页面的形式供内部与少量用户预览。</li>
+        </ul>
+        <p>出现以上情况时，我们的技术团队通常会在较短时间内完成处理，并将网站恢复至正常状态。给你带来不便，我们深表歉意。</p>
+        <div class="notice-footer">
+          请不必担心，你的访问与数据不会受到影响。你可以稍后刷新页面重试，或通过下方“联系我们”中的任一渠道与我们取得联系。感谢你的理解与耐心等待，我们会尽快让正式页面重新与你见面。
+        </div>
+      </div>
+
       <div class="home-split">
         <div class="home-story">
           <h2>我们是谁</h2>
@@ -2039,32 +517,6 @@
               <div class="stat-num">全年<span></span></div>
               <div class="stat-label">持续开展活动</div>
             </div>
-            <div class="stat-item">
-              <div class="stat-num">10+<span></span></div>
-              <div class="stat-label">地区伙伴共创</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 两大常年活动 -->
-      <div class="annual-section">
-        <h2 class="annual-title" ><span style="font-family: 'WeiruanJZY', sans-serif;">两大常年主题活动</span></h2>
-        <p class="annual-subtitle">多彩梦交通文化综合体旗下目前设有两大常年主题活动，期待您的踊跃参与</p>
-        <p class="annual-subtitle">——无论是投稿还是共建，无论是内容创作还是资源共享</p>
-
-        <div class="annual-grid">
-          <div class="annual-card">
-            <span class="annual-tag">暑期档</span>
-            <h3>交通夏日展</h3>
-            <div class="annual-time">每年 7–8 月 · 暑假期间</div>
-            <p>聚焦交通文化的夏日主题展览与互动活动，包含模型展示、主题游戏、爱好者交流等环节，是每年夏天交通迷们最期待的线下盛会。</p>
-          </div>
-          <div class="annual-card alt">
-            <span class="annual-tag">新春档</span>
-            <h3>新春交通团拜会</h3>
-            <div class="annual-time">每年新春佳节期间</div>
-            <p>在新春佳节与交通爱好者朋友们相聚一堂，畅聊热爱、分享收获、共迎新年，用交通人自己的方式开启崭新的一年。</p>
           </div>
         </div>
       </div>
@@ -2072,7 +524,7 @@
   </section>
 
   <!-- ============================================================
-       页面 2：联系我们
+       联系我们
        ============================================================ -->
   <section id="page-contact" class="page">
     <div class="contact-hero container">
@@ -2083,594 +535,65 @@
     <div class="container">
       <div class="contact-grid">
         <div class="contact-card">
-          <!-- <img class="logo logo-fixed-w logo-w-md"
-             src="assets/logo/WeChat.png" alt=""> -->
-          <img class="logo"
-             src="assets/logo/WeChat.png"
-             alt=""
-             style="width: 30px; height: 30px; object-fit: contain;">
           <h3>微信公众号</h3>
           <p>搜索「交建文宣」</p>
           <h3>微信视频号</h3>
           <p>搜索「交建视宣」</p>
         </div>
         <div class="contact-card">
-          <img class="logo"
-             src="assets/logo/QQ.png"
-             alt=""
-             style="width: 30px; height: 30px; object-fit: contain;">
-          <h3>QQ群聊</h3>
-          <p>搜索群号「681027226」</p><p>或直接点下方</p>
-          <a class="sub-btn"
-           href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=M-OpajWd2zVPo4-aU7dND-ru3XZs9vd6&authKey=5jqa7%2BvxxSc8ADOQhq3iwZn7faoo1eT5ON7gy%2BOo89yQSkWCSu39cBG6Rscjo2ci&noverify=0&group_code=681027226">
-          跳转QQ群邀请
-          </a>
+          <h3>QQ 群聊</h3>
+          <p>搜索群号「681027226」</p>
+          <a class="sub-btn" href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=M-OpajWd2zVPo4-aU7dND-ru3XZs9vd6&authKey=5jqa7%2BvxxSc8ADOQhq3iwZn7faoo1eT5ON7gy%2BOo89yQSkWCSu39cBG6Rscjo2ci&noverify=0&group_code=681027226" target="_blank" rel="noopener noreferrer">跳转 QQ 群邀请</a>
         </div>
         <div class="contact-card">
-          <!-- <div class="contact-icon">📺</div> -->
-          <img class="logo"
-             src="assets/logo/bilibili.png"
-             alt=""
-             style="width: 30px; height: 30px; object-fit: contain;">
           <h3>B 站</h3>
-          <div class="subtitle">
-            关注入股，保你不亏！
-          </div>
           <p>华杭（浙江）视音讯工作室</p>
-          <a class="sub-btn"
-           href="https://space.bilibili.com/3493122325613305">
-          @杭临新铁HanglinRail
-          </a>
-          <p>交通爱好者拜年汇</p>
-          <a class="sub-btn"
-           href="https://space.bilibili.com/32799686">
-          @御坂75900号
-          </a>
+          <a class="sub-btn" href="https://space.bilibili.com/3493122325613305" target="_blank" rel="noopener noreferrer">@杭临新铁HanglinRail</a>
           <p>世界交通拜年纪</p>
-          <a class="sub-btn"
-           href="https://space.bilibili.com/3546601293351293">
-          @世界交通拜年纪
-          </a>
-          <p>京郊交通爱好者工作室</p>
-          <a class="sub-btn"
-           href="https://space.bilibili.com/1057056469">
-          @京郊交通爱好者
-          </a>
+          <a class="sub-btn" href="https://space.bilibili.com/3546601293351293" target="_blank" rel="noopener noreferrer">@世界交通拜年纪</a>
         </div>
         <div class="contact-card">
-          <div class="contact-icon">📍</div>
           <h3>线下活动</h3>
           <p>详见活动公告，陆续开展敬请期待……</p>
-          <p>京郊娱乐活动Ep14全新发布👇</p>
-          <a class="sub-btn"
-           href="https://www.bilibili.com/video/BV1DCpx6EEZC/">
-          最新综艺
-          </a>
-        </div>
-        
-      </div>
-
-      <div class="contact-cta">
-        <div class="contact-icon">👋</div>
-        <a class="top-btn"
-           href="https://metro-lingnandongdao.github.io/lingnan-portfolio/sites.html">
-          找到我们
-        </a>
-        <p>👆跳转嶺南東道‌“世界交通拜年纪”专题页🔗</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       页面 3：参与共创
-       ============================================================ -->
-  <section id="page-coop" class="page">
-    <div class="coop-hero">
-      <div class="container">
-        <h1>参与共创</h1>
-        <p>我们是一个开放的平台，这里不只有观众席，每一位交通爱好者都可以是组织者、创作者和参与者。</p>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="coop-steps">
-        <div class="coop-step">
-          <div class="coop-step-num">1</div>
-          <h3>提出你的想法</h3>
-          <p>无论是一场主题聚会、一个线上或是线下交通游戏、一次作品展会，还是一次线路体验，先告诉我们你想做什么。</p>
-        </div>
-        <div class="coop-step">
-          <div class="coop-step-num">2</div>
-          <h3>找到同好伙伴</h3>
-          <p>来这里寻找有兴趣参与志同道合的伙伴，一起把想法打磨成可执行的方案，让活动更有趣、更完整。</p>
-        </div>
-        <div class="coop-step">
-          <div class="coop-step-num">3</div>
-          <h3>一起落地实现</h3>
-          <p>从策划、宣传到执行，我们提供力所能及的资源支持，同时提供分享平台，把每一次共创真正做出来、办精彩。</p>
-        </div>
-      </div>
-
-      <div class="coop-cta-wrap">
-        <h2>准备好加入了吗？</h2>
-        <p>把你的想法通过QQ群或B站私信发给我们，开启你的交通共创之旅。</p>
-        <a class="coop-btn" href="#contact">立即联系</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       页面 4：历史进程
-       ============================================================ -->
-  <section id="page-history" class="page">
-    <div class="project-hero container">
-      <h1>历史进程</h1>
-      <p>多彩梦陪您走过的日夜春秋——交通于你，也许不是两人三餐四季，但注定是一生相伴相许。</p>
-    </div>
-
-    <div class="container">
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-boom">即将推出</span><span class="timeline-date">2027 · 丁未羊年新春</span>
-            <h3>新春交通团拜会 · 2027</h3>
-            <p>一年一度的暑期交通主题展，包含模型展示、互动游戏、线路分享与爱好者交流会，欢迎各位交通迷前来相聚。</p>
-            <a class="top-btn"
-           href="https://tp.wjx.com/vm/eGc4anH.aspx#">
-          点击以投稿
-            </a>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">2026 · FUN肆暑期</span>
-            <h3>第二届“全都‘暑’于你”交通夏日展</h3>
-            <p>一年一度的暑期交通主题展再次巨献于世，包含创意展示、互动游戏、线路分享与爱好者交流汇演，是青春的声音，答时代之卷，全国各地交通迷前来相聚。</p>
-            <h5>人气作品投票正在进行中，点击链接即可参与——</h5>
-            <a class="top-btn"
-           href="https://tp.wjx.com/vm/eGc4anH.aspx#">
-          人气作品投票火热进行中🔥
-            </a>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">2026 · 丙午马年新春</span>
-            <h3>“聚‘交’生活 ‘马’上出发”新春交通团拜会</h3>
-            <p>新春佳节期间与交通爱好者朋友们相聚一堂，分享过去一年拍摄到的精彩瞬间，共同展望新年新气象。有趣的抽奖活动和共创团队的宣传推广新颖吸睛。活动收视取得历史新高的成绩！</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">2025 · 欢度暑期</span>
-            <h3>“全都‘暑’于你”交通夏日展</h3>
-            <p>盛夏时节的交通主题展览与互动活动，吸引了众多交通爱好者参与，留下了许多精彩瞬间。首次合作活动取得圆满成功，通过吸纳社会多元创作团队力量，不断精进发展壮大节目组。</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">2025 · 春季</span>
-            <h3>世界交通拜年纪</h3>
-            <h4>与</h4>
-            <h3>交通爱好者拜年汇</h3>
-            <p>两大节目组一拍即合，商议决定合作主办日后寒暑两场的交通盛会，用共创的尝试见证热爱的力量。</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">2025 · 乙巳蛇年新春</span>
-            <h3>2025年世界交通拜年纪</h3>
-            <p>春节期间举办的交通爱好者作品联欢活动，大家欢聚一堂，讨论区畅聊热爱，共贺新春。</p>
-            <h3>2025交通运输爱好者拜年汇</h3>
-            <p>广大交通爱好者踊跃投稿，欢聚一堂共庆新春佳节，共享新春盛宴。</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">2023 —— 2024</span>
-            <h3>世界交通拜年纪</h3>
-            <h4>与</h4>
-            <h3>交通运输爱好者拜年汇</h3>
-            <p>两个团队，一种热爱，用各自的声音向世界传递交通爱好的力量与温度。在B站平台分别开设直播间，开展多场优质交通创作主题活动——</p>
-          </div>
         </div>
       </div>
     </div>
-  </section>
-  
-  <!-- ============================================================
-       页面 ：新闻公告
-       ============================================================ -->
-  <section id="page-news" class="page">
-    <div class="project-hero container">
-      <h1>新闻公告</h1>
-      <p>最新动态、活动通知与重要公告都在这里汇集。一定有你想要找的东西……<P> <span style="font-size: 13px;"><b>同源转载</b>：指转载来源为本综合体或直联合作单位的文章内容；</span><p><span style="font-size: 13px;"><b>外源转载</b>：指转载来源为其他任一单位且经原创作者授权的文章内容。</span></p>
-    </div>
-      <div class="container">
-        <div class="news-filter-bar">
-          <div class="news-filter-item">
-            <span class="news-filter-icon" data-icon="date"><!-- 日期图标放这里 --></span>
-            <select id="newsFilterYear" class="news-filter-select">
-              <option value="all">全部日期</option>
-            </select>
-          </div>
-    
-          <div class="news-filter-item">
-            <span class="news-filter-icon" data-icon="category"><!-- 分类图标放这里 --></span>
-            <div id="newsFilterCategory" class="news-filter-cats">
-              <button class="news-filter-cat active" data-cat="all">全部</button>
-              <button class="news-filter-cat" data-cat="original">原创</button>
-              <button class="news-filter-cat" data-cat="repost-same">同源转载</button>
-              <button class="news-filter-cat" data-cat="repost-other">外源转载</button>
-              <button class="news-filter-cat" data-cat="uncategorized">未分类</button>
-            </div>
-          </div>
-    
-          <div class="news-filter-item">
-            <span class="news-filter-icon" data-icon="search"><!-- 搜索图标放这里 --></span>
-            <input id="newsFilterSearch" class="news-filter-input" type="text" placeholder="搜索标题、摘要或标签…">
-          </div>
-
-          <div class="news-filter-item">
-            <span class="news-filter-icon" data-icon="sort"><!-- 排序图标放这里 --></span>
-            <select id="newsSortSelect" class="news-filter-select">
-              <option value="">默认</option>
-              <option value="date">按日期排</option>
-              <option value="category">按分类排</option>
-              <option value="heat">按热度排</option>
-            </select>
-          </div>
-        </div>
-        
-        <div id="newsList" class="news-list"></div>
-        <div id="newsEmpty" class="empty-tip" style="display:none;">暂无符合条件的公告</div>
-      </div>
-  </section>
-  
-  <section id="page-news-detail" class="page">
-    <div class="container">
-      <div class="news-detail-wrap">
-        <a class="news-back" href="#news">← 返回公告列表</a>
-        <div id="newsDetailContent"></div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- ============================================================
-       页面 5：近期项目
-       ============================================================ -->
-  <section id="page-project" class="page">
-    <div class="project-hero container">
-      <h1>近期项目</h1>
-      <p>正在筹备、开发中或新鲜出炉的交通主题活动与共创项目，欢迎关注与参与。</p>
-      <p>此页面暂未开发完全，请移步其他页面使用——</p>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       页面 6：往期活动
-       ============================================================ -->
-  <section id="page-activities" class="page">
-    <h2 class="section-title">往期活动</h2>
-    <p class="section-subtitle">点击封面即可跳转观看精彩回放，点击分类标签或年份可按需筛选，我们一直在这里等你——</p>
-
-    <div class="filter-bar">
-      <div class="filter-group" id="tagFilterGroup">
-        <span class="filter-label">分类：</span>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">年份：</span>
-        <select class="year-select" id="yearSelect">
-          <option value="all">全部年份</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="card-grid" id="cardGrid"></div>
-  </section>
-
-  <!-- ============================================================
-       页面 7：版本日志
-       ============================================================ -->
-  <section id="page-versions" class="page">
-    <h2 class="section-title">版本日志</h2>
-    <p class="section-subtitle">走过的路，我们都在这里记着 >_< 更新是为了更好的出发……</p>
-    
-    <div class="container">
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-boom">🎉重磅推出</span><span class="timeline-date">Nov 1 2026</span>
-            <h3>Ver. 1.1.0</h3>
-            <p>修修补补，基本的功能终于成型啦！上次显示不出居然是因为Stupid少写了个结束符???害我找这么久。那么让我们恭喜多彩梦第一个网站成功上线运营！快来发现小彩蛋吧！*★,°*:.☆(￣▽￣)/$:*.°★* 。</p>
-            <h5> ……………………………………………… </h5>
-            <h5>访问有异常？功能有建议？（PS：🎁会随机掉落一些小礼物哟~~）</h5>
-            <a class="ext-btn"
-             href="https://space.bilibili.com/3493122325613305">
-             📕反馈给我们AwA
-            </a>
-            <h4> **************限时福利************** </h4>
-            <a class="ext-btn"
-             href="https://space.bilibili.com/3493122325613305">
-             集彩蛋 换惊喜🌟
-            </a>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">Oct 11 2026</span>
-            <h3>Ver. 1.0.1</h3>
-            <p>经过技术大佬指导，不断尝试过后……全新的综合体网站上线试运行，哈哈我成功了！O(∩_∩)O但是……往期活动怎么就是显示不出来呢？(・∀・(・∀・(・∀・*)……</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">Oct 10 2026</span>
-            <h3>Ver. 1.0.0 Beta</h3>
-            <p>好不容易写好的代码（PS：其实不是在问AI就是在问的路上，AI太好用了你知道吗！(●'◡'●)）终于同步到GitHub仓库，但不知为何就是不显示！（气得砸桌子）(╯▔皿▔)╯</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    
   </section>
 
 </main>
 
-<!-- <footer class="site-footer">
-  © 2026 多彩梦交通文化综合体 · 打造交通爱好者共建共享的开放平台
-</footer> -->
-
-
-<footer class="site-footer" id="siteFooter">
+<!-- 页脚 -->
+<footer class="site-footer">
   <div class="footer-inner">
-
     <div class="footer-col">
       <h4 class="footer-col-title">本站导航</h4>
       <ul class="footer-links">
         <li><a href="#home">组织简介</a></li>
         <li><a href="#contact">联系我们</a></li>
-        <li><a href="#coop">参与共创</a></li>
-        <li><a href="#history">历史进程</a></li>
-        <li><a href="#project">近期项目</a></li>
-        <li><a href="#activities">往期活动</a></li>
-        <!-- <li><a href="#versions">版本日志</a></li> -->
       </ul>
     </div>
-
-    <div class="footer-col">
-      <h4 class="footer-col-title">友情链接</h4>
-      <ul class="footer-links">
-        <li><a href="https://railmapgen.org/" target="_blank" rel="noopener noreferrer" >地铁线路图工具包<i>(Rail Map Gen)</i></a><p class="inline-p">（2026新春会赞助单位）</p></li>
-        <li><a href="https://metro-lingnandongdao.github.io/lingnan-portfolio/" target="_blank" rel="noopener noreferrer">嶺南東道</a><p class="inline-p">（世界交通拜年纪海外区总负责）</p></li>
-        <li><a href="https://imgnews.cn" target="_blank" rel="noopener noreferrer">无限广播电视总台<i>(IMG)</i></a><p class="inline-p">（2025-2026节目独家播送单位）</p></li>
-        
-      </ul>
-    </div>
-
     <div class="footer-col">
       <h4 class="footer-col-title">找到我们</h4>
       <ul class="footer-links">
-        <li>
-          <img class="icon icon-sm" src="assets/icons/gongZhongHao.svg" alt="">
-          微信公众号【交建文宣】
-        </li>
-        <li>
-          <img class="icon icon-sm" src="assets/icons/shiPingHao.svg" alt="">
-          微信视频号【交建视宣】
-        </li>
-        <li>
-          <img class="icon icon-sm" src="assets/icons/QQ.svg" alt="">
-          QQ 群号【681027226】
-        </li>
-        <li>
-          <a href="https://qm.qq.com/q/oQ98zsteNO">
-            <img class="icon icon-sm" src="" alt="">
-            → 加入2027年新春交通团拜会意向投稿QQ群 
-          </a>
-        </li>
-        <li>
-          <img class="icon icon-sm" src="assets/logo/bilibili.png" alt="">
-          B 站 【创作者账号矩阵】
-        </li>
-        <li>
-          <a href="https://space.bilibili.com/3493122325613305">
-            <img class="icon icon-sm" src="" alt="">
-            → B站主页 @杭临新铁HanglinRail
-          </a><br />
-          <a href="https://space.bilibili.com/3546601293351293">
-            <img class="icon icon-sm" src="" alt="">
-            → B站主页 @世界交通拜年纪
-          </a><br />
-          <a href="https://space.bilibili.com/32799686">
-            <img class="icon icon-sm" src="" alt="">
-            → B站主页 @御坂75900号
-          </a>
-        </li>
+        <li>微信公众号【交建文宣】</li>
+        <li>微信视频号【交建视宣】</li>
+        <li>QQ 群号【681027226】</li>
+        <li><a href="https://space.bilibili.com/3493122325613305" target="_blank" rel="noopener noreferrer">B 站 @杭临新铁HanglinRail</a></li>
       </ul>
     </div>
-
   </div>
-
   <div class="footer-bottom">
-    <h5><i> Copyright 2025-2026 © Dotsmile TCU. All Rights Reserved</i></h5>
-    <h4>合作单位：交通爱好者协会、世界交通拜年纪、交通爱好者拜年汇</h4>
-    <p>荣誉出品单位：华杭（浙江）视音讯工作室</p>
-    <p>节目独家播送单位：无限广播电视总台（IMG）</p>
-    <h4><em>特别鸣谢</em></h4>
-    <p>网站开发协助：嶺南東道</p>
-    <h4>多彩梦交通文化综合体 · 致力于打造交通爱好者共建共享的开放平台</h4>
-    <p style="font-size: calc(1em - 3px);">声明：本网站部分内容来源于网络与社会各界人士投稿, 如有侵权请联系删除. 外部链接内容不代表本站立场. </p>
+    <p>Copyright 2025-2026 © Dotsmile TCU. All Rights Reserved</p>
+    <p>多彩梦交通文化综合体 · 致力于打造交通爱好者共建共享的开放平台</p>
+    <p style="font-size: calc(1em - 3px);">当前为测试页面，正式内容请稍后访问。</p>
   </div>
 </footer>
 
 <script>
-/* ============================================================
-   ★★★ 活动数据配置区 ★★★
-
-   字段说明：#老的……不用
-   - bvid       : B站视频 BV 号（必填），也支持粘贴完整视频链接
-   - year       : 年份（必填），例如 "2025"
-   - tags       : 标签数组（必填），例如 ["交通夏日展", "线下"]
-   - customText : 卡片标题文字（选填）。不填自动读 B站标题
-   - customDesc : 卡片简介文字（选填）。不填自动读 B站简介
-   - label      : 卡片左上角小标签（选填）
-
-   优先级：
-   标题：customText → B站标题 → "未命名活动"
-   简介：customDesc → B站简介 → 不显示
-
-  cover：封面图片路径，必须是你上传到仓库的图片。
-  link：点击封面跳转的 B站视频完整链接。
-  title：卡片标题，手动填。
-  desc：卡片简介，选填，不填就不显示。
-  views / likes / coins：直接填显示文字，可以写 "1.2万"、"856"，也可以写 "—" 表示暂无。
-  year：年份，用于筛选。
-  tags：标签数组，用于分类筛选。
-  label：卡片左上角小徽章，选填。
-  labelStyle: 徽章样式
-
-   ============================================================ */
-  /* 样式一览
-    summer：暑期活动，橙黄渐变 
-    spring：新春活动，红色喜庆 
-    special：特别企划，紫色高亮
-    online：线上活动，蓝色
-    offline：线下活动，绿色
-    annual：年度活动，深蓝金边
-    hot：热门/推荐，红橙渐变
-    new：新活动，青绿渐变
-  */
-const ACTIVITIES = [
-  {
-    cover: "images/BV1558B6GEun.jpg",
-    link: "https://www.bilibili.com/video/BV1558B6GEun",
-    title: "第二届「全都暑于你」交通夏日展（下半场）",
-    desc: "这是“全都暑于你”【2026年度第二届交通夏日展】的回放（下半部分），敬请观看……",
-    views: "1000+",
-    likes: "100+",
-    coins: "2",
-    year: "2026",
-    tags: ["交通夏日展","正片"],
-    label: "夏日展",
-    labelStyle: "new"          // ← 新增：使用Label样式
-  },
-  {
-    cover: "images/BV1N6bi6XE5Q.jpg",
-    link: "https://www.bilibili.com/video/BV1N6bi6XE5Q/",
-    title: "第二届「全都暑于你」交通夏日展（上半场）",
-    desc: "这是“全都暑于你”【2026年度第二届交通夏日展】的回放（上半部分），敬请观看……",
-    views: "1000+",
-    likes: "100+",
-    coins: "3",
-    year: "2026",
-    tags: ["交通夏日展","正片"],
-    label: "夏日展",
-    labelStyle: "summer"
-  },
-  {
-    cover: "images/BV17NfGByEeY.jpg",
-    link: "https://www.bilibili.com/video/BV17NfGByEeY",
-    title: "「聚交生活 马上出发」新春交通团拜会（正片下半场）",
-    desc: "这是【2026“聚‘交’生活 马上出发”新春交通团拜会】活动的直播回放（下半部分），敬请观看……",
-    views: "1000+",
-    likes: "100+",
-    coins: "10+",
-    year: "2026",
-    tags: ["新春交通团拜会","正片"],
-    label: "新春会",
-    labelStyle: "spring"
-  },
-  {
-    cover: "images/BV1mqZ2BdEDM.jpg",
-    link: "https://www.bilibili.com/video/BV1mqZ2BdEDM",
-    title: "「聚交生活 马上出发」新春交通团拜会（正片上半场）",
-    desc: "这是【2026“聚‘交’生活 马上出发”新春交通团拜会】活动的直播回放（上半部分），敬请观看……",
-    views: "1000+",
-    likes: "200+",
-    coins: "30+",
-    year: "2026",
-    tags: ["新春交通团拜会","正片"],
-    label: "新春会",
-    labelStyle: "spring"
-  },
-  {
-    cover: "images/BV1ByAzziEXA.jpg",
-    link: "https://www.bilibili.com/video/BV1ByAzziEXA",
-    title: "「聚交生活 马上出发」新春交通团拜会（预热场）",
-    desc: "“2025次列车已经停运，请转乘2026次列车继续你的行程。祝您旅途愉快顺利！”……",
-    views: "1000+",
-    likes: "~100",
-    coins: "9",
-    year: "2026",
-    tags: ["新春交通团拜会"],
-    label: "新春会",
-    labelStyle: "special"
-  },
-  {
-    cover: "images/BV1N1YWz1E8u.jpg",
-    link: "https://www.bilibili.com/video/BV1N1YWz1E8u",
-    title: "「全都暑于你」交通夏日展（下半场）",
-    desc: "这是“全都暑于你”【2025年度暑期作品展播】的回放精彩回看（下半部分），敬请观看。",
-    views: "1000+",
-    likes: "~100",
-    coins: "5",
-    year: "2025",
-    tags: ["交通夏日展","正片"],
-    label: "夏日展",
-    labelStyle: "summer"
-  },
-  {
-    cover: "images/BV1FhYCzoEWp.jpg",
-    link: "https://www.bilibili.com/video/BV1FhYCzoEWp",
-    title: "「全都暑于你」交通夏日展（上半场）",
-    desc: "这是“全都暑于你”【2025年度暑期作品展播】的回放精彩回看（上半部分），敬请观看。",
-    views: "1000+",
-    likes: "90",
-    coins: "9",
-    year: "2025",
-    tags: ["交通夏日展","正片"],
-    label: "夏日展",
-    labelStyle: "summer"
-  },
-];
-
-
-/* ============================================================
-   一、路由 / 页面切换
-   ============================================================ */
-(function setupRouter() {
-  const pages = ["home", "contact", "coop", "project", "news", "history", "activities", "versions"];
+(function () {
+  const pages = ["home", "contact"];
 
   function switchPage(name) {
-
-    if (name.startsWith("news/")) {
-      const id = name.slice(5);
-      document.querySelectorAll(".page").forEach(el => el.classList.remove("active"));
-      document.getElementById("page-news-detail").classList.add("active");
-      renderNewsDetail(id);
-      document.querySelectorAll(".nav-link").forEach(el => {
-        el.classList.toggle("active", el.dataset.page === "news");
-      });
-      const dd = document.getElementById("hamburgerDropdown");
-      if (dd) dd.classList.remove("show");
-      const footer = document.getElementById("siteFooter");
-      if (footer) footer.style.display = "";
-      window.scrollTo({ top: 0, behavior: "instant" });
-      return;
-    }
-    
     if (!pages.includes(name)) name = "home";
     document.querySelectorAll(".page").forEach(el => el.classList.remove("active"));
     const target = document.getElementById("page-" + name);
@@ -2679,16 +602,6 @@ const ACTIVITIES = [
     document.querySelectorAll(".nav-link").forEach(el => {
       el.classList.toggle("active", el.dataset.page === name);
     });
-
-    const dd = document.getElementById("hamburgerDropdown");
-    if (dd) dd.classList.remove("show");
-
-    // 页脚显示 / 隐藏
-    const footer = document.getElementById("siteFooter");
-    if (footer) {
-      const hideOnPages = ["activities"];
-      footer.style.display = hideOnPages.includes(name) ? "none" : "";
-    }
 
     window.scrollTo({ top: 0, behavior: "instant" });
   }
@@ -2700,1505 +613,8 @@ const ACTIVITIES = [
 
   window.addEventListener("hashchange", handleHash);
   handleHash();
-
-  const btn = document.getElementById("hamburgerBtn");
-  const dd = document.getElementById("hamburgerDropdown");
-  if (btn && dd) {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      dd.classList.toggle("show");
-    });
-    document.addEventListener("click", () => dd.classList.remove("show"));
-    dd.addEventListener("click", (e) => e.stopPropagation());
-  }
 })();
-
-
-/* ============================================================
-   二、往期活动逻辑（含三重代理 + 数据校验）
-   ============================================================ */
-
-function extractBvid(input) {
-  if (!input) return "";
-  const s = String(input).trim();
-  if (/^BV[0-9A-Za-z]+$/.test(s)) return s;
-  const match = s.match(/BV[0-9A-Za-z]+/);
-  return match ? match[0] : s;
-}
-
-function formatNumber(n) {
-  if (n === undefined || n === null || isNaN(n)) return "—";
-  if (n >= 100000000) return (n / 100000000).toFixed(1) + "亿";
-  if (n >= 10000) return (n / 10000).toFixed(1) + "万";
-  return String(n);
-}
-
-async function fetchBiliInfo(bvid) {
-  if (!bvid) return null;
-  const api = `https://api.bilibili.com/x/web-interface/view?bvid=${encodeURIComponent(bvid)}`;
-
-  const attempts = [
-    async () => {
-      const r = await fetch(api, { referrerPolicy: "no-referrer" });
-      if (!r.ok) throw new Error("直连失败 " + r.status);
-      return await r.json();
-    },
-    async () => {
-      const r = await fetch("https://api.allorigins.win/raw?url=" + encodeURIComponent(api));
-      if (!r.ok) throw new Error("allorigins 失败 " + r.status);
-      return await r.json();
-    },
-    async () => {
-      const r = await fetch("https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(api));
-      if (!r.ok) throw new Error("codetabs 失败 " + r.status);
-      return await r.json();
-    }
-  ];
-
-  for (let i = 0; i < attempts.length; i++) {
-    try {
-      const json = await attempts[i]();
-      if (json && json.code === 0 && json.data) {
-        const d = json.data;
-        return {
-          title: d.title || "",
-          desc: d.desc || "",
-          pic: d.pic || "",
-          views: d.stat ? d.stat.view : null,
-          likes: d.stat ? d.stat.like : null,
-          link: `https://www.bilibili.com/video/${bvid}`
-        };
-      }
-    } catch (e) {
-      console.warn("[往期活动] 通道 " + (i + 1) + " 失败:", e.message);
-    }
-  }
-  console.warn("[往期活动] 所有通道均失败，BV号:", bvid);
-  return null;
-}
-
-  /*
-let allCards = [];
-let currentTag = "all";
-let currentYear = "all";
-
-function renderCards() {
-  const grid = document.getElementById("cardGrid");
-  if (!grid) return;
-
-  const filtered = allCards.filter(card => {
-    const tagOk = currentTag === "all" || (card.tags || []).includes(currentTag);
-    const yearOk = currentYear === "all" || card.year === currentYear;
-    return tagOk && yearOk;
-  });
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `<div class="empty-tip">暂无符合条件的活动</div>`;
-    return;
-  }
-
-  grid.innerHTML = filtered.map(card => {
-    const info = card.info || {};
-
-    const titleText = card.customText || info.title || "未命名活动";
-    const descText  = card.customDesc || info.desc  || "";
-
-    const coverHtml = info.pic
-      ? `<a class="card-cover" href="${info.link}" target="_blank" rel="noopener noreferrer">
-           <img src="${info.pic}" alt="${titleText}"
-                referrerpolicy="no-referrer" loading="lazy">
-         </a>`
-      : `<div class="card-cover"><div class="cover-placeholder">封面加载中…</div></div>`;
-
-    return `
-      <div class="card">
-        <div class="card-header">
-          ${card.label ? `<span class="card-label">${card.label}</span>` : ""}
-          <div class="card-title-text">${titleText}</div>
-          ${descText ? `<div class="card-desc">${descText}</div>` : ""}
-        </div>
-        ${coverHtml}
-        <div class="card-footer">
-          <span>▶ ${formatNumber(info.views)}</span>
-          <span>👍 ${formatNumber(info.likes)}</span>
-        </div>
-      </div>
-    `;
-  }).join("");
-}
-
-function renderTagFilter() {
-  const group = document.getElementById("tagFilterGroup");
-  if (!group) return;
-
-  const allTags = new Set();
-  allCards.forEach(card => {
-    (card.tags || []).forEach(t => allTags.add(t));
-  });
-
-  group.innerHTML = '<span class="filter-label">分类：</span>';
-
-  const allBtn = document.createElement("button");
-  allBtn.className = "tag-btn" + (currentTag === "all" ? " active" : "");
-  allBtn.textContent = "全部";
-  allBtn.onclick = () => { currentTag = "all"; renderTagFilter(); renderCards(); };
-  group.appendChild(allBtn);
-
-  [...allTags].sort().forEach(tag => {
-    const btn = document.createElement("button");
-    btn.className = "tag-btn" + (currentTag === tag ? " active" : "");
-    btn.textContent = tag;
-    btn.onclick = () => { currentTag = tag; renderTagFilter(); renderCards(); };
-    group.appendChild(btn);
-  });
-}
-
-function renderYearFilter() {
-  const sel = document.getElementById("yearSelect");
-  if (!sel) return;
-
-  const years = [...new Set(allCards.map(c => c.year).filter(Boolean))].sort().reverse();
-  sel.innerHTML = '<option value="all">全部年份</option>';
-  years.forEach(y => {
-    const opt = document.createElement("option");
-    opt.value = y;
-    opt.textContent = y + " 年";
-    if (currentYear === y) opt.selected = true;
-    sel.appendChild(opt);
-  });
-  sel.onchange = () => { currentYear = sel.value; renderCards(); };
-}
-
-async function initActivities() {
-  const grid = document.getElementById("cardGrid");
-  if (!grid) return;
-
-  try {
-    if (!Array.isArray(ACTIVITIES)) {
-      throw new Error("ACTIVITIES 不是一个数组，请检查语法");
-    }
-
-    allCards = ACTIVITIES.map(item => {
-      if (!item || typeof item !== "object") {
-        console.warn("[往期活动] 跳过非对象项:", item);
-        return null;
-      }
-      const bvid = extractBvid(item.bvid);
-      if (!bvid || !/^BV/.test(bvid)) {
-        console.warn("[往期活动] 跳过无效 bvid:", item);
-        return null;
-      }
-      return {
-        ...item,
-        bvid,
-        tags: Array.isArray(item.tags) ? item.tags : [],
-        info: null
-      };
-    }).filter(Boolean);
-
-    renderTagFilter();
-    renderYearFilter();
-    renderCards();
-
-    await Promise.all(allCards.map(async (card) => {
-      try {
-        card.info = await fetchBiliInfo(card.bvid);
-      } catch (e) {
-        console.warn("[往期活动] 拉取失败:", card.bvid, e);
-      }
-    }));
-
-    renderCards();
-
-  } catch (err) {
-    console.error("[往期活动] 初始化失败:", err);
-    grid.innerHTML =
-      `<div class="empty-tip">
-         ⚠️ 数据加载出错：${err.message}<br>
-         <span style="font-size:12px;color:#bbb;">
-           请检查 const ACTIVITIES 的语法（逗号、引号、括号）
-         </span>
-       </div>`;
-  }
-}
-
-initActivities();
-*/
-
-/* ============================================================
-   往期活动：纯手动数据，无需 API
-   ============================================================ */
-
-let allCards = [];
-let currentTag = "all";
-let currentYear = "all";
-
-function renderCards() {
-  const grid = document.getElementById("cardGrid");
-  if (!grid) return;
-
-  const filtered = allCards.filter(card => {
-    const tagOk = currentTag === "all" || (card.tags || []).includes(currentTag);
-    const yearOk = currentYear === "all" || card.year === currentYear;
-    return tagOk && yearOk;
-  });
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `<div class="empty-tip">暂无符合条件的活动</div>`;
-    return;
-  }
-
-  grid.innerHTML = filtered.map(card => {
-    // const coverHtml = card.cover
-    //   ? `<a class="card-cover" href="${card.link}" target="_blank" rel="noopener noreferrer">
-    //        <img src="${card.cover}" alt="${card.title}" loading="lazy">
-    //      </a>`
-    //   : `<div class="card-cover"><div class="cover-placeholder">暂无封面</div></div>`;
-    const PLACEHOLDER = "images/placeholder.jpg";
-    
-    const fallbackHtml = `<div class="cover-placeholder">暂无封面</div>`;
-    
-    const coverHtml = card.cover
-      ? `<a class="card-cover" href="${card.link}" target="_blank" rel="noopener noreferrer">
-           <img src="${card.cover}"
-                alt="${card.title}"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='${PLACEHOLDER}';this.onerror=function(){this.parentNode.innerHTML='<div class=\\'cover-placeholder\\'>暂无封面</div>';};">
-         </a>`
-      : `<a class="card-cover" href="${card.link}" target="_blank" rel="noopener noreferrer">
-           <img src="${PLACEHOLDER}" alt="${card.title}" loading="lazy">
-         </a>`;
-
-    const statsHtml = [
-      card.views ? `<span>📺 ${card.views}</span>` : "",
-      card.likes ? `<span>👍 ${card.likes}</span>` : "",
-      card.coins ? `<span>🪙 ${card.coins}</span>` : ""
-    ].filter(Boolean).join("");
-
-    return `
-      <div class="card">
-        <div class="card-header">
-          ${card.label
-            ? `<span class="card-label${card.labelStyle ? " label-" + card.labelStyle : ""}">${card.label}</span>`
-            : ""}
-          <div class="card-title-text">${card.title || "未命名活动"}</div>
-          ${card.desc ? `<div class="card-desc">${card.desc}</div>` : ""}
-        </div>
-        ${coverHtml}
-        <div class="card-footer">${statsHtml}</div>
-      </div>
-    `;
-  }).join("");
-}
-// ${card.label ? `<span class="card-label">${card.label}</span>` : ""}
-function renderTagFilter() {
-  const group = document.getElementById("tagFilterGroup");
-  if (!group) return;
-
-  const allTags = new Set();
-  allCards.forEach(card => {
-    (card.tags || []).forEach(t => allTags.add(t));
-  });
-
-  group.innerHTML = '<span class="filter-label">分类：</span>';
-
-  const allBtn = document.createElement("button");
-  allBtn.className = "tag-btn" + (currentTag === "all" ? " active" : "");
-  allBtn.textContent = "全部";
-  allBtn.onclick = () => { currentTag = "all"; renderTagFilter(); renderCards(); };
-  group.appendChild(allBtn);
-
-  [...allTags].sort().forEach(tag => {
-    const btn = document.createElement("button");
-    btn.className = "tag-btn" + (currentTag === tag ? " active" : "");
-    btn.textContent = tag;
-    btn.onclick = () => { currentTag = tag; renderTagFilter(); renderCards(); };
-    group.appendChild(btn);
-  });
-}
-
-function renderYearFilter() {
-  const sel = document.getElementById("yearSelect");
-  if (!sel) return;
-
-  const years = [...new Set(allCards.map(c => c.year).filter(Boolean))].sort().reverse();
-  sel.innerHTML = '<option value="all">全部年份</option>';
-  years.forEach(y => {
-    const opt = document.createElement("option");
-    opt.value = y;
-    opt.textContent = y + " 年";
-    if (currentYear === y) opt.selected = true;
-    sel.appendChild(opt);
-  });
-  sel.onchange = () => { currentYear = sel.value; renderCards(); };
-}
-
-function initActivities() {
-  const grid = document.getElementById("cardGrid");
-  if (!grid) return;
-
-  try {
-    allCards = (Array.isArray(ACTIVITIES) ? ACTIVITIES : []).filter(item => {
-      if (!item || typeof item !== "object") {
-        console.warn("[往期活动] 跳过非对象项:", item);
-        return false;
-      }
-      if (!item.title && !item.cover) {
-        console.warn("[往期活动] 缺少 title 和 cover，跳过:", item);
-        return false;
-      }
-      return true;
-    }).map(item => ({
-      ...item,
-      tags: Array.isArray(item.tags) ? item.tags : []
-    }));
-
-    renderTagFilter();
-    renderYearFilter();
-    renderCards();
-
-  } catch (err) {
-    console.error("[往期活动] 初始化失败:", err);
-    grid.innerHTML = `<div class="empty-tip">⚠️ 数据格式有误：${err.message}</div>`;
-  }
-}
-
-initActivities();
-
-//   新闻公告模板
-// {
-//   id: "唯一编号",  // ID默认格式可自定义，若留空则为Date八位数字+两位代号
-//   date: "2026-11-07",
-//   title: "公告标题",
-//   summary: "列表页摘要",
-//   tags: ["标签1", "标签2"],
-//   priority: "medium",   //默认low；分为high medium low三档(priority 不写或写错时，默认按 "low" 处理，不弹窗。)
-  /* high：弹窗，必须点“×”或“确认”才关闭。
-  medium：弹窗，带 5 秒进度条，5 秒后自动关闭，也可以提前点“×”或“确认”。
-  low：不弹窗，但要把本地记录更新为当前 id，这样下次也不会弹。*/
-//   imagePosition: "top",   // "top" 或 "bottom"，不写默认 bottom
-//   source: "original"        // 原创
-  // source: "repost-same"     // 同源转载
-  // source: "repost-other"    // 外源转载
-  // source: "uncategorized"   // 未分类
-// 不写 = 不显示任何标识
-//   heat: 95,          // 自定义热度，数字越大越靠前，不写按 0 处理
-//   hidden: true,      // true 隐藏，false 或不写则正常显示
-//   wordFile: "newsWord/2026-summer-expo.docx",   // ← 新增
-//   content: ""   // 可以留空，详情页会优先读 wordFile
-//   content: `
-//     <p>正文第一段。</p>
-//     <p>正文第二段。</p>
-//   `
-// },
-
-  
-const NEWS = [
-  {
-    id: "",
-    date: "2026-11-7",
-    title: "2026交通夏日展人气作品投票评选活动结果公示",
-    summary: "第二届「全都暑于你」交通夏日展人气作品票选活动结果新鲜出炉，2026交通夏日展圆满落幕。",
-    tags: ["交通夏日展", "人气作品", "网络投票"],
-    priority: "medium", 
-    imagePosition: "top",   // "top" 或 "bottom"，不写默认 bottom
-    source: "repost-same",     // 同源转载
-    type: "notice",
-    scope: "platform",
-    content: `
-      <p>日前，2026交通夏日展组委会、节目组面向广大交通爱好者发起《你最喜欢的<2026夏日展>作品人气投票》活动，持续一个月有余。</p>
-      <p>人气投票活动已于昨日（2026年11月6日）晚23时截止。活动结果如下：</p>
-      <img src="newsPic/202611070101.png" alt="">
-      <p>恭喜以上中奖的创作者，接下来是兑换方式介绍：<p>您可以在【2026年12月5日0时前】通过任一联系组委会的渠道，发送您的中奖情况与我们取得联系并确认。（请联系<a href="https://space.bilibili.com/3493122325613305" target="_blank" rel="noopener noreferrer">B站</a>或QQ或微信@杭临新铁，或见文后微信公众号后台回复也可，周中回复不及时请谅解。如果您在截止日期前发送但未 能及时收到回复，也将在期后为您补发。）<p>核查无误后工作人员会提示您需要提供的信息或选择事项，奖品一般确保在三十日内完成发放。<p>再次感谢各位创作者的参与！至此本次2026年夏日展的系列活动圆满结束了，我们2027年新春佳节再会！<p>另：2027新春会正在火热筹备中，敬请期待！</p>
-      <p><i><span style="font-size: 13px;">来源：微信公众号“交建文宣”2026年11月7日发布推文<a href="https://mp.weixin.qq.com/s/ipk6Hz2mbJqNvhYynQHwHA" target="_blank" rel="noopener noreferrer"><strong>《号外！2026夏日展人气作品投票结果出炉！》</strong></a>。</span></i></p>
-    `
-  },
-  {
-    id: "",
-    date: "2026-11-7",
-    title: "平台公示标识显示测试",
-    summary: "...",
-    tags: [],
-    priority: "medium",
-    imagePosition: "top",
-    source: "repost-same",
-    hidden: true,
-    type: "notice",              // ← 加这行
-    scope: "platform",           // ← 加这行
-    content: `...`
-  },
-  {
-    id: "",
-    date: "2026-10-9",
-    title: "测试详情页渲染word",
-    summary: "",
-    tags: ["测试"],
-    priority: "high",
-    source: "original",
-    hidden: true,
-    heat: 95,
-    wordFile: "newsWord/测试文档.docx",
-    content: ""
-  },
-  {
-    id: "",
-    date: "2026-10-9",
-    title: "测试高优先级",
-    summary: "测试高优先级。",
-    tags: ["测试"],
-    priority: "high",
-    source: "original",
-    heat: 95,
-    hidden: true,
-    content: `
-      <p>测试公告。这条高优先级。</p>
-      `
-  },
-  {
-    id: "",
-    date: "2026-12-7",
-    title: "测试中优先级",
-    summary: "测试中优先级。",
-    tags: ["测试"],
-    priority: "medium",
-    imagePosition: "",   // "top" 或 "bottom"，不写默认 bottom
-    source: "", 
-    hidden: true, 
-    content: `
-      <p>测试公告。这条中优先级。</p>
-      `
-  },
-];
-
-/* ============================================================
-   自动补全 NEWS 中为空的 id
-   规则：日期八位数字 + 两位顺序号，如 2026071501
-   ============================================================ */
-/* 把任意可解析的日期转成八位 YYYYMMDD；解析失败返回 00000000 */
-function toEightDigitDate(input) {
-  if (!input) return "00000000";
-
-  let d = new Date(input);
-
-  // 兼容 "07-15"、"12-06" 这种缺年份的写法，补当前年
-  if (isNaN(d.getTime()) && /^\d{1,2}-\d{1,2}$/.test(String(input).trim())) {
-    const now = new Date();
-    d = new Date(`${now.getFullYear()}-${String(input).trim()}`);
-  }
-
-  if (isNaN(d.getTime())) return "00000000";
-
-  const y = String(d.getFullYear()).padStart(4, "0");
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return y + m + day;
-}
-
-/* 把日期统一显示为 YYYY-M-D（月、日不补零） */
-function formatDisplayDate(input) {
-  if (!input) return "";
-  const d = new Date(input);
-  if (isNaN(d.getTime())) return String(input);
-  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-}
-  
-function fillNewsIds() {
-  if (!Array.isArray(NEWS)) return;
-
-  // 先收集已存在的 id，避免生成时冲突
-  const used = new Set(
-    NEWS.map(n => n && n.id).filter(Boolean)
-  );
-
-  NEWS.forEach(item => {
-    if (!item || typeof item !== "object") return;
-    if (item.id && String(item.id).trim() !== "") return; // 已有 id，跳过
-
-    // 取日期八位数字
-    // const dateStr = String(item.date || "").replace(/\D/g, "").slice(0, 8);
-    // const base = dateStr || "00000000";
-
-    // 取日期八位数字（YYYYMMDD），不依赖原始字符串格式
-    const base = toEightDigitDate(item.date);
-
-    // 从 01 开始找第一个没被占用的编号
-    let seq = 1;
-    let candidate = "";
-    do {
-      candidate = base + String(seq).padStart(2, "0");
-      seq++;
-    } while (used.has(candidate));
-
-    item.id = candidate;
-    used.add(candidate);
-  });
-}
-
-function buildSourceBadge(source) {
-  if (source === "original")      return `<span class="news-source-badge original">原创</span>`;
-  if (source === "repost-same")   return `<span class="news-source-badge repost-same">同源转载</span>`;
-  if (source === "repost-other")  return `<span class="news-source-badge repost-other">外源转载</span>`;
-  // if (source === "uncategorized") return `<span class="news-source-badge uncategorized">未分类</span>`;
-  // 不写、写空、写其他值，一律按未分类处理
-  return `<span class="news-source-badge uncategorized">未分类</span>`;
-  // return "";
-}
-
-/* ---------- 类型标识：新闻 / 公告 ---------- */
-function buildTypeBadge(type) {
-  if (type === "news")   return `<span class="news-type-badge news">新闻</span>`;
-  if (type === "notice") return `<span class="news-type-badge notice">公告</span>`;
-  return "";
-}
-
-/* ---------- 归属范围标识：系统 / 平台 / 其他，支持 other:具体类别 ---------- */
-const NEWS_SCOPE_MAP = {
-  system:   { label: "系统", cls: "scope-system" },
-  platform: { label: "平台", cls: "scope-platform" },
-  other:    { label: "其他", cls: "scope-other" }
-};
-
-function buildScopeBadge(scope) {
-  if (!scope) return "";
-
-  const raw = String(scope);
-  const idx = raw.indexOf(":");
-  const mainKey = (idx >= 0 ? raw.slice(0, idx) : raw).trim().toLowerCase();
-  const subLabel = idx >= 0 ? raw.slice(idx + 1).trim() : "";
-
-  const info = NEWS_SCOPE_MAP[mainKey];
-  const mainHtml = info
-    ? `<span class="news-scope-badge ${info.cls}">${info.label}</span>`
-    : `<span class="news-scope-badge scope-default">${mainKey || raw}</span>`;
-
-  const subHtml = subLabel
-    ? `<span class="news-scope-badge scope-sub">${subLabel}</span>`
-    : "";
-
-  return mainHtml + subHtml;
-}
-  
-/* ---------- 筛选状态 ---------- */
-let newsFilterYear = "all";
-let newsFilterCategory = "all";
-let newsFilterKeyword = "";
-let newsSortMode = "";   // date | category | heat
-renderNewsList(); 
-  
-function getNewsYear(item) {
-  const d = new Date(item.date || "");
-  if (isNaN(d.getTime())) return "";
-  return String(d.getFullYear());
-}
-
-function buildYearOptions() {
-  const sel = document.getElementById("newsFilterYear");
-  if (!sel) return;
-
-  const years = [...new Set(NEWS.map(getNewsYear).filter(Boolean))].sort().reverse();
-  sel.innerHTML = '<option value="all">全部日期</option>';
-  years.forEach(y => {
-    const opt = document.createElement("option");
-    opt.value = y;
-    opt.textContent = y + " 年";
-    sel.appendChild(opt);
-  });
-  sel.value = newsFilterYear;
-}
-
-/* ============================================================
-function filterNews() {
-  return NEWS.filter(item => {
-    if (newsFilterYear !== "all" && getNewsYear(item) !== newsFilterYear) return false;
-    // if (newsFilterCategory !== "all" && item.source !== newsFilterCategory) return false;
-    const itemCategory = item.source || "uncategorized";
-    if (newsFilterCategory !== "all" && itemCategory !== newsFilterCategory) return false;
-    if (newsFilterKeyword) {
-      const kw = newsFilterKeyword.toLowerCase();
-      const text = [item.title || "", item.summary || "", ...(item.tags || [])].join(" ").toLowerCase();
-      if (!text.includes(kw)) return false;
-    }
-    return true;
-  });
-}
-   ============================================================ */
-
-/* function filterNews() {
-  const kw = newsFilterKeyword.toLowerCase();
-
-  return NEWS.filter(item => {
-    const isHidden = item.hidden === true;
-
-    // 隐藏文章：只有搜索词精确等于 id 或完整标题时才出现
-    if (isHidden) {
-      const exactId = item.id && kw === String(item.id).toLowerCase();
-      const exactTitle = item.title && kw === String(item.title).toLowerCase();
-      if (!exactId && !exactTitle) return false;
-      // 精确命中后，不再受其他筛选条件限制，直接展示
-      return true;
-    }
-
-    // 正常文章：走原有筛选逻辑
-    if (newsFilterYear !== "all" && getNewsYear(item) !== newsFilterYear) return false;
-    const itemCategory = item.source || "uncategorized";
-    if (newsFilterCategory !== "all" && itemCategory !== newsFilterCategory) return false;
-    if (kw) {
-      const text = [item.title || "", item.summary || "", ...(item.tags || [])].join(" ").toLowerCase();
-      if (!text.includes(kw)) return false;
-    }
-    return true;
-  });
-} */
-
-function filterNews() {
-  const kw = newsFilterKeyword.toLowerCase();
-
-  return NEWS.filter(item => {
-    const isHidden = item.hidden === true;
-    const idStr = String(item.id || "").toLowerCase();
-    const titleStr = String(item.title || "").toLowerCase();
-
-    // 隐藏文章：只有搜索词精确等于 id 或完整标题时才出现
-    if (isHidden) {
-      const exactId = idStr && kw === idStr;
-      const exactTitle = titleStr && kw === titleStr;
-      if (!exactId && !exactTitle) return false;
-      return true;
-    }
-
-    // 正常文章：先走日期、分类筛选
-    if (newsFilterYear !== "all" && getNewsYear(item) !== newsFilterYear) return false;
-    const itemCategory = item.source || "uncategorized";
-    if (newsFilterCategory !== "all" && itemCategory !== newsFilterCategory) return false;
-
-    // 正常文章关键词搜索：标题、摘要、标签、id 都参与模糊匹配
-    if (kw) {
-      const text = [
-        titleStr,
-        String(item.summary || "").toLowerCase(),
-        ...(item.tags || []).map(t => String(t).toLowerCase()),
-        idStr
-      ].join(" ");
-      if (!text.includes(kw)) return false;
-    }
-
-    return true;
-  });
-}
-  
-const NEWS_CATEGORY_ORDER = {
-  "original": 0,
-  "repost-same": 1,
-  "repost-other": 2,
-  "uncategorized": 3
-};
-
-function sortNewsList(arr) {
-  const copy = [...arr];
-
-  const dateValue = item => {
-    const t = new Date(item.date || "").getTime();
-    return isNaN(t) ? -Infinity : t;
-  };
-
-  if (newsSortMode === "date") {
-    copy.sort((a, b) => dateValue(b) - dateValue(a));
-  } 
-  else if (newsSortMode === "category") {
-    copy.sort((a, b) => {
-      const ca = NEWS_CATEGORY_ORDER[a.source || "uncategorized"] ?? 3;
-      const cb = NEWS_CATEGORY_ORDER[b.source || "uncategorized"] ?? 3;
-      if (ca !== cb) return ca - cb;
-      return dateValue(b) - dateValue(a);
-    });
-  } 
-  else if (newsSortMode === "heat") {
-    copy.sort((a, b) => {
-      const ha = Number(a.heat) || 0;
-      const hb = Number(b.heat) || 0;
-      if (hb !== ha) return hb - ha;
-      return dateValue(b) - dateValue(a);
-    });
-  }
-
-  return copy;
-}
-  
-function renderNewsList() {
-  const list = document.getElementById("newsList");
-  const empty = document.getElementById("newsEmpty");
-  if (!list) return;
-
-  // const filtered = filterNews();
-  const filtered = sortNewsList(filterNews());
-  
-  if (filtered.length === 0) {
-    list.innerHTML = "";
-    if (empty) empty.style.display = "block";
-    return;
-  }
-  if (empty) empty.style.display = "none";
-
-  list.innerHTML = filtered.map(item => `
-    <a class="news-item" href="#news/${item.id}">
-      <div class="news-item-date">${formatDisplayDate(item.date)}</div>
-      <div class="news-item-title">${buildSourceBadge(item.source)}${item.title || "未命名公告"}</div>
-      <div class="news-item-summary">${item.summary || ""}</div>
-      ${item.tags && item.tags.length
-        ? `<div class="news-item-tags">${item.tags.map(t => `<span class="news-item-tag">${t}</span>`).join("")}</div>`
-        : ""}
-    </a>
-  `).join("");
-}
-  
-// <div class="news-item-date">${item.date || ""}</div>
-
-function initNewsFilters() {
-  buildYearOptions();
-
-  const yearSel = document.getElementById("newsFilterYear");
-  if (yearSel) {
-    yearSel.onchange = () => {
-      newsFilterYear = yearSel.value;
-      renderNewsList();
-    };
-  }
-
-  const catWrap = document.getElementById("newsFilterCategory");
-  if (catWrap) {
-    catWrap.querySelectorAll(".news-filter-cat").forEach(btn => {
-      btn.onclick = () => {
-        newsFilterCategory = btn.dataset.cat;
-        catWrap.querySelectorAll(".news-filter-cat").forEach(b =>
-          b.classList.toggle("active", b === btn)
-        );
-        renderNewsList();
-      };
-    });
-  }
-
-  const searchInput = document.getElementById("newsFilterSearch");
-  if (searchInput) {
-    searchInput.oninput = () => {
-      newsFilterKeyword = searchInput.value.trim();
-      renderNewsList();
-    };
-  }
-
-    // const sortSel = document.getElementById("newsSortSelect");
-    // if (sortSel) {
-    //   sortSel.value = newsSortMode;
-    //   sortSel.onchange = () => {
-    //     newsSortMode = sortSel.value;
-    //     renderNewsList();
-    //   };
-    // }
-
-  const sortSel = document.getElementById("newsSortSelect");
-  if (sortSel) {
-    sortSel.value = newsSortMode;
-    sortSel.onchange = () => {
-      newsSortMode = sortSel.value;
-      renderNewsList();
-    };
-  }
-}
-
-/* ===============================
-function renderNewsList() {
-  const list = document.getElementById("newsList");
-  const empty = document.getElementById("newsEmpty");
-  if (!list) return;
-
-  if (!NEWS.length) {
-    list.innerHTML = "";
-    if (empty) empty.style.display = "block";
-    return;
-  }
-  if (empty) empty.style.display = "none";
-
-  list.innerHTML = NEWS.map(item => `
-    <a class="news-item" href="#news/${item.id}">
-      <div class="news-item-date">${item.date || ""}</div>
-      <div class="news-item-title">${item.title || "未命名公告"}</div>
-      <div class="news-item-summary">${item.summary || ""}</div>
-      ${item.tags && item.tags.length
-        ? `<div class="news-item-tags">${item.tags.map(t => `<span class="news-item-tag">${t}</span>`).join("")}</div>`
-        : ""}
-    </a>
-  `).join("");
-}
-=============================== */
-
-/* ============================================================
-   Word 文档转换与缓存
-   ============================================================ */
-const wordCache = {};   // { 文件路径: { html, text, images } }
-
-async function loadWordDoc(path) {
-  if (!path) return null;
-  if (wordCache[path]) return wordCache[path];
-
-  const res = await fetch(path);
-  if (!res.ok) throw new Error("文件加载失败 " + res.status);
-  const arrayBuffer = await res.arrayBuffer();
-  const result = await mammoth.convertToHtml({ arrayBuffer });
-  const html = result.value || "";
-
-  const tmp = document.createElement("div");
-  tmp.innerHTML = html;
-  const text = (tmp.textContent || "").replace(/\s+/g, " ").trim();
-
-  const images = [];
-  tmp.querySelectorAll("img").forEach(img => {
-    if (img.src) images.push(img.src);
-  });
-
-  const data = { html, text, images };
-  wordCache[path] = data;
-  return data;
-}
-
-async function renderNewsDetail(id) {
-  const wrap = document.getElementById("newsDetailContent");
-  if (!wrap) return;
-
-  const item = NEWS.find(n => n.id === id);
-  if (!item) {
-    wrap.innerHTML = `<div class="empty-tip">未找到该公告</div>`;
-    return;
-  }
-
-  wrap.innerHTML = `
-    <h1 class="news-detail-title">${buildSourceBadge(item.source)}${buildTypeBadge(item.type)}${buildScopeBadge(item.scope)}${item.title || "未命名公告"}</h1>
-    <div class="news-detail-meta">${formatDisplayDate(item.date)}</div>
-    <div class="news-detail-body" id="newsDetailBody"></div>
-  `;
-//    <div class="news-detail-meta">${item.date || ""}</div>
-  const body = document.getElementById("newsDetailBody");
-  if (!body) return;
-
-  if (item.wordFile) {
-    body.innerHTML = `<p style="color:#999;">正在加载文档…</p>`;
-    try {
-      const data = await loadWordDoc(item.wordFile);
-      body.innerHTML = data.html || `<p style="color:#999;">文档内容为空</p>`;
-    } catch (e) {
-      console.error("[Word加载失败]", e);
-      body.innerHTML = `<p style="color:#c00;">文档加载失败，请稍后重试。</p>`;
-    }
-    return;
-  }
-
-  body.innerHTML = item.content || "";
-}
-  
-/* function renderNewsDetail(id) {
-  const wrap = document.getElementById("newsDetailContent");
-  if (!wrap) return;
-
-  const item = NEWS.find(n => n.id === id);
-  if (!item) {
-    wrap.innerHTML = `<div class="empty-tip">未找到该公告</div>`;
-    return;
-  }
-
-  wrap.innerHTML = `
-    <h1 class="news-detail-title">${item.title || "未命名公告"}</h1>
-    <div class="news-detail-meta">${item.date || ""}</div>
-    <div class="news-detail-body">${item.content || ""}</div>
-  `;
-} */
-
-fillNewsIds();
-initNewsFilters();
-renderNewsList();
-
-/* ============================================================
-   公告弹窗逻辑
-   ============================================================ */
-/* ============================================================
-const NEWS_POPUP_KEY = "duocaimeng_last_seen_news_id";
-const NEWS_PRIORITY_RANK = { high: 3, medium: 2, low: 1 };
-
-let popupAutoTimer = null;
-   ============================================================ */
-/* function getHighestPriorityUnseenNews() {
-  if (!Array.isArray(NEWS) || NEWS.length === 0) return null;
-
-  const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
-
-  // 从最新到最旧排序（按 date 降序）
-  const sorted = [...NEWS].sort((a, b) =>
-    String(b.date || "").localeCompare(String(a.date || ""))
-  );
-
-  // 找到最新的一条未读公告
-  const unseen = sorted.find(n => n && n.id && n.id !== lastSeen);
-  if (!unseen) return null;
-
-  // 如果最新未读是 low，不弹窗，但要把已读记录推进到它，避免反复判断
-  const priority = (unseen.priority || "low").toLowerCase();
-  if (priority === "low") {
-    localStorage.setItem(NEWS_POPUP_KEY, unseen.id);
-    return null;
-  }
-
-  return unseen;
-} */
-/* ============================================================
-const NEWS_PRIORITY_RANK = { high: 3, medium: 2, low: 1 };
-const NEWS_PRIORITY_DOWNGRADE = { high: "medium", medium: "low", low: "low" };
-
-function getEffectivePriority(item) {
-  const base = String(item.priority || "low").toLowerCase();
-  const valid = NEWS_PRIORITY_RANK[base] ? base : "low";
-
-  // 距当前日期超过 30 天，降一级
-  const d = new Date(item.date || "");
-  if (!isNaN(d.getTime())) {
-    const now = new Date();
-    const diffDays = (now - d) / (1000 * 60 * 60 * 24);
-    if (diffDays > 30) {
-      return NEWS_PRIORITY_DOWNGRADE[valid] || "low";
-    }
-  }
-  return valid;
-}
-============================================================ */
-  
-/* function getPendingNewsQueue() {
-  if (!Array.isArray(NEWS) || NEWS.length === 0) return [];
-
-  const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
-
-  return NEWS
-    .filter(n => n && n.id)
-    .map(n => ({
-      ...n,
-      _effPriority: getEffectivePriority(n)
-    }))
-    .filter(n => n._effPriority !== "low" && n.id !== lastSeen)
-    .sort((a, b) => {
-      const pa = NEWS_PRIORITY_RANK[a._effPriority] || 0;
-      const pb = NEWS_PRIORITY_RANK[b._effPriority] || 0;
-      if (pa !== pb) return pb - pa;                       // 优先级高的在前
-      return String(a.date || "").localeCompare(String(b.date || "")); // 同优先级，老的在前
-    });
-} */
-  
-/* ============================================================
-function getPendingNewsQueue() {
-  if (!Array.isArray(NEWS) || NEWS.length === 0) return [];
-
-  const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
-
-  const mapped = NEWS
-    .filter(n => n && n.id)
-    .map(n => {
-      const dateObj = new Date(n.date || "");
-      const dateValid = !isNaN(dateObj.getTime());
-      return {
-        ...n,
-        _dateValid: dateValid,
-        _effPriority: getEffectivePriority(n)
-      };
-    })
-    .filter(n => n._effPriority !== "low" && n.id !== lastSeen)
-    .sort((a, b) => {
-      const pa = NEWS_PRIORITY_RANK[a._effPriority] || 0;
-      const pb = NEWS_PRIORITY_RANK[b._effPriority] || 0;
-      if (pa !== pb) return pb - pa;
-      return String(a.date || "").localeCompare(String(b.date || ""));
-    });
-
-  // 有任意一条日期无效 → 最多 3 条；否则最多 5 条
-  const hasInvalidDate = mapped.some(n => !n._dateValid);
-  const limit = hasInvalidDate ? 3 : 5;
-
-  return mapped.slice(0, limit);
-}
-
-function closeNewsPopup() {
-  const overlay = document.getElementById("newsPopupOverlay");
-  if (overlay) overlay.style.display = "none";
-  if (popupAutoTimer) {
-    clearTimeout(popupAutoTimer);
-    popupAutoTimer = null;
-  }
-}
-
-function markNewsSeen(id) {
-  if (id) localStorage.setItem(NEWS_POPUP_KEY, id);
-}
-
-function showNewsPopup(item) {
-  const overlay = document.getElementById("newsPopupOverlay");
-  const badge = document.getElementById("newsPopupBadge");
-  const dateEl = document.getElementById("newsPopupDate");
-  const titleEl = document.getElementById("newsPopupTitle");
-  const summaryEl = document.getElementById("newsPopupSummary");
-  const progressWrap = document.getElementById("newsPopupProgress");
-  const progressBar = document.getElementById("newsPopupProgressBar");
-  const closeBtn = document.getElementById("newsPopupClose");
-  const confirmBtn = document.getElementById("newsPopupConfirm");
-  if (!overlay) return;
-
-  const priority = (item.priority || "low").toLowerCase();
-
-  badge.textContent = priority === "high" ? "重要公告" : "公告";
-  badge.className = "news-popup-badge " + priority;
-  dateEl.textContent = item.date || "";
-  titleEl.textContent = item.title || "";
-  summaryEl.textContent = item.summary || "";
-
-  overlay.style.display = "flex";
-  progressWrap.style.display = "none";
-  progressBar.style.transform = "scaleX(1)";
-
-  function finish() {
-    markNewsSeen(item.id);
-    closeNewsPopup();
-  }
-
-  closeBtn.onclick = finish;
-  confirmBtn.onclick = finish;
-
-  // 点遮罩不关闭：只在 overlay 自身上判断，不阻止内部点击
-  overlay.onclick = (e) => {
-    if (e.target === overlay) {
-      e.stopPropagation();
-    }
-  };
-
-  if (priority === "medium") {
-    progressWrap.style.display = "block";
-    progressBar.style.transition = "none";
-    progressBar.style.transform = "scaleX(1)";
-
-    // 强制重排后再启动动画
-    void progressBar.offsetWidth;
-
-    progressBar.style.transition = "transform 5s linear";
-    progressBar.style.transform = "scaleX(0)";
-
-    popupAutoTimer = setTimeout(finish, 5000);
-  }
-}
-
-function initNewsPopup() {
-  const item = getHighestPriorityUnseenNews();
-  if (item) {
-    // 等页面渲染完成后再弹，避免和首屏渲染抢资源
-    setTimeout(() => showNewsPopup(item), 400);
-  }
-}
-
-initNewsPopup();
-============================================================ */
-  
-  
-/* ============================================================
-   公告弹窗逻辑（整合版）
-   ============================================================ */
-const NEWS_POPUP_KEY = "duocaimeng_last_seen_news_id";
-const NEWS_PRIORITY_RANK = { high: 3, medium: 2, low: 1 };
-const NEWS_PRIORITY_DOWNGRADE = { high: "medium", medium: "low", low: "low" };
-
-let newsPopupQueue = [];
-let popupAutoTimer = null;
-let currentPopupId = null;
-
-function isLocalDateAvailable() {
-  try {
-    const now = new Date();
-    const t = now.getTime();
-    return typeof t === "number" && !isNaN(t) && t > 0;
-  } catch (e) {
-    return false;
-  }
-}
-  
-/* 计算有效优先级：超过 30 天降一级；日期无效则保留原优先级 */
-function getEffectivePriority(item) {
-  const base = String(item.priority || "low").toLowerCase();
-  const valid = NEWS_PRIORITY_RANK[base] ? base : "low";
-
-  const d = new Date(item.date || "");
-  if (!isNaN(d.getTime())) {
-    const now = new Date();
-    const diffDays = (now - d) / (1000 * 60 * 60 * 24);
-    if (diffDays > 30) {
-      return NEWS_PRIORITY_DOWNGRADE[valid] || "low";
-    }
-  }
-  return valid;
-}
-
-/* 生成待弹队列：优先级高→低，同优先级日期老→新；
-   有日期无效时最多 3 条，否则最多 5 条 */
-function getPendingNewsQueue() {
-  if (!Array.isArray(NEWS) || NEWS.length === 0) return [];
-
-  const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
-
-  const mapped = NEWS
-    // .filter(n => n && n.id)
-    .filter(n => n && n.id && n.hidden !== true)
-    .map(n => {
-      const dateObj = new Date(n.date || "");
-      const dateValid = !isNaN(dateObj.getTime());
-      return {
-        ...n,
-        _dateValid: dateValid,
-        _effPriority: getEffectivePriority(n)
-      };
-    })
-    .filter(n => n._effPriority !== "low" && n.id !== lastSeen)
-    .sort((a, b) => {
-      const pa = NEWS_PRIORITY_RANK[a._effPriority] || 0;
-      const pb = NEWS_PRIORITY_RANK[b._effPriority] || 0;
-      if (pa !== pb) return pb - pa;
-      return String(a.date || "").localeCompare(String(b.date || ""));
-    });
-
-  // const hasInvalidDate = mapped.some(n => !n._dateValid);
-  // const limit = hasInvalidDate ? 3 : 5;
-
-  // return mapped.slice(0, limit);
-  // 浏览器读不到本地日期 → 最多 3 条；能读到 → 最多 5 条
-  const localDateOk = isLocalDateAvailable();
-  const limit = localDateOk ? 5 : 3;
-
-  return mapped.slice(0, limit);
-}
-
-/* 角标：只要还有任何未读就显示 */
-function updateUnreadBadge() {
-  const badge = document.getElementById("newsUnreadBadge");
-  if (!badge) return;
-
-  const lastSeen = localStorage.getItem(NEWS_POPUP_KEY) || "";
-  // const hasUnread = NEWS.some(n => n && n.id && n.id !== lastSeen);
-  const hasUnread = NEWS.some(n => n && n.id && n.hidden !== true && n.id !== lastSeen);
-
-  badge.style.display = hasUnread ? "inline-flex" : "none";
-}
-
-function closeNewsPopup() {
-  const overlay = document.getElementById("newsPopupOverlay");
-  if (overlay) overlay.style.display = "none";
-  if (popupAutoTimer) {
-    clearTimeout(popupAutoTimer);
-    popupAutoTimer = null;
-  }
-}
-
-function markNewsSeen(id) {
-  if (id) localStorage.setItem(NEWS_POPUP_KEY, id);
-}
-
-/* function showNewsPopup(item) {
-  const overlay = document.getElementById("newsPopupOverlay");
-  const badge = document.getElementById("newsPopupBadge");
-  const dateEl = document.getElementById("newsPopupDate");
-  const titleEl = document.getElementById("newsPopupTitle");
-  const summaryEl = document.getElementById("newsPopupSummary");
-  const progressWrap = document.getElementById("newsPopupProgress");
-  const progressBar = document.getElementById("newsPopupProgressBar");
-  const closeBtn = document.getElementById("newsPopupClose");
-  const confirmBtn = document.getElementById("newsPopupConfirm");
-  if (!overlay) return;
-
-  const priority = item._effPriority || item.priority || "low";
-
-  badge.textContent = priority === "high" ? "重要公告" : "公告";
-  badge.className = "news-popup-badge " + priority;
-  dateEl.textContent = item.date || "";
-  titleEl.textContent = item.title || "";
-  summaryEl.textContent = item.summary || "";
-
-  overlay.style.display = "flex";
-  progressWrap.style.display = "none";
-  progressBar.style.transform = "scaleX(1)";
-
-  function finish() {
-    markNewsSeen(item.id);
-    closeNewsPopup();
-    updateUnreadBadge();
-
-    if (newsPopupQueue.length > 0) {
-      const next = newsPopupQueue.shift();
-      setTimeout(() => showNewsPopup(next), 300);
-    }
-  }
-
-  closeBtn.onclick = finish;
-  confirmBtn.onclick = finish;
-
-  overlay.onclick = (e) => {
-    if (e.target === overlay) e.stopPropagation();
-  };
-
-  if (priority === "medium") {
-    progressWrap.style.display = "block";
-    progressBar.style.transition = "none";
-    progressBar.style.transform = "scaleX(1)";
-    void progressBar.offsetWidth;
-    progressBar.style.transition = "transform 5s linear";
-    progressBar.style.transform = "scaleX(0)";
-    popupAutoTimer = setTimeout(finish, 5000);
-  }
-} */
-
-function showNewsPopup(item) {
-  const overlay = document.getElementById("newsPopupOverlay");
-  const badge = document.getElementById("newsPopupBadge");
-  const dateEl = document.getElementById("newsPopupDate");
-  const titleEl = document.getElementById("newsPopupTitle");
-  const summaryEl = document.getElementById("newsPopupSummary");
-  const mediaTop = document.getElementById("newsPopupMediaTop");
-  const mediaBottom = document.getElementById("newsPopupMedia");
-  const detailBtn = document.getElementById("newsPopupDetail");
-  const progressWrap = document.getElementById("newsPopupProgress");
-  const progressBar = document.getElementById("newsPopupProgressBar");
-  const closeBtn = document.getElementById("newsPopupClose");
-  const confirmBtn = document.getElementById("newsPopupConfirm");
-  if (!overlay) return;
-  currentPopupId = item.id;
-
-  const priority = item._effPriority || item.priority || "low";
-
-  badge.textContent = priority === "high" ? "重要公告" : "公告";
-  badge.className = "news-popup-badge " + priority;
-  // dateEl.textContent = item.date || "";
-  dateEl.textContent = formatDisplayDate(item.date);
-  titleEl.textContent = item.title || "";
-
-  // // 摘要：优先 summary，没有就从 content 抽纯文本；超 500 字截断加 ···
-  // const rawText = (item.summary && item.summary.trim())
-  //   ? item.summary
-  //   : stripHtml(item.content || "");
-  // summaryEl.textContent = truncateText(rawText, 500);
-
-  // // 摘要：有 summary 就按 500 字截断；没有 summary 就取正文前 100 字
-  // if (item.summary && item.summary.trim()) {
-  //   summaryEl.textContent = truncateText(item.summary, 500);
-  // } else {
-  //   const plain = stripHtml(item.content || "");
-  //   summaryEl.textContent = plain.slice(0, 100) + (plain.length > 100 ? "···" : "");
-  // }
-
-  // 了解详情按钮
-  detailBtn.href = `#news/${item.id}`;
-  detailBtn.onclick = () => {
-    markNewsSeen(item.id);
-    closeNewsPopup();
-    updateUnreadBadge();
-    // 让 hash 变化触发路由，这里不需要再手动跳
-  };
-
-    // ---------- 摘要 ----------
-    function applySummary(text) {
-      if (!text) {
-        summaryEl.textContent = "";
-        return;
-      }
-      if (item.summary && item.summary.trim()) {
-        summaryEl.textContent = truncateText(item.summary, 500);
-      } else {
-        summaryEl.textContent = text.slice(0, 100) + (text.length > 100 ? "···" : "");
-      }
-    }
-  
-    // ---------- 图片 ----------
-    const position = (item.imagePosition || "bottom").toLowerCase();
-  
-    function applyMedia(imgs) {
-      const mediaHtml = buildMediaHtml(imgs);
-      if (mediaTop) {
-        mediaTop.innerHTML = position === "top" ? mediaHtml : "";
-        mediaTop.style.display = (position === "top" && mediaHtml) ? "block" : "none";
-      }
-      if (mediaBottom) {
-        mediaBottom.innerHTML = position === "bottom" ? mediaHtml : "";
-        mediaBottom.style.display = (position === "bottom" && mediaHtml) ? "block" : "none";
-      }
-    }
-  
-    // 先用 content 或 summary 撑住
-    applySummary(item.summary ? "" : stripHtml(item.content || ""));
-    applyMedia(extractImages(item.content || ""));
-  
-    // 如果是 Word 公告，异步加载后刷新弹窗内容（不关闭弹窗）
-    if (item.wordFile) {
-      const currentId = item.id;
-      loadWordDoc(item.wordFile).then(data => {
-        // 弹窗已经切到别的公告或已关闭，就不更新
-        const overlayNow = document.getElementById("newsPopupOverlay");
-        if (!overlayNow || overlayNow.style.display === "none") return;
-        if (currentPopupId !== currentId) return;
-  
-        applySummary(data.text || "");
-        applyMedia(data.images || []);
-      }).catch(e => {
-        console.warn("[弹窗] Word 加载失败:", e);
-      });
-    }
-  // // 图片区
-  // const imgs = extractImages(item.content || "");
-  // const position = (item.imagePosition || "bottom").toLowerCase();
-  // const mediaHtml = buildMediaHtml(imgs);
-
-  // if (mediaTop) {
-  //   mediaTop.innerHTML = position === "top" ? mediaHtml : "";
-  //   mediaTop.style.display = (position === "top" && mediaHtml) ? "block" : "none";
-  // }
-  // if (mediaBottom) {
-  //   mediaBottom.innerHTML = position === "bottom" ? mediaHtml : "";
-  //   mediaBottom.style.display = (position === "bottom" && mediaHtml) ? "block" : "none";
-  // }
-
-  overlay.style.display = "flex";
-  progressWrap.style.display = "none";
-  progressBar.style.transform = "scaleX(1)";
-
-  function finish() {
-    markNewsSeen(item.id);
-    closeNewsPopup();
-    updateUnreadBadge();
-
-    if (newsPopupQueue.length > 0) {
-      const next = newsPopupQueue.shift();
-      setTimeout(() => showNewsPopup(next), 300);
-    }
-  }
-
-  closeBtn.onclick = finish;
-  confirmBtn.onclick = finish;
-
-  overlay.onclick = (e) => {
-    if (e.target === overlay) e.stopPropagation();
-  };
-
-  if (priority === "medium") {
-    progressWrap.style.display = "block";
-    progressBar.style.transition = "none";
-    progressBar.style.transform = "scaleX(1)";
-    void progressBar.offsetWidth;
-    progressBar.style.transition = "transform 5s linear";
-    progressBar.style.transform = "scaleX(0)";
-    popupAutoTimer = setTimeout(finish, 5000);
-  }
-}
-
-/* ---------- 辅助函数 ---------- */
-
-function stripHtml(html) {
-  const tmp = document.createElement("div");
-  tmp.innerHTML = html;
-  return (tmp.textContent || "").replace(/\s+/g, " ").trim();
-}
-
-function truncateText(text, max) {
-  if (!text) return "";
-  if (text.length <= max) return text;
-  return text.slice(0, max) + "···";
-}
-
-function extractImages(html) {
-  if (!html) return [];
-  const urls = [];
-  const regex = /<img[^>]+src\s*=\s*["']([^"']+)["']/gi;
-  let m;
-  while ((m = regex.exec(html)) !== null) {
-    if (m[1]) urls.push(m[1]);
-  }
-  return urls;
-}
-
-function buildMediaHtml(imgs) {
-  if (!imgs || imgs.length === 0) return "";
-
-  if (imgs.length === 1) {
-    return `<div class="news-popup-media-single"><img src="${imgs[0]}" alt=""></div>`;
-  }
-
-  const showCount = Math.min(3, imgs.length);
-  const remain = imgs.length - showCount;
-  const showMore = imgs.length > 3 && Number.isInteger(remain) && remain > 0;
-
-  const items = imgs.slice(0, showCount).map((src, i) => {
-    const isLastShown = i === showCount - 1;
-    return `<div class="news-popup-media-item">
-      <img src="${src}" alt="">
-      ${showMore && isLastShown ? `<div class="news-popup-media-more">+${remain}</div>` : ""}
-    </div>`;
-  }).join("");
-
-  return `<div class="news-popup-media-grid">${items}</div>`;
-}
-
-function initNewsPopup() {
-  updateUnreadBadge();
-
-  newsPopupQueue = getPendingNewsQueue();
-  if (newsPopupQueue.length === 0) return;
-
-  const first = newsPopupQueue.shift();
-  setTimeout(() => showNewsPopup(first), 400);
-}
-
-initNewsPopup();
-  
 </script>
 
-<!-- 公告弹窗 -->
-<!-- <div id="newsPopupOverlay" class="news-popup-overlay" style="display:none;">
-  <div class="news-popup" role="dialog" aria-modal="true">
-    <button class="news-popup-close" id="newsPopupClose" aria-label="关闭">×</button>
-    <div class="news-popup-header">
-      <span class="news-popup-badge" id="newsPopupBadge">公告</span>
-      <span class="news-popup-date" id="newsPopupDate"></span>
-    </div>
-    <h2 class="news-popup-title" id="newsPopupTitle"></h2>
-    <div class="news-popup-summary" id="newsPopupSummary"></div>
-    <div class="news-popup-actions">
-      <button class="news-popup-btn" id="newsPopupConfirm">确认</button>
-    </div>
-    <div class="news-popup-progress" id="newsPopupProgress" style="display:none;">
-      <div class="news-popup-progress-bar" id="newsPopupProgressBar"></div>
-    </div>
-  </div>
-</div> -->
-
-<div id="newsPopupOverlay" class="news-popup-overlay" style="display:none;">
-  <div class="news-popup" role="dialog" aria-modal="true">
-    <button class="news-popup-close" id="newsPopupClose" aria-label="关闭">×</button>
-    <div class="news-popup-header">
-      <span class="news-popup-badge" id="newsPopupBadge">公告</span>
-      <span class="news-popup-date" id="newsPopupDate"></span>
-    </div>
-    <h2 class="news-popup-title" id="newsPopupTitle"></h2>
-
-    <div class="news-popup-media-top" id="newsPopupMediaTop" style="display:none;"></div>
-
-    <div class="news-popup-summary" id="newsPopupSummary"></div>
-
-    <div class="news-popup-media" id="newsPopupMedia" style="display:none;"></div>
-
-    <div class="news-popup-actions">
-      <a class="news-popup-btn ghost" id="newsPopupDetail" href="#news">了解详情</a>
-      <button class="news-popup-btn" id="newsPopupConfirm">确认</button>
-    </div>
-
-    <div class="news-popup-progress" id="newsPopupProgress" style="display:none;">
-      <div class="news-popup-progress-bar" id="newsPopupProgressBar"></div>
-    </div>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/mammoth@1.9.0/mammoth.browser.min.js"></script>
-  
 </body>
 </html>
